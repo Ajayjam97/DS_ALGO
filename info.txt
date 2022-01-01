@@ -1,0 +1,23 @@
+Setting up C# build env
+
+Make C#/1.Basic directory
+
+> mkdir C#
+> cd C#
+> mkdir 1.Basic
+
+Add a new solution Basic to the 1.Basic directory
+
+> cd 1.Basic
+> new sln -n "Basic"
+
+Add a new console project in 1.HelloWorld directory
+
+> mkdir 1.HelloWorld
+> cd 1.HelloWorld
+> dotnet new console -n "HelloWorld"
+
+Add the newly created console project to the solution
+
+> cd ..
+> dotnet sln Basic.sln add 1.HelloWorld\HelloWorld.csproj
