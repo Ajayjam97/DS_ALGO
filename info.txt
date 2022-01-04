@@ -11,13 +11,16 @@ Add a new solution Basic to the 1.Basic directory
 > cd 1.Basic
 > dotnet new sln -n "Basic"
 
-Add a new console project in 1.HelloWorld directory
+Add a new console project Basic
 
-> mkdir 1.HelloWorld
-> cd 1.HelloWorld
-> dotnet new console -n "HelloWorld"
+> dotnet new console -n "Basic"
 
 Add the newly created console project to the solution
 
-> cd ..
-> dotnet sln Basic.sln add 1.HelloWorld\HelloWorld.csproj
+> dotnet sln .\Basic.sln add .\Basic\Basic.csproj
+
+
+To Build and Run your dotnet code, move inside the project folder
+
+>C#\1.Basic\Basic  dotnet build
+>C#\1.Basic\Basic  dotnet run

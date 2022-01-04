@@ -1,0 +1,16 @@
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\bin\Debug\net5.0\Basic.exe
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\bin\Debug\net5.0\Basic.deps.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\bin\Debug\net5.0\Basic.runtimeconfig.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\bin\Debug\net5.0\Basic.runtimeconfig.dev.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\bin\Debug\net5.0\Basic.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\bin\Debug\net5.0\ref\Basic.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\bin\Debug\net5.0\Basic.pdb
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\obj\Debug\net5.0\Basic.csproj.AssemblyReference.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\obj\Debug\net5.0\Basic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\obj\Debug\net5.0\Basic.AssemblyInfoInputs.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\obj\Debug\net5.0\Basic.AssemblyInfo.cs
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\obj\Debug\net5.0\Basic.csproj.CoreCompileInputs.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\obj\Debug\net5.0\Basic.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\obj\Debug\net5.0\ref\Basic.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\obj\Debug\net5.0\Basic.pdb
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\1.Basic\Basic\obj\Debug\net5.0\Basic.genruntimeconfig.cache
