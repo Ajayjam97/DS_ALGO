@@ -1,0 +1,16 @@
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\bin\Debug\net5.0\SearchingSorting.exe
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\bin\Debug\net5.0\SearchingSorting.deps.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\bin\Debug\net5.0\SearchingSorting.runtimeconfig.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\bin\Debug\net5.0\SearchingSorting.runtimeconfig.dev.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\bin\Debug\net5.0\SearchingSorting.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\bin\Debug\net5.0\ref\SearchingSorting.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\bin\Debug\net5.0\SearchingSorting.pdb
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\obj\Debug\net5.0\SearchingSorting.csproj.AssemblyReference.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\obj\Debug\net5.0\SearchingSorting.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\obj\Debug\net5.0\SearchingSorting.AssemblyInfoInputs.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\obj\Debug\net5.0\SearchingSorting.AssemblyInfo.cs
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\obj\Debug\net5.0\SearchingSorting.csproj.CoreCompileInputs.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\obj\Debug\net5.0\SearchingSorting.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\obj\Debug\net5.0\ref\SearchingSorting.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\obj\Debug\net5.0\SearchingSorting.pdb
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\C#\2.Searching_Sorting\SearchingSorting\obj\Debug\net5.0\SearchingSorting.genruntimeconfig.cache

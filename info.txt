@@ -22,5 +22,5 @@ Add the newly created console project to the solution
 
 To Build and Run your dotnet code, move inside the project folder
 
->C#\1.Basic\Basic  dotnet build
+>C#\1.Basic\Basic  dotnet build .\Basic.csproj
 >C#\1.Basic\Basic  dotnet run
