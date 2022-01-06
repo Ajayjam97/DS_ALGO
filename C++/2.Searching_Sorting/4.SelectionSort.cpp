@@ -1,9 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void swap(int arr[], int minindex){
-    int temp = arr[0];
-    arr[0] = arr[minindex];
+void swap(int arr[], int i , int minindex){
+    int temp = arr[i];
+    arr[i] = arr[minindex];
     arr[minindex] = temp;
 }
 
@@ -11,12 +11,12 @@ void SelectionSort(int arr[],int n){
 
     for(int i=0; i<n; i++){
         int minindex=i;
-        for(int j=i; j<n; j++){
+        for(int j=i+1; j<n; j++){
             if(arr[j]<arr[minindex]){
                 minindex=j;
             }
         }
-        swap(arr, minindex);
+        swap(arr, i , minindex);
     }
     
 }
