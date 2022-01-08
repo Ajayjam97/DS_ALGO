@@ -4,9 +4,11 @@ using namespace std;
 void CountSort(int arr[],int n, int hi){
 
     int fmap[hi+1];
+    memset(fmap, 0, sizeof(fmap));
 
     for(int i=0; i<n; i++){
-        fmap[arr[i]]++;
+        int index=arr[i];
+        fmap[index]++;
     }
 
     int j=0;
