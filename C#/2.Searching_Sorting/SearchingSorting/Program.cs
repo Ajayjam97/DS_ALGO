@@ -5,6 +5,39 @@ namespace SearchingSorting
     class Program
     {
 
+        public static void CountSort(int[] arr,int lo, int hi){
+
+            int[] freqmap=new int[hi-lo+1];
+
+            //1.Generate frequency map
+            for(int i=0; i<arr.Length; i++){
+                int index = arr[i]-lo;     
+                freqmap[index]++;
+            }
+
+            
+            freqmap[0]--; 
+            //2.Generate prefix sum from freqmap
+            for(int i=1; i<freqmap.Length; i++){
+                freqmap[i]+=freqmap[i-1];
+            }
+
+            int[] narr=new int[arr.Length];
+            //3.Traverse the array from back and fill the values in their respective last index using 
+            for(int i=arr.Length-1; i>=0; i--){
+                int value = arr[i];
+                int index = arr[i] - lo;
+                int lastindex = freqmap[index];
+                narr[lastindex] = value;
+                freqmap[index]--;
+            }
+
+            //4.Copy newarr to arr array
+            for(int i=0; i<arr.Length; i++){
+                arr[i] = narr[i];
+            }
+         }
+
         public static int BinarySearch(int[] arr,int lo, int hi, int num){
 
             int mid=(lo+(hi-lo)/2);
@@ -33,9 +66,20 @@ namespace SearchingSorting
 
         }
 
+        public static void Sorting(){
+            
+            int[] arr = {3,7,6,2,8,9,4,5,7,6,5,3};
+
+            Console.WriteLine(string.Join(",", arr));
+            CountSort(arr,2,9);
+            Console.WriteLine(string.Join(",", arr));
+
+        }
+
         static void Main(string[] args)
         {
-            Searching();
+            //Searching();
+            Sorting();
         }
     }
 }
