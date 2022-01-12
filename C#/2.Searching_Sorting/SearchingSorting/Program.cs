@@ -14,8 +14,7 @@ namespace SearchingSorting
                 int index = arr[i]-lo;     
                 freqmap[index]++;
             }
-
-            
+    
             freqmap[0]--; 
             //2.Generate prefix sum from freqmap
             for(int i=1; i<freqmap.Length; i++){
