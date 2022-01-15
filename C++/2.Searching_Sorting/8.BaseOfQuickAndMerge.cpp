@@ -40,26 +40,72 @@ void SegregateOddEven(int arr[],int n){
     }
 
 } 
+
+
+int* Merge(int arr1[], int arrsize1,int arr2[],int arrsize2){
+
+    int arrsize3 = (arrsize1+arrsize2);
+    int* arr3 = new int[arrsize3];
+
+    int i,j,k;    i=j=k=0;
+
+    while(i<arrsize1&&j<arrsize2){
+        if(arr1[i]>arr2[j]){
+            arr3[k++]=arr2[j++];
+        }
+        else{
+            arr3[k++]=arr1[i++];
+        }
+    }
+
+    while(i<arrsize1){
+        arr3[k++]=arr1[i++];
+    }
+
+    while(j<arrsize2){
+        arr3[k++]=arr2[j++];
+    }
+
+    return arr3;
+     
+}
    
 
 int main(){
 
-    int arrsize; cin>>arrsize;
-    int arr[arrsize];
+    int arrsize1; cin>>arrsize1;
+    int arr1[arrsize1];
 
-    for(int i=0; i<(sizeof(arr)/sizeof(int)); i++){
-       cin>>arr[i];
+    for(int i=0; i<(sizeof(arr1)/sizeof(int)); i++){
+       cin>>arr1[i];
     }
 
     //Sort 01
-    //Segregate01(arr, arrsize);
+    //Segregate01(arr1, arrsize1);
 
     //Sort array by parity
-    SegregateOddEven(arr, arrsize);
+    //SegregateOddEven(arr1, arrsize1);
+
+    // for(int i=0; i<(sizeof(arr)/sizeof(int)); i++){
+    //     cout<<arr[i]<<" ";
+    // }
+
+    int arrsize2; cin>>arrsize2;
+    int arr2[arrsize2];
+
+    for(int i=0; i<(sizeof(arr2)/sizeof(int)); i++){
+       cin>>arr2[i];
+    }
+
+    int arrsize3 = (arrsize1+arrsize2);
+    int* arr3 = new int[arrsize3];
+
+    //Merge two sorted arrays
+    arr3 = Merge(arr1, arrsize1, arr2, arrsize2);
 
 
-    for(int i=0; i<(sizeof(arr)/sizeof(int)); i++){
-        cout<<arr[i]<<" ";
+    for(int i=0; i<(arrsize3); i++){
+        cout<<arr3[i]<<" ";
     }
 
     
