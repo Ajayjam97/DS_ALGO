@@ -41,6 +41,24 @@ void SegregateOddEven(int arr[],int n){
 
 } 
 
+void PartitionOfArray(int arr1[], int n, int num){
+
+    int i,j;
+    i=j=0;
+
+    while(i<n){
+        if(arr1[i]<=num){
+            swap(arr1,n,i,j);
+            i++;
+            j++;
+        }
+        else{
+            i++;
+        }
+    }
+    
+}
+
 
 int* Merge(int arr1[], int arrsize1,int arr2[],int arrsize2){
 
@@ -80,33 +98,37 @@ int main(){
        cin>>arr1[i];
     }
 
-    //Sort 01
+    //Segregate 01
     //Segregate01(arr1, arrsize1);
 
     //Sort array by parity
     //SegregateOddEven(arr1, arrsize1);
 
-    // for(int i=0; i<(sizeof(arr)/sizeof(int)); i++){
-    //     cout<<arr[i]<<" ";
+    //Partition of array
+    int num; cin>>num;
+    PartitionOfArray(arr1, arrsize1,num);
+
+    for(int i=0; i<(sizeof(arr1)/sizeof(int)); i++){
+        cout<<arr1[i]<<" ";
+    }
+
+    // int arrsize2; cin>>arrsize2;
+    // int arr2[arrsize2];
+
+    // for(int i=0; i<(sizeof(arr2)/sizeof(int)); i++){
+    //    cin>>arr2[i];
     // }
 
-    int arrsize2; cin>>arrsize2;
-    int arr2[arrsize2];
-
-    for(int i=0; i<(sizeof(arr2)/sizeof(int)); i++){
-       cin>>arr2[i];
-    }
-
-    int arrsize3 = (arrsize1+arrsize2);
-    int* arr3 = new int[arrsize3];
+    // int arrsize3 = (arrsize1+arrsize2);
+    // int* arr3 = new int[arrsize3];
 
     //Merge two sorted arrays
-    arr3 = Merge(arr1, arrsize1, arr2, arrsize2);
+    //arr3 = Merge(arr1, arrsize1, arr2, arrsize2);
 
 
-    for(int i=0; i<(arrsize3); i++){
-        cout<<arr3[i]<<" ";
-    }
+    // for(int i=0; i<(arrsize3); i++){
+    //     cout<<arr3[i]<<" ";
+    // }
 
     
 }
