@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void swap(vector<int> arr, int indx1, int indx2){
+void swap(vector<int> &arr, int indx1, int indx2){
     int temp = arr[indx2];
     arr[indx2] = arr[indx1];
     arr[indx1]=temp;
 }
 
-int PartitionIndex(vector<int> arr, int lo, int hi, int pivot){
+int PartitionIndex(vector<int> &arr, int lo, int hi, int pivot){
 
     int i,j; i=j=lo;
 
@@ -26,7 +26,7 @@ int PartitionIndex(vector<int> arr, int lo, int hi, int pivot){
     
 }
 
-void QuickSort(vector<int> arr, int lo, int hi, int pivot){
+void QuickSort(vector<int> &arr, int lo, int hi, int pivot){
 
     if(lo>=hi) return;
 
@@ -46,11 +46,10 @@ int main(){
        cin>>arr[i];
     }
 
-    vector<int> res(arrsize);
     QuickSort(arr, 0, arrsize-1, arr[arrsize-1]);
 
-    for(int i=0; i<res.size(); i++){
-       cout<<res[i]<<" ";
+    for(int i=0; i<arr.size(); i++){
+       cout<<arr[i]<<" ";
     }
 
 
