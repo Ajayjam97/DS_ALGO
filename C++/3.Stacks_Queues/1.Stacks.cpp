@@ -1,67 +1,71 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<sstream>
+#include<algorithm>
 using namespace std;
 
-class Stack{
+class CustomStack {
+    int* data;
+    int capacity;
+    int tos;
 
-    private:  vector<int> st;
-    private: int size;
-
-    public:
-    
-    Stack(int capacity){
-        st.reserve(capacity);
-        this->size=-1;
+public:
+    CustomStack(int cap) {
+      data = new int[cap];
+      capacity = cap;
+      tos = -1;
     }
 
-    void push(int num){
-        if(st.capacity()==st.size()){
-            cout<<"Stack Overflow"<<endl;
-        }
-        else{
-            st[++size]=num;
-        }
+    int size() {
+      // write ur code here
+      return tos+1;
     }
 
-    int pop(){
-        if(size==-1){
-            cout<<"Stack Underflow"<<endl;
-        }
-        else{
-            return st[size--];
-        }
+    void display() {
+      // write ur code here
+      for(int i=tos; i>=0; i--){
+          cout<<data[i]<<" ";
+      }
+      cout<<endl;
     }
 
-    int peek(){
-        if(size==-1){
-            cout<<"Stack Underflow"<<endl;
+    void push(int val) {
+      // write ur code here
+        if(this->size()==capacity){
+            cout<<"Stack overflow"<<endl;
+            return;
         }
-        else{
-            return st[size];
+        data[++tos] = val;
+    }
+
+    int pop() {
+      // write ur code here
+      if(this->size()==0){
+          cout<<"Stack underflow"<<endl;
+          return -1;
         }
+        return data[tos--];
     }
 
-    bool IsEmpty(){
-        return (st.size()==0);
+    int top() {
+       // write ur code here
+       if(this->size()!=0){
+           return data[tos];
+       }
+       else{
+           cout<<"Stack underflow"<<endl;
+           return -1;
+       }
+
     }
 
-    int Size(){
-        return st.size();
-    }
-
-    void display(){
-        for(int i=size; i>=0; i--){
-            cout<<" ["<<st[i]<<"] ";
-        }
-        cout<<endl;
-    }
-
-};
+  };
 
 
 
 int main(){
 
-    Stack st = Stack(5);
+    CustomStack st = CustomStack(5);
 
     st.push(4);
     st.push(7);
@@ -69,10 +73,10 @@ int main(){
     st.push(5);
     st.push(56);
 
-    cout<<st.peek()<<endl;
+    cout<<st.top()<<endl;
     st.display();
     st.pop();
-    cout<<st.peek()<<endl;
+    cout<<st.top()<<endl;
     st.display();
     st.pop();
     st.pop();
