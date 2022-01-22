@@ -33,10 +33,11 @@ bool BalancedBrackets(string str){
     for(int i=0; i<str.size(); i++){
 
         if(str[i]==')'||str[i]==']'||str[i]=='}'){
-            char delimiter;
-            if(str[i]==')') delimiter='('; else if(str[i]==']') delimiter='['; else if(str[i]=='}') delimiter='{';
 
-            if(stk.top()!=delimiter||stk.empty()){
+            char openingbrack;
+            if(str[i]==')') openingbrack='('; else if(str[i]==']') openingbrack='['; else if(str[i]=='}') openingbrack='{';
+
+            if(stk.empty()||stk.top()!=openingbrack){
                 return false;
             }
             stk.pop();
