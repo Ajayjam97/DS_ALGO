@@ -65,22 +65,11 @@ public:
 
 int main(){
 
-    CustomStack st = CustomStack(5);
+    CustomStack st = CustomStack(4);
 
-    st.push(4);
-    st.push(7);
-    st.push(23);
-    st.push(5);
-    st.push(56);
+    st.push(4); st.push(7);   st.push(3);    st.push(5);
 
-    cout<<st.top()<<endl;
-    st.display();
-    st.pop();
-    cout<<st.top()<<endl;
-    st.display();
-    st.pop();
-    st.pop();
-    st.display();
+    st.display();   st.pop();    st.display();    cout<<st.top()<<endl;    st.pop();    st.display();
 
 
 
