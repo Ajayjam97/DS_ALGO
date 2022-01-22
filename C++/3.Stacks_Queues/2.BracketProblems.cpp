@@ -26,6 +26,32 @@ bool DuplicateBrackets(string str){
     return false;
 }
 
+bool BalancedBrackets(string str){
+
+    stack<char> stk;
+
+    for(int i=0; i<str.size(); i++){
+
+        if(str[i]==')'||str[i]==']'||str[i]=='}'){
+            char delimiter;
+            if(str[i]==')') delimiter='('; else if(str[i]==']') delimiter='['; else if(str[i]=='}') delimiter='{';
+
+            if(stk.top()!=delimiter||stk.empty()){
+                return false;
+            }
+            stk.pop();
+        }
+        else if(str[i]=='('||str[i]=='['||str[i]=='{'){
+            stk.push(str[i]);
+        }
+        else{
+            continue;
+        }
+    }
+
+    return stk.empty();
+}
+
 int main(){
 
     string str;
@@ -33,7 +59,7 @@ int main(){
     //cin.ignore(numeric_limits<streamsize>::max(),'\n');
     getline(cin,str);
     
-    
 
-    cout<<(DuplicateBrackets(str)?"true":"false")<<endl;
+    //cout<<(DuplicateBrackets(str)?"true":"false")<<endl;
+    cout<<(BalancedBrackets(str)?"true":"false")<<endl;
 }
