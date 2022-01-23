@@ -58,9 +58,8 @@ int main(){
     string str;
     //cin.ignore();
     //cin.ignore(numeric_limits<streamsize>::max(),'\n');
-    getline(cin,str);
-    
+    getline(cin,str); 
 
     //cout<<(DuplicateBrackets(str)?"true":"false")<<endl;
-    cout<<(BalancedBrackets(str)?"true":"false")<<endl;
+    //cout<<(BalancedBrackets(str)?"true":"false")<<endl;
 }
