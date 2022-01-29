@@ -89,6 +89,22 @@ void PostfixToPrefix(string str){
     
 }
 
+//Helpers
+
+int Priority(char op){
+    if(op=='/'||op=='*') return 2;
+    else if(op=='+'||op=='-') return 1;
+    else return 0;
+}
+
+int Solve(int val1, int val2, char op){
+    if(op=='/') return (val1/val2);
+    else if(op=='*') return (val1*val2);
+    else if(op=='+') return (val1+val2);
+    else if(op=='-') return (val1-val2);
+    else return 0;
+}
+
 void Evaluations(string str){
 
     //InfixEvaulation
