@@ -53,8 +53,60 @@ bool BalancedBrackets(string str){
     return stk.empty();
 }
 
+int Priority(char op);
+
+int Solve(int val1, int val2, char op);
+
 int EvaulateInfix(string str){
 
+    stack<char> op;
+    stack<int> val;
+
+    for(int i=0; i<str.length(); i++){
+
+        char ch=str[i];
+
+        if(ch==' '){
+            continue;
+        }
+        else if(ch>='0'&&ch<='9'){
+            val.push((int)(ch-'0'));
+        }
+        else if(ch=='('){
+            op.push(ch);
+        }
+        else if(ch==')'){
+            while(op.top()!='('){
+                int val2=val.top(); val.pop();
+                int val1=val.top(); val.pop();
+                char oprator=op.top(); op.pop();
+                int res =  Solve(val1, val2, oprator);
+                val.push(res);
+            }
+            op.pop();
+        }
+        else{
+            while(!op.empty()&&op.top()!='('&&(Priority(op.top())>=ch)){
+                int val2=val.top(); val.pop();
+                int val1=val.top(); val.pop();
+                char oprator=op.top(); op.pop();
+                int res =  Solve(val1, val2, oprator);
+                val.push(res);
+            }
+            op.push(ch);
+        }
+
+    }
+
+    while(!op.empty()){
+                int val2=val.top(); val.pop();
+                int val1=val.top(); val.pop();
+                char oprator=op.top(); op.pop();
+                int res =  Solve(val1, val2, oprator);
+                val.push(res);
+    }
+
+    return val.top();
 }
 
 void InfixToPrefix(string str){
@@ -107,11 +159,17 @@ int Solve(int val1, int val2, char op){
 
 void Evaluations(string str){
 
-    //InfixEvaulation
+    //Infix
 
-    //PrefixEvaulation
+    cout<<EvaulateInfix(str)<<endl;
 
-    //PostfixEvaulation
+    //Prefix
+
+    //cout<<EvaulatePrefix(str)<<endl;
+
+    //Postfix
+
+    //cout<<EvaulatePostfix(str)<<endl;
 }
 
 int main(){
