@@ -53,6 +53,51 @@ bool BalancedBrackets(string str){
     return stk.empty();
 }
 
+int EvaulateInfix(string str){
+
+}
+
+void InfixToPrefix(string str){
+
+}
+
+void InfixToPostfix(string str){
+    
+}
+
+int EvaulatePrefix(string str){
+    
+}
+
+void PrefixToInfix(string str){
+    
+}
+
+void PrefixToPostfix(string str){
+    
+}
+
+int EvaulatePostfix(string str){
+    
+}
+
+void PostfixToInfix(string str){
+    
+}
+
+void PostfixToPrefix(string str){
+    
+}
+
+void Evaluations(string str){
+
+    //InfixEvaulation
+
+    //PrefixEvaulation
+
+    //PostfixEvaulation
+}
+
 int main(){
 
     string str;
@@ -62,4 +107,5 @@ int main(){
 
     //cout<<(DuplicateBrackets(str)?"true":"false")<<endl;
     //cout<<(BalancedBrackets(str)?"true":"false")<<endl;
+    Evaluations(str);
 }
