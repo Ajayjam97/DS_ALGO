@@ -86,7 +86,7 @@ int EvaulateInfix(string str){
             op.pop();
         }
         else{
-            while(!op.empty()&&op.top()!='('&&(Priority(op.top())>=ch)){
+            while(!op.empty()&&op.top()!='('&&(Priority(op.top())>=Priority(ch))){
                 int val2=val.top(); val.pop();
                 int val1=val.top(); val.pop();
                 char oprator=op.top(); op.pop();
@@ -109,12 +109,114 @@ int EvaulateInfix(string str){
     return val.top();
 }
 
-void InfixToPrefix(string str){
+string InfixToPrefix(string str){
+
+    stack<char> op;
+    stack<string> val;
+
+    for(int i=0; i<str.length(); i++){
+
+        char ch=str[i];
+
+        if(ch==' '){
+            continue;
+        }
+        else if((ch>='0'&&ch<='9')||(ch>='a'&&ch<='z')){
+            string s; s.push_back(ch);
+            val.push(s);
+        }
+        else if(ch=='('){
+            op.push(ch);
+        }
+        else if(ch==')'){
+            while(op.top()!='('){
+                string val2=val.top(); val.pop();
+                string val1=val.top(); val.pop();
+                char oprator=op.top(); op.pop();
+                string res =  oprator+val1+val2;
+                val.push(res);
+            }
+            op.pop();
+        }
+        else{
+            while(!op.empty()&&op.top()!='('&&(Priority(op.top())>=Priority(ch))){
+                string val2=val.top(); val.pop();
+                string val1=val.top(); val.pop();
+                char oprator=op.top(); op.pop();
+                string res =  oprator+val1+val2;
+                val.push(res);
+            }
+            op.push(ch);
+        }
+
+
+    }
+
+    while(!op.empty()){
+                string val2=val.top(); val.pop();
+                string val1=val.top(); val.pop();
+                char oprator=op.top(); op.pop();
+                string res =  oprator+val1+val2;
+                val.push(res);
+    }
+
+    return val.top();
 
 }
 
-void InfixToPostfix(string str){
+string InfixToPostfix(string str){
     
+    stack<char> op;
+    stack<string> val;
+
+    for(int i=0; i<str.length(); i++){
+
+        char ch=str[i];
+
+        if(ch==' '){
+            continue;
+        }
+        else if((ch>='0'&&ch<='9')||(ch>='a'&&ch<='z')){
+            string s; s.push_back(ch);
+            val.push(s);
+        }
+        else if(ch=='('){
+            op.push(ch);
+        }
+        else if(ch==')'){
+            while(op.top()!='('){
+                string val2=val.top(); val.pop();
+                string val1=val.top(); val.pop();
+                char oprator=op.top(); op.pop();
+                string res =  val1+val2+oprator;
+                val.push(res);
+            }
+            op.pop();
+        }
+        else{
+            while(!op.empty()&&op.top()!='('&&(Priority(op.top())>=Priority(ch))){
+                string val2=val.top(); val.pop();
+                string val1=val.top(); val.pop();
+                char oprator=op.top(); op.pop();
+                string res =  val1+val2+oprator;
+                val.push(res);
+            }
+            op.push(ch);
+        }
+
+
+    }
+
+    while(!op.empty()){
+                string val2=val.top(); val.pop();
+                string val1=val.top(); val.pop();
+                char oprator=op.top(); op.pop();
+                string res =  val1+val2+oprator;
+                val.push(res);
+    }
+
+    return val.top();
+
 }
 
 int EvaulatePrefix(string str){
@@ -161,7 +263,9 @@ void Evaluations(string str){
 
     //Infix
 
-    cout<<EvaulateInfix(str)<<endl;
+    //cout<<EvaulateInfix(str)<<endl;
+    cout<<InfixToPrefix(str)<<endl;
+    cout<<InfixToPostfix(str)<<endl;
 
     //Prefix
 
