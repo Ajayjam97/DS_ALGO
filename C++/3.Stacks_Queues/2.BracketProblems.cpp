@@ -242,11 +242,54 @@ int EvaulatePrefix(string str){
     
 }
 
-void PrefixToInfix(string str){
+string PrefixToInfix(string str){
+
+    stack<string> stk;
+
+    for(int i=str.length()-1; i>=0; i--){
+
+        char ch=str[i];
+        if(ch>='0'&&ch<='9'){
+            string s; s.push_back(ch);
+            stk.push(s);
+        }
+        else{
+            char oprator = ch;
+            string val1 = stk.top(); stk.pop();
+            string val2 = stk.top(); stk.pop();
+            string res = "("+val1+oprator+val2+")";
+            stk.push(res);
+        }
+    }
+
+    string res=stk.top();
+    return res;
     
 }
 
-void PrefixToPostfix(string str){
+string PrefixToPostfix(string str){
+
+    
+    stack<string> stk;
+
+    for(int i=str.length()-1; i>=0; i--){
+
+        char ch=str[i];
+        if(ch>='0'&&ch<='9'){
+            string s; s.push_back(ch);
+            stk.push(s);
+        }
+        else{
+            char oprator = ch;
+            string val1 = stk.top(); stk.pop();
+            string val2 = stk.top(); stk.pop();
+            string res = val1+val2+oprator;
+            stk.push(res);
+        }
+    }
+
+    string res=stk.top();
+    return res;
     
 }
 
@@ -280,7 +323,7 @@ string PostfixToInfix(string str){
     for(int i=0; i<str.length(); i++){
 
         char ch=str[i];
-        if(ch>='a'&&ch<='z'){
+        if(ch>='0'&&ch<='9'){
             string s; s.push_back(ch);
             stk.push(s);
         }
@@ -304,7 +347,7 @@ string PostfixToPrefix(string str){
     for(int i=0; i<str.length(); i++){
 
         char ch=str[i];
-        if(ch>='a'&&ch<='z'){
+        if(ch>='0'&&ch<='9'){
             string s; s.push_back(ch);
             stk.push(s);
         }
@@ -347,13 +390,15 @@ void Evaluations(string str){
 
     //Prefix
 
-    //cout<<EvaulatePrefix(str)<<endl;
+    cout<<EvaulatePrefix(str)<<endl;
+    cout<<PrefixToInfix(str)<<endl;
+    cout<<PrefixToPostfix(str)<<endl;
 
     //Postfix
 
     //cout<<EvaulatePostfix(str)<<endl;
-    cout<<PostfixToInfix(str)<<endl;
-    cout<<PostfixToPrefix(str)<<endl;
+    //cout<<PostfixToInfix(str)<<endl;
+    //cout<<PostfixToPrefix(str)<<endl;
 }
 
 int main(){
