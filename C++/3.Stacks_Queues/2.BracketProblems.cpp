@@ -390,9 +390,9 @@ void Evaluations(string str){
 
     //Prefix
 
-    cout<<EvaulatePrefix(str)<<endl;
-    cout<<PrefixToInfix(str)<<endl;
-    cout<<PrefixToPostfix(str)<<endl;
+    //cout<<EvaulatePrefix(str)<<endl;
+    //cout<<PrefixToInfix(str)<<endl;
+    //cout<<PrefixToPostfix(str)<<endl;
 
     //Postfix
 
