@@ -273,11 +273,51 @@ int EvaulatePostfix(string str){
     
 }
 
-void PostfixToInfix(string str){
+string PostfixToInfix(string str){
+
+    stack<string> stk;
+
+    for(int i=0; i<str.length(); i++){
+
+        char ch=str[i];
+        if(ch>='a'&&ch<='z'){
+            string s; s.push_back(ch);
+            stk.push(s);
+        }
+        else{
+            char oprator = ch;
+            string val2 = stk.top(); stk.pop();
+            string val1 = stk.top(); stk.pop();
+            string res = "("+val1+oprator+val2+")";
+            stk.push(res);
+        }
+    }
+
+    return stk.top();
     
 }
 
-void PostfixToPrefix(string str){
+string PostfixToPrefix(string str){
+
+    stack<string> stk;
+
+    for(int i=0; i<str.length(); i++){
+
+        char ch=str[i];
+        if(ch>='a'&&ch<='z'){
+            string s; s.push_back(ch);
+            stk.push(s);
+        }
+        else{
+            char oprator = ch;
+            string val2 = stk.top(); stk.pop();
+            string val1 = stk.top(); stk.pop();
+            string res = oprator+val1+val2;
+            stk.push(res);
+        }
+    }
+
+    return stk.top();
     
 }
 
@@ -311,7 +351,9 @@ void Evaluations(string str){
 
     //Postfix
 
-    cout<<EvaulatePostfix(str)<<endl;
+    //cout<<EvaulatePostfix(str)<<endl;
+    cout<<PostfixToInfix(str)<<endl;
+    cout<<PostfixToPrefix(str)<<endl;
 }
 
 int main(){
