@@ -80,6 +80,33 @@ vector<int> NextSmallerElementToLeft(vector<int> arr){
     return res;
 }
 
+vector<int> StockSpan(vector<int> arr){
+
+    //Using Next Greater on Left
+    vector<int> res(arr.size());
+    stack<int> stk;
+
+    for(int i=arr.size()-1; i>=0; i--){
+
+        while(!stk.empty()&&arr[stk.top()]<arr[i]){
+            res[stk.top()]=i; stk.pop();
+        }
+
+        stk.push(i);
+    }
+
+    while(!stk.empty()){
+        res[stk.top()]=-1; stk.pop();
+    }
+
+    for(int i=0; i<res.size(); i++){
+        res[i] = i-res[i];
+    }
+
+    return res;
+
+}
+
 int main(){
  
     int arrsize; cin>>arrsize;
@@ -89,6 +116,9 @@ int main(){
     //arr = NextGreaterElementToRight(arr);
     //arr = NextGreaterElementToLeft(arr);
     //arr = NextSmallerElementToRight(arr);
-    arr = NextSmallerElementToLeft(arr);
+    //arr = NextSmallerElementToLeft(arr);
+    arr = StockSpan(arr);
+
+
     for(int i=0; i<arr.size(); i++) cout<<arr[i]<<" ";
 }
