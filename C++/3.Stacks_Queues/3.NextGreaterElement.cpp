@@ -55,7 +55,7 @@ vector<int> NextSmallerElementToRight(vector<int> arr){
     }
 
     while(!stk.empty()){
-        res[stk.top()] = -1; stk.pop();
+        res[stk.top()] = arr.size(); stk.pop();
     }
     return res;
 
@@ -142,13 +142,15 @@ int largestRectangleArea(vector<int>& heights) {
         vector<int> rsi(heights.size()); //Right Smaller Index
         vector<int> result(heights.size());
 
-        lsi = NextSmallerElementToLeft(heights);
-        rsi = NextSmallerElementToRight(heights);
+        lsi = NextSmallerElementToLeft(heights); //Make sure to include -1 index for elements not having smallest element in the array
+        rsi = NextSmallerElementToRight(heights); //Make sure to include  size of array as index for elements not having smallest element in the array
         
         
         for(int i=0; i<result.size(); i++){
-            result[i] = rsi[i]-lsi[i]-1;
+            result[i] = heights[i]*(rsi[i]-lsi[i]-1);
         }
+
+        return *max_element(result.begin(), result.end());
         
         
 }
