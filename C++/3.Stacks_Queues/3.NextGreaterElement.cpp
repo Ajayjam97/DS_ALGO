@@ -42,7 +42,7 @@ vector<int> NextGreaterElementToLeft(vector<int> arr){
 
 vector<int> NextSmallerElementToRight(vector<int> arr){
 
-        stack<int> stk;
+    stack<int> stk;
     vector<int> res(arr.size());
 
     for(int i=0; i<arr.size(); i++){
@@ -106,6 +106,8 @@ vector<int> StockSpan(vector<int> arr){
     return res;
 
 }
+
+
 
 int main(){
  
