@@ -107,7 +107,51 @@ vector<int> StockSpan(vector<int> arr){
 
 }
 
+vector<int> dailyTemperatures(vector<int>& temperatures) {
+        
+        vector<int> answer(temperatures.size());
+        stack<int> stk;
+        
+        for(int i=0; i<temperatures.size(); i++){
+            
+            while(!stk.empty()&&temperatures[stk.top()]<temperatures[i]){
+                answer[stk.top()]=i; stk.pop();
+            }
+            
+            stk.push(i);
+        }
+        
+        while(!stk.empty()){
+            answer[stk.top()]=0; stk.pop();
+        }
+        
+        for(int i=0; i<answer.size(); i++){
+            
+            if(answer[i]!=0){
+                answer[i]=answer[i]-i;
+            }
+        }
+        
+        return answer;
+        
+    }
 
+int largestRectangleArea(vector<int>& heights) {
+
+        vector<int> lsi(heights.size()); //Left Smaller Index
+        vector<int> rsi(heights.size()); //Right Smaller Index
+        vector<int> result(heights.size());
+
+        lsi = NextSmallerElementToLeft(heights);
+        rsi = NextSmallerElementToRight(heights);
+        
+        
+        for(int i=0; i<result.size(); i++){
+            result[i] = rsi[i]-lsi[i]-1;
+        }
+        
+        
+}
 
 int main(){
  
@@ -119,7 +163,9 @@ int main(){
     //arr = NextGreaterElementToLeft(arr);
     //arr = NextSmallerElementToRight(arr);
     //arr = NextSmallerElementToLeft(arr);
-    arr = StockSpan(arr);
+    //arr = StockSpan(arr);
+    //arr = dailyTemperatures(arr);
+    int answer = largestRectangleArea(arr);
 
 
     for(int i=0; i<arr.size(); i++) cout<<arr[i]<<" ";
