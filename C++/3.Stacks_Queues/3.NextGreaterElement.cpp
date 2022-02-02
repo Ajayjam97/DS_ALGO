@@ -136,14 +136,22 @@ vector<int> dailyTemperatures(vector<int>& temperatures) {
         
     }
 
+vector<int> LSI(vector<int> heights){
+
+}
+
+vector<int> RSI(vector<int> heights){
+    
+}
+
 int largestRectangleArea(vector<int>& heights) {
 
         vector<int> lsi(heights.size()); //Left Smaller Index
         vector<int> rsi(heights.size()); //Right Smaller Index
         vector<int> result(heights.size());
 
-        lsi = NextSmallerElementToLeft(heights); //Make sure to include -1 index for elements not having smallest element in the array
-        rsi = NextSmallerElementToRight(heights); //Make sure to include  size of array as index for elements not having smallest element in the array
+        lsi = LSI(heights); //Make sure to include -1 index for elements not having smallest element in the array
+        rsi = RSI(heights); //Make sure to include  size of array as index for elements not having smallest element in the array
         
         
         for(int i=0; i<result.size(); i++){
@@ -167,7 +175,7 @@ int main(){
     //arr = NextSmallerElementToLeft(arr);
     //arr = StockSpan(arr);
     //arr = dailyTemperatures(arr);
-    int answer = largestRectangleArea(arr);
+    cout<<largestRectangleArea(arr)<<endl;;
 
 
     for(int i=0; i<arr.size(); i++) cout<<arr[i]<<" ";
