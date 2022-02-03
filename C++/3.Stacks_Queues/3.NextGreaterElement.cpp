@@ -138,10 +138,42 @@ vector<int> dailyTemperatures(vector<int>& temperatures) {
 
 vector<int> LSI(vector<int> heights){
 
+    vector<int> res(heights.size());
+    stack<int> stk;
+
+    for(int i=heights.size()-1; i>=0; i--){
+
+        while(!stk.empty()&&heights[i]<heights[stk.top()]){
+            res[stk.top()]=i; stk.pop();
+        }
+        stk.push(i);
+    }
+
+    while(stk.size()>0){
+        res[stk.top()]=-1; stk.pop();
+    }
+
+    return res;
 }
 
 vector<int> RSI(vector<int> heights){
     
+    vector<int> res(heights.size());
+    stack<int> stk;
+
+    for(int i=0; i<heights.size(); i++){
+
+        while(!stk.empty()&&heights[i]<heights[stk.top()]){
+            res[stk.top()]=i; stk.pop();
+        }
+        stk.push(i);
+    }
+
+    while(stk.size()>0){
+        res[stk.top()]=heights.size(); stk.pop();
+    }
+
+    return res;
 }
 
 int largestRectangleArea(vector<int>& heights) {
@@ -175,7 +207,7 @@ int main(){
     //arr = NextSmallerElementToLeft(arr);
     //arr = StockSpan(arr);
     //arr = dailyTemperatures(arr);
-    cout<<largestRectangleArea(arr)<<endl;;
+    //cout<<largestRectangleArea(arr)<<endl;
 
 
     for(int i=0; i<arr.size(); i++) cout<<arr[i]<<" ";
