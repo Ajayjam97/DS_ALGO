@@ -195,6 +195,31 @@ int largestRectangleArea(vector<int>& heights) {
         
 }
 
+int maximalRectangle(vector<vector<char>>& matrix) {
+
+    if(matrix.size()==0) return 0;
+        
+        vector<int> arr(matrix[0].size());
+
+        int res=0;
+
+
+        for(int i=0; i<matrix.size(); i++){
+            for(int j=0; j<matrix[0].size(); j++){
+
+                if(matrix[i][j]=='0'){
+                    arr[j]=0;
+                }
+                else{
+                    arr[j] += matrix[i][j] - '0';
+                }
+            }
+            res = max(res, largestRectangleArea(arr));
+        }
+
+        return res;
+    }
+
 int main(){
  
     int arrsize; cin>>arrsize;
@@ -208,6 +233,15 @@ int main(){
     //arr = StockSpan(arr);
     //arr = dailyTemperatures(arr);
     //cout<<largestRectangleArea(arr)<<endl;
+    //vector<vector<char>> carr(5, vector<char>(5, '0'));
+    vector<vector<char>> carr2
+    {
+        {'1', '0', '1', '0', '0'},
+        {'1', '0', '1', '1', '1'},
+        {'1', '1', '1', '1', '1'},
+        {'1', '0', '0', '1', '0'}
+    };
+    //cout<<maximalRectangle(carr2)<<endl;
 
 
     for(int i=0; i<arr.size(); i++) cout<<arr[i]<<" ";
