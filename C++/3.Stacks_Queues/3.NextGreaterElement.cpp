@@ -220,12 +220,38 @@ int maximalRectangle(vector<vector<char>>& matrix) {
         return res;
     }
 
+vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        
+        // vector<int> res;
+        // for(int i=0; i<=nums.size()-k; i++){
+        //     int max=nums[i];
+        //     for(int j=i; j<=i+k-1; j++){
+        //         if(nums[j]>max){
+        //             max=nums[j];
+        //         }
+        //     }
+        //     res.push_back(max);
+        // }
+        // return res;
+         
+    }
+
 int main(){
  
     int arrsize; cin>>arrsize;
     vector<int> arr(arrsize);
 
+    vector<vector<char>> carr(5, vector<char>(5, '0'));
+    vector<vector<char>> carr2
+    {
+       {'1', '0', '1', '0', '0'},
+       {'1', '0', '1', '1', '1'},
+       {'1', '1', '1', '1', '1'},
+       {'1', '0', '0', '1', '0'}
+    };
+
     for(int i=0; i<arr.size(); i++) cin>>arr[i];
+
     //arr = NextGreaterElementToRight(arr);
     //arr = NextGreaterElementToLeft(arr);
     //arr = NextSmallerElementToRight(arr);
@@ -233,16 +259,8 @@ int main(){
     //arr = StockSpan(arr);
     //arr = dailyTemperatures(arr);
     //cout<<largestRectangleArea(arr)<<endl;
-    //vector<vector<char>> carr(5, vector<char>(5, '0'));
-    vector<vector<char>> carr2
-    {
-        {'1', '0', '1', '0', '0'},
-        {'1', '0', '1', '1', '1'},
-        {'1', '1', '1', '1', '1'},
-        {'1', '0', '0', '1', '0'}
-    };
     //cout<<maximalRectangle(carr2)<<endl;
-
+    int k; cin>>k; arr = maxSlidingWindow(arr, k);
 
     for(int i=0; i<arr.size(); i++) cout<<arr[i]<<" ";
 }
