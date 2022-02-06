@@ -176,6 +176,26 @@ vector<int> RSI(vector<int> heights){
     return res;
 }
 
+vector<int> RGI(vector<int> arr){
+    
+    vector<int> res(arr.size());
+    stack<int> stk;
+
+    for(int i=0; i<arr.size(); i++){
+
+        while(!stk.empty()&&arr[i]>arr[stk.top()]){
+            res[stk.top()]=i; stk.pop();
+        }
+        stk.push(i);
+    }
+
+    while(stk.size()>0){
+        res[stk.top()]=arr.size(); stk.pop();
+    }
+
+    return res;
+}
+
 int largestRectangleArea(vector<int>& heights) {
 
         vector<int> lsi(heights.size()); //Left Smaller Index
@@ -233,6 +253,33 @@ vector<int> maxSlidingWindow(vector<int>& nums, int k) {
         //     res.push_back(max);
         // }
         // return res;
+
+
+        // vector<int> res;
+        // for(int i=0; i<=nums.size()-k; i++){
+        //     int max=nums[i];
+        //     max = *max_element(nums.begin()+i, nums.begin()+i+k);
+        //     res.push_back(max);
+        // }
+        // return res;
+
+        vector<int> res;
+        vector<int> rgi = RGI(nums);
+
+        int j=0;
+
+        for(int i=0; i<=nums.size()-k; i++){
+            
+            if(i>j) j++;
+            while(i+k>rgi[j]){
+                j=rgi[j];
+            }
+            res.push_back(nums[j]);
+
+        }
+        return res;
+
+        
          
     }
 
@@ -260,7 +307,7 @@ int main(){
     //arr = dailyTemperatures(arr);
     //cout<<largestRectangleArea(arr)<<endl;
     //cout<<maximalRectangle(carr2)<<endl;
-    int k; cin>>k; arr = maxSlidingWindow(arr, k);
+    //int k; cin>>k; arr = maxSlidingWindow(arr, k);
 
     for(int i=0; i<arr.size(); i++) cout<<arr[i]<<" ";
 }
