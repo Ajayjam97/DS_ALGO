@@ -53,7 +53,7 @@ int main(){
         for(int j=0; j<arr[i].size(); j++) cin>>arr[i][j];
     }
 
-    celebrityProblem(arr);
+    //celebrityProblem(arr);
 
 
     //for(int i=0; i<arr.size(); i++) cout<<arr[i]<<" ";
