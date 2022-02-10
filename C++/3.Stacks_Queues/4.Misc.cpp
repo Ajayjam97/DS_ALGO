@@ -115,6 +115,57 @@ vector<vector<int>> merge(vector<vector<int>>& intervals) {
         
 }
 
+int Min=10e5;
+
+void push(stack<int>& s, int a){
+	// Your code goes here
+	if(a<Min){
+        //Pushing Old min at the location we got the new min using the formula s.top() = 2*val - oldmin
+	    s.push(2*a-Min);
+	    Min=a;
+	}
+	else{
+        //Pushing the value normally
+	    s.push(a);
+	}
+}
+
+bool isFull(stack<int>& s,int n){
+	// Your code goes here
+	return (s.size()==n);
+}
+
+bool isEmpty(stack<int>& s){
+	// Your code goes here
+	return (s.size()==0);
+}
+
+int pop(stack<int>& s){
+	// Your code goes here
+	if(s.top()<Min){
+        //As s.top is < min, this means that the min value was changed at this position. Therefore return the current min and retrieve the old min from the formula oldmin = 2*val - s.top()
+	    int val = Min;
+	    Min = 2*val-s.top();
+	    s.pop();
+	    return val;
+	}
+	else{
+        //Normally pop the value.
+	    int val = s.top(); s.pop();
+	    return val;
+	}
+	
+	
+}
+
+int getMin(stack<int>& s){
+	// Your code goes here
+	return Min;
+	
+}
+
+
+
 int main(){
  
     int arrsize; cin>>arrsize;
