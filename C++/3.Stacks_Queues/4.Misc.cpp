@@ -135,20 +135,11 @@ int main(){
     //celebrityProblem(arr);
     //MergeOverlappingInterval(p);
 
-    // vector<vector<int>> intervals = {
-    //     {1,3},
-    //     {2,6},
-    //     {8,10},
-    //     {15,18}
-    // };
-
     vector<vector<int>> intervals = {
-        {22,28},
-        {1,8},
-        {25,27},
-        {14,19},
-        {27,30},
-        {5,12}
+        {1,3},
+        {2,6},
+        {8,10},
+        {15,18}
     };
 
     intervals = merge(intervals);
