@@ -46,6 +46,7 @@ void celebrityProblem(vector<vector<int>> arr){
 void MergeOverlappingInterval(vector<pair<int,int>> arr){
 
     sort(arr.begin(),arr.end());
+
     stack<pair<int,int>> s;
     s.push(arr[0]);
     
@@ -77,10 +78,47 @@ void MergeOverlappingInterval(vector<pair<int,int>> arr){
 
 }
 
+bool intervalCompare(vector<int> a, vector<int> b){
+    return (a[0] < b[0]);
+}
+
+vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        
+        vector<vector<int>> resintervals;
+
+        sort(intervals.begin(), intervals.end(), intervalCompare);
+
+        stack<pair<int,int>> s;
+        s.push(make_pair(intervals[0][0],intervals[0][1]));
+        
+        for(int i=0; i<intervals.size(); i++){
+
+            //check if the current interval is overlapping with previous
+            if(intervals[i][0]<=s.top().second){
+                //check if we can merge current & previous intervals (end of current interval is > end of previous interval)
+                if(intervals[i][1]>s.top().second){
+                    s.top().second = intervals[i][1];
+                }
+            }
+            else{
+                s.push(make_pair(intervals[i][0], intervals[i][1]));
+            }
+        }
+
+        while(s.size()>0){
+            pair<int,int> p = s.top(); s.pop();
+            resintervals.push_back({p.first, p.second});
+        }
+
+        reverse(resintervals.begin(), resintervals.end());
+        return resintervals;
+        
+}
+
 int main(){
  
     int arrsize; cin>>arrsize;
-    vector<pair<int,int>> p;
+    // vector<pair<int,int>> p;
     //vector<int> arr(arrsize);
     //for(int i=0; i<arr.size(); i++) cin>>arr[i];
 
@@ -89,13 +127,38 @@ int main(){
     //     for(int j=0; j<arr[i].size(); j++) cin>>arr[i][j];
     // }
 
-    for(int i=0;i<arrsize;i++){
-    int strt,end; cin>>strt; cin>>end;
-    p.push_back(make_pair(strt,end));
-    }
+    // for(int i=0;i<arrsize;i++){
+    // int strt,end; cin>>strt; cin>>end;
+    // p.push_back(make_pair(strt,end));
+    // }
     
     //celebrityProblem(arr);
-    MergeOverlappingInterval(p);
+    //MergeOverlappingInterval(p);
+
+    // vector<vector<int>> intervals = {
+    //     {1,3},
+    //     {2,6},
+    //     {8,10},
+    //     {15,18}
+    // };
+
+    vector<vector<int>> intervals = {
+        {22,28},
+        {1,8},
+        {25,27},
+        {14,19},
+        {27,30},
+        {5,12}
+    };
+
+    intervals = merge(intervals);
+
+    for(int i=0; i<intervals.size(); i++) {
+        for(int j=0; j<intervals[i].size(); j++){
+            cout<<intervals[i][j]<<" ";
+        }
+        cout<<endl;
+    }
     
 
 
