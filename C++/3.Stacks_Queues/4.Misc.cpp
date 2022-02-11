@@ -42,7 +42,6 @@ void celebrityProblem(vector<vector<int>> arr){
     cout<<potentialCeleb<<endl;
 }
 
-
 void MergeOverlappingInterval(vector<pair<int,int>> arr){
 
     sort(arr.begin(),arr.end());
