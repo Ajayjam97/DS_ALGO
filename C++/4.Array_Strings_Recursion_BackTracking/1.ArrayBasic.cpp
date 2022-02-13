@@ -28,20 +28,20 @@ struct Pair getMinMax(long long int arr[], long long int n) {
     
 }
 
-string reverseWord(string str){
-    
-  //Your code here
-  int start=0;
-  int end=str.size()-1;
-
-  while(start<end){
-      int temp=str[start];
-      str[start++]=str[end];
-      str[end--]=temp;
-  }
-
-  return str;
-}
+void reverseString(vector<char>& s) {
+        
+        int l = 0;
+        int r = s.size()-1;
+        
+        while(l<r){
+            char temp;
+            temp = s[l];
+            s[l] = s[r];
+            s[r] = temp;
+            
+            l++; r--;
+        }
+    }
 
 
 int main(){
