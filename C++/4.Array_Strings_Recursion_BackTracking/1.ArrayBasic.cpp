@@ -43,7 +43,27 @@ void reverseString(vector<char>& s) {
         }
     }
 
+vector<string> printVertically(string s) {
+        
+        vector<string> temp;
+        istringstream sentence(s);
+        string word;
+
+        while(sentence >> word){
+            temp.push_back(word);
+        }    
+
+        return temp;
+        
+    }
+
 
 int main(){
+        
+        string s = "HOW ARE YOU";
+        vector<string> result = printVertically(s);
+
+        for(int i=0; i<result.size(); i++) cout<<result[i]<<" ";
+        
 
 }
