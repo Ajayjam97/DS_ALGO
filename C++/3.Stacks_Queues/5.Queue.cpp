@@ -76,7 +76,7 @@ public:
 
     }
 
-    int Fear(){
+    int Rear(){
 
         if(size==0) return -1;
         return data[rear];
@@ -90,9 +90,6 @@ public:
 int main(){
 
     CustomQueue qu = CustomQueue(4);
-    queue<string> qu;
-
-    qu.enqueue();
 
     qu.enqueue(4); qu.enqueue(7);   qu.enqueue(3);    qu.enqueue(5);
 
