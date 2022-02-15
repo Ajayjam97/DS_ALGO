@@ -43,24 +43,51 @@ void reverseString(vector<char>& s) {
         }
     }
 
+    bool IsNotLetter(char c){
+
+        return ((c>='a')&&(c<='z')&&(c>='A')&&(c<='Z'));
+    }
+
 vector<string> printVertically(string s) {
         
         vector<string> temp;
         istringstream sentence(s);
         string word;
+        int MaxWordSize = 0;
 
         while(sentence >> word){
+            if(word.size()>MaxWordSize) 
+            MaxWordSize = word.size();
             temp.push_back(word);
         }    
 
-        return temp;
+        vector<string> verticalres(MaxWordSize, "");
+
+        for(int i=0; i<temp.size(); i++){
+            for(int j=0; j<MaxWordSize; j++){
+                if(verticalres[j].size()>0){
+                    if((j>=temp[i].size())&&(IsNotLetter(verticalres[j][verticalres[j].size()-1])))
+                    verticalres[j]+=" ";
+                    else
+                    verticalres[j]+=(temp[i])[j];
+                }
+                else{
+                    verticalres[j]+=(temp[i])[j];
+                }
+
+            }
+        }
+
+        return verticalres;
+
+
         
     }
 
 
 int main(){
         
-        string s = "HOW ARE YOU";
+        string s = "TO BE OR NOT TO BE";//"HOW ARE YOU";
         vector<string> result = printVertically(s);
 
         for(int i=0; i<result.size(); i++) cout<<result[i]<<" ";
