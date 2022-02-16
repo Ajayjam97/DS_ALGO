@@ -6,7 +6,7 @@ struct Pair{
     long long int max;
 };
 
-struct Pair getMinMax(long long int arr[], long long int n) {
+    struct Pair getMinMax(long long int arr[], long long int n) {
     
     struct Pair minmax;
     
@@ -28,7 +28,7 @@ struct Pair getMinMax(long long int arr[], long long int n) {
     
 }
 
-void reverseString(vector<char>& s) {
+    void reverseString(vector<char>& s) {
         
         int l = 0;
         int r = s.size()-1;
@@ -43,54 +43,37 @@ void reverseString(vector<char>& s) {
         }
     }
 
-    bool IsNotLetter(char c){
-
-        return ((c>='a')&&(c<='z')&&(c>='A')&&(c<='Z'));
-    }
-
-vector<string> printVertically(string s) {
+    string reverseWords(string s) {
         
-        vector<string> temp;
         istringstream sentence(s);
+        vector<string> words;
         string word;
-        int MaxWordSize = 0;
 
-        while(sentence >> word){
-            if(word.size()>MaxWordSize) 
-            MaxWordSize = word.size();
-            temp.push_back(word);
-        }    
-
-        vector<string> verticalres(MaxWordSize, "");
-
-        for(int i=0; i<temp.size(); i++){
-            for(int j=0; j<MaxWordSize; j++){
-                if(verticalres[j].size()>0){
-                    if((j>=temp[i].size())&&(IsNotLetter(verticalres[j][verticalres[j].size()-1])))
-                    verticalres[j]+=" ";
-                    else
-                    verticalres[j]+=(temp[i])[j];
-                }
-                else{
-                    verticalres[j]+=(temp[i])[j];
-                }
-
-            }
+        while(getline(sentence, word, ' ')){
+            if(word!=" "&&word.size()!=0)
+            words.push_back(word);
         }
 
-        return verticalres;
+        reverse(words.begin(), words.end());
+        string reverse="";
 
+        for(int i=0; i<words.size(); i++){
+            if(i==words.size()-1)
+            reverse += (words[i]);
+            else
+            reverse += (words[i]+" ");
+        }
 
+        return reverse;
         
     }
+
 
 
 int main(){
         
-        string s = "TO BE OR NOT TO BE";//"HOW ARE YOU";
-        vector<string> result = printVertically(s);
-
-        for(int i=0; i<result.size(); i++) cout<<result[i]<<" ";
+       string s="the sky is blue";
+       cout<<reverseWords(s);
         
 
 }
