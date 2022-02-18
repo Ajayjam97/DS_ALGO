@@ -2,11 +2,33 @@
 using namespace std;
 
 
+void PrintSubArray(vector<int> v){
+
+    for(int i=0; i<v.size(); i++){
+
+        for(int j=i; j<v.size(); j++){
+
+            for(int k=i; k<=j; k++){
+                cout<<v[k]<<" ";
+            }
+            cout<<endl;
+        }
+    }
+}
+
 int main(){
 
     //Subarray: Contigious sequence of elements within an array
-    //Eg1: {1,2,1} = {1}, {2}, {1,2}, {2,1}, {1,2,1}, {}
-    //Eg2: {1,2,3} = {1}, {2}, {3}, {1,2}, {2,3}, {1,2,3}, {}
+
+    //Eg1: {1,2,1} = {1}, {1,2}, {1,2,1}, 
+    //               {2}, {2,1}
+
+    //Eg2: {1,2,3} = {1}, {1,2}, {1,2,3}, 
+    //               {2}, {2,3},
+    //               {3}
+
+    vector<int> v = {10,20,30,40};
+    PrintSubArray(v);
 
 
     //Substring: Same as subarray but in context of a string
