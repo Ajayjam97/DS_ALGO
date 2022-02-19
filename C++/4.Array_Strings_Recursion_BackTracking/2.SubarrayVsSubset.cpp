@@ -20,20 +20,50 @@ void MaxSumSubArray(vector<int> v){
 
     int MaxSum=INT_MIN;
 
+    ////BRUTE FORCE O(n^3)
+    // for(int i=0; i<v.size(); i++){
+    //     for(int j=i; j<v.size(); j++){
+    //         int sum=0;
+    //         for(int k=i; k<=j; k++){
+    //             sum+=v[k];
+    //         }       
+    //         MaxSum=max(MaxSum,sum);
+    //     }
+    // }
+    // cout<<MaxSum<<endl;
+
+
+    ////CUMULATIVE SUM/ PREFIX SUM O(n^2)
+    // vector<int> CurrentSum(v.size()+1);
+    // CurrentSum[0] = 0;
+
+    // for(int i=1; i<=v.size(); i++){
+    //     CurrentSum[i] = CurrentSum[i-1] + v[i-1];
+    // }
+
+    // for(int i=1; i<=v.size(); i++){
+    //     int sum=0;
+    //     for(int j=0; j<i; j++){
+    //         sum = CurrentSum[i] - CurrentSum[j];
+    //         MaxSum = max(MaxSum, sum);
+    //     }
+    // }
+    // cout<<MaxSum<<endl;
+
+
+    ////KADANE'S ALGORITHM O(n)
+    int currentSum = 0;
+
     for(int i=0; i<v.size(); i++){
-
-        for(int j=i; j<v.size(); j++){
-
-            int sum=0;
-            for(int k=i; k<=j; k++){
-                sum+=v[k];
-            }
-            
-            MaxSum=max(MaxSum,sum);
+        currentSum+=v[i];
+        if(currentSum<0){
+            currentSum=0;
         }
+        MaxSum=max(MaxSum,currentSum);
     }
-
     cout<<MaxSum<<endl;
+
+
 }
 
 
@@ -50,8 +80,7 @@ int main(){
     //               {3}
 
     vector<int> v = {10,20,30,40};
-    PrintSubArray(v);
-    v = {-1,4,7,2};
+    //PrintSubArray(v);
     MaxSumSubArray(v);
 
 
