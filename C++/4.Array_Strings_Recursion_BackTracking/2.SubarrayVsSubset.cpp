@@ -16,6 +16,28 @@ void PrintSubArray(vector<int> v){
     }
 }
 
+void MaxSumSubArray(vector<int> v){
+
+    int MaxSum=INT_MIN;
+
+    for(int i=0; i<v.size(); i++){
+
+        for(int j=i; j<v.size(); j++){
+
+            int sum=0;
+            for(int k=i; k<=j; k++){
+                sum+=v[k];
+            }
+            
+            MaxSum=max(MaxSum,sum);
+        }
+    }
+
+    cout<<MaxSum<<endl;
+}
+
+
+
 int main(){
 
     //Subarray: Contigious sequence of elements within an array
@@ -29,6 +51,8 @@ int main(){
 
     vector<int> v = {10,20,30,40};
     PrintSubArray(v);
+    v = {-1,4,7,2};
+    MaxSumSubArray(v);
 
 
     //Substring: Same as subarray but in context of a string
