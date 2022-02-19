@@ -68,6 +68,39 @@ void MaxSumSubArray(vector<int> v){
 
 
 
+
+void PrintSubString(string s){
+
+    // for(int i=0; i<s.size(); i++){
+    //     for(int j=i; j<s.size(); j++){
+    //         for(int k=i; k<=j; k++){
+    //             cout<<s[k]<<" ";
+    //         }
+    //         cout<<endl;
+    //     }
+    // }
+
+
+    // for (int i = 0; i < s.size(); i++)
+    //     for (int len = 1; len <= s.size() - i; len++)
+    //         cout << s.substr(i, len) << endl;
+
+
+    for (int i = 0; i < s.length(); i++) {
+        string subStr;
+        for (int j = i; j < s.length(); j++) {
+            subStr += s[j];
+            cout << subStr << endl;
+        }
+    }
+    
+
+}
+
+int countSubstrings(string s) {
+        
+}
+
 int main(){
 
     //Subarray: Contigious sequence of elements within an array. 
@@ -78,13 +111,18 @@ int main(){
     //               {2}, {2,3},
     //               {3}
     
-    vector<int> v = {10,20,30,40};
+    //vector<int> v = {10,20,30,40};
     //PrintSubArray(v);
     //MaxSumSubArray(v);
 
 
     //Substring: Same as subarray but in context of a string
-    //Eg: "ara" = "a", "r", "ar", "ra", "ara", ""
+    //Eg1: "ara" = "a", "ar", "ara",
+    //            "r", "ra"
+
+    string s = "abcd";
+    //PrintSubString(s);
+    cout<<countSubstrings(s)<<endl;
 
 
  
