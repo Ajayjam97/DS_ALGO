@@ -68,7 +68,6 @@ void MaxSumSubArray(vector<int> v){
 
 
 
-
 void PrintSubString(string s){
 
     // for(int i=0; i<s.size(); i++){
@@ -97,9 +96,35 @@ void PrintSubString(string s){
 
 }
 
+bool IsPalindrome(string s){
+        int left=0; int right=s.size()-1;
+        
+        while(left<right){
+            if(s[left]==s[right]){
+                left++; right--;
+            }
+            else{
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
 int countSubstrings(string s) {
         
-}
+        int count=0;
+        for(int i=0; i<s.size(); i++){
+            for(int j=1; j<=s.size()-i; j++){
+                if(IsPalindrome(s.substr(i,j))){
+                    count++;
+                }
+            }
+        }
+        return count;
+        
+    }
+
 
 int main(){
 
