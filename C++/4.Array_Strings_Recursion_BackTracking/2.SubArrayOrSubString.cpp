@@ -67,7 +67,6 @@ void MaxSumSubArray(vector<int> v){
 }
 
 
-
 void PrintSubString(string s){
 
     // for(int i=0; i<s.size(); i++){
@@ -136,8 +135,8 @@ int main(){
     //               {2}, {2,3},
     //               {3}
     
-    //vector<int> v = {10,20,30,40};
-    //PrintSubArray(v);
+    vector<int> v = {10,20,30,40};
+    PrintSubArray(v);
     //MaxSumSubArray(v);
 
 
@@ -146,8 +145,8 @@ int main(){
     //            "r", "ra"
 
     string s = "abcd";
-    //PrintSubString(s);
-    cout<<countSubstrings(s)<<endl;
+    PrintSubString(s);
+    //cout<<countSubstrings(s)<<endl;
 
 
  
