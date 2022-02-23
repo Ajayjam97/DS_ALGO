@@ -29,6 +29,37 @@ void MatrixMultiplication(vector<vector<int>> v1, vector<vector<int>> v2){
     }
 }
 
+int matSearch (vector <vector <int>> &mat, int N, int M, int X)
+	{
+	    // your code here
+	    
+	    //BRUTE FORCE O(N*M)
+	    // for(int i=0; i<N; i++){
+        //         for(int j=0; j<M; j++){
+        //             if(mat[i][j]==X){
+        //                 return 1;
+        //             }
+        //         }
+        //     }      
+        //     return 0;
+        
+        
+        //BINEARY SEARCH O(N*LOG(M))
+            int row=0; int column=M-1;
+            while(row<N && column>=0){ 
+                if(X>mat[row][column]){
+                    row++;
+                }
+                else if(X<mat[row][column]){
+                    column--;
+                }
+                else{
+                    return 1;
+                }
+            }
+        return 0;
+        
+	}
 
 int main(){
 
@@ -44,6 +75,13 @@ int main(){
     //     {1,2},
     // };
     // MatrixMultiplication(v1,v2);
+
+    vector<vector<int>> v1(2,vector<int>(3));
+    v1 = {
+        {1,2,3},
+        {4,5,6}
+    };
+    cout<<matSearch(v1,3,3,5);
 
 
 
