@@ -29,6 +29,7 @@ void MatrixMultiplication(vector<vector<int>> v1, vector<vector<int>> v2){
     }
 }
 
+//GFG
 int matSearch (vector <vector <int>> &mat, int N, int M, int X)
 	{
 	    // your code here
@@ -44,7 +45,7 @@ int matSearch (vector <vector <int>> &mat, int N, int M, int X)
         //     return 0;
         
         
-        //BINEARY SEARCH O(N*LOG(M))
+        //BINARY SEARCH O(N*LOG(M))
             int row=0; int column=M-1;
             while(row<N && column>=0){ 
                 if(X>mat[row][column]){
@@ -58,8 +59,47 @@ int matSearch (vector <vector <int>> &mat, int N, int M, int X)
                 }
             }
         return 0;
+
+
+        //BINARY SEARCH O(LOG(M*N))
+        //     int lo=0; int hi=(N*M)-1;
+        //     while(lo<=hi){
+        //         int mid=(lo+(hi-lo)/2);
+        //         if(X>mat[mid/M][mid%M]){
+        //             lo=mid+1;
+        //         }
+        //         else if(X<mat[mid/M][mid%M]){
+        //             hi=mid-1;
+        //         }
+        //         else{
+        //             return 1;
+        //         }
+        //     }
+        
+        // return 0;
         
 	}
+
+//LEETCODE
+bool searchMatrix(vector<vector<int>>& matrix, int target) {
+
+        //BINARY SEARCH O(LOG(M*N))
+        int lo=0; int hi=(matrix.size()*matrix[0].size())-1;
+            while(lo<=hi){
+                int mid=(lo+(hi-lo)/2);
+                if(target>matrix[mid/matrix[0].size()][mid%matrix[0].size()]){
+                    lo=mid+1;
+                }
+                else if(target<matrix[mid/matrix[0].size()][mid%matrix[0].size()]){
+                    hi=mid-1;
+                }
+                else{
+                    return true;
+                }
+            }
+        
+        return false;
+    }
 
 int main(){
 
