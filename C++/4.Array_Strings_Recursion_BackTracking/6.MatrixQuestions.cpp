@@ -30,7 +30,7 @@ void MatrixMultiplication(vector<vector<int>> v1, vector<vector<int>> v2){
 }
 
 //GFG
-int matSearch (vector <vector <int>> &mat, int N, int M, int X)
+int matSearch(vector <vector <int>> &mat, int N, int M, int X)
 	{
 	    // your code here
 	    
@@ -100,6 +100,7 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
         
         return false;
     }
+
 
 int main(){
 
