@@ -101,8 +101,42 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
         return false;
     }
 
+//LEETCODE
+vector<vector<int>> transpose(vector<vector<int>>& matrix) {
+        
+        vector<vector<int>> result;
+        
+        for(int i=0; i<matrix[0].size(); i++){
+            vector<int> temp;
+            for(int j=0; j<matrix.size(); j++){
+                temp.push_back(matrix[j][i]);
+            }
+            result.push_back(temp);
+        }
+        
+        return result;
+    }
 
+//LEETCODE
+void rotate(vector<vector<int>>& matrix) {
+        
+        matrix = transpose(matrix);
+        
+        for(int i=0; i<matrix.size(); i++){
+            
+            int lo=0; int hi=matrix[0].size()-1;
+            
+            while(lo<hi){
+                int temp=matrix[i][lo];
+                matrix[i][lo++]=matrix[i][hi];
+                matrix[i][hi--]=temp;
+            }
+        }
+        
+        
+    }
 
+//GFG
 vector<int> spirallyTraverse(vector<vector<int> > matrix, int r, int c) 
     {
         // code here 
@@ -170,7 +204,20 @@ int main(){
                                   {5, 6, 7, 8},
                                   {9, 10, 11, 12},
                                   {13, 14, 15,16}};
-    vector<int> result=spirallyTraverse(matrix,4,4);
+
+    matrix = transpose(matrix);
+    for(int i=0; i<matrix.size(); i++){
+        for(int j=0; j<matrix[0].size(); j++) cout<<matrix[i][j]<<" ";
+        cout<<endl;
+    }
+
+    rotate(matrix);
+    for(int i=0; i<matrix.size(); i++){
+        for(int j=0; j<matrix[0].size(); j++) cout<<matrix[i][j]<<" ";
+        cout<<endl;
+    }
+
+    //vector<int> result=spirallyTraverse(matrix,4,4);
     
 
 
