@@ -201,6 +201,39 @@ int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
         return p.first;
 }
 
+//LEETCODE
+vector<int> luckyNumbers (vector<vector<int>>& matrix) {
+        
+        vector<int> result;
+        
+        for(int row=0; row<matrix.size(); row++){
+            
+            //Find index of the minimum value in current row
+            int MinColIndex=0;
+            for(int col=1; col<matrix[0].size(); col++){
+                if(matrix[row][col]<matrix[row][MinColIndex]){
+                    MinColIndex=col;
+                }
+            }
+            
+            //Assume current element at matrix[row][MinColIndex] to be the saddle point.
+            //If the value in other rows at the same column is greater than this point then it is not a saddle point.
+            bool saddlepoint = true;
+            for(int Mrow=0; Mrow<matrix.size(); Mrow++){
+                if(matrix[Mrow][MinColIndex]>matrix[row][MinColIndex]){
+                    saddlepoint=false;
+                    break;
+                }
+            }
+            
+            if(saddlepoint==true){
+                result.push_back(matrix[row][MinColIndex]);
+            }
+        }
+        
+        return result;
+    }
+
 int main(){
 
     // vector<vector<int>> v1(2,vector<int>(3));
