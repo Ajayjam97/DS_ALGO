@@ -234,6 +234,68 @@ vector<int> luckyNumbers (vector<vector<int>>& matrix) {
         return result;
     }
 
+//GFG
+vector<int> FindExitPoint(vector<vector<int>>&matrix){
+		// Code here
+		
+		vector<int> result;
+		int rowlimit=matrix.size(); int collimit=matrix[0].size();
+		int direction=0; //0: East, 1: South, 2: West, 3: North
+		int r=0; int c=0;
+		while(true){
+		    
+		    
+		    direction = (direction+matrix[r][c])%4;
+		    
+		    if(matrix[r][c]==1)
+		    matrix[r][c]=0;
+		    
+		    if(direction==0){
+		     //East   
+		     c++;
+		    }
+		    else if(direction==1){
+		     //South
+		     r++;
+		    }
+		    else if(direction==2){
+		     //West
+		     c--;
+		    }
+		    else if(direction==3){
+		     //North
+		     r--;
+		    }
+		    
+		    
+		    if(r<0){
+		        r++;
+		        break;
+		    }
+		    else if(c<0){
+		        c++;
+		        break;
+		    }
+		    else if(r==rowlimit){
+		        r--;
+		        break;
+		    }
+		    else if(c==collimit){
+		        c--;
+		        break;
+		    }
+		    
+		    
+		    
+		}
+		
+		result.push_back(r);
+		result.push_back(c);
+		    
+		 return result;
+		
+    }
+
 int main(){
 
     // vector<vector<int>> v1(2,vector<int>(3));
@@ -275,8 +337,18 @@ int main(){
 
     //vector<int> result=spirallyTraverse(matrix,4,4);
 
-    vector<vector<int>> arr = {{0, 0}, {0, 0}};
-    cout<<rowWithMax1s(arr,2,2);
+    // vector<vector<int>> arr = {{0, 0}, {0, 0}};
+    // cout<<rowWithMax1s(arr,2,2);
+
+
+    vector<vector<int>> arr = {{0, 1, 1},
+                               {1, 0, 1},
+                               {1, 1, 1},
+                               {0, 0, 1}};
+
+    vector<int> result=FindExitPoint(arr);
+    for(int i=0; i<result.size(); i++) cout<<result[i]<<" ";
+    cout<<endl;
     
 
 
