@@ -177,6 +177,29 @@ vector<int> spirallyTraverse(vector<vector<int> > matrix, int r, int c)
         return result;
     }
 
+int rowWithMax1s(vector<vector<int> > arr, int n, int m) {
+	    // code here
+	    pair<int,int> p;
+	    p.first = -1; //Row index
+        p.second = 0; //Number of 1s 
+	    
+	    for(int i=0; i<n; i++){
+	        
+	        int col=m-1;
+	        int rowcount=0;
+
+	        while(arr[i][col]==1){
+	            col--;
+                rowcount++;
+	        }
+
+            if(rowcount>p.second){
+                p.second=rowcount; p.first=i;
+            }
+	    }
+
+        return p.first;
+}
 
 int main(){
 
@@ -200,24 +223,27 @@ int main(){
     // };
     // cout<<matSearch(v1,3,3,5);
 
-    vector<vector<int>> matrix = {{1, 2, 3, 4},
-                                  {5, 6, 7, 8},
-                                  {9, 10, 11, 12},
-                                  {13, 14, 15,16}};
+    // vector<vector<int>> matrix = {{1, 2, 3, 4},
+    //                               {5, 6, 7, 8},
+    //                               {9, 10, 11, 12},
+    //                               {13, 14, 15,16}};
 
-    matrix = transpose(matrix);
-    for(int i=0; i<matrix.size(); i++){
-        for(int j=0; j<matrix[0].size(); j++) cout<<matrix[i][j]<<" ";
-        cout<<endl;
-    }
+    // matrix = transpose(matrix);
+    // for(int i=0; i<matrix.size(); i++){
+    //     for(int j=0; j<matrix[0].size(); j++) cout<<matrix[i][j]<<" ";
+    //     cout<<endl;
+    // }
 
-    rotate(matrix);
-    for(int i=0; i<matrix.size(); i++){
-        for(int j=0; j<matrix[0].size(); j++) cout<<matrix[i][j]<<" ";
-        cout<<endl;
-    }
+    // rotate(matrix);
+    // for(int i=0; i<matrix.size(); i++){
+    //     for(int j=0; j<matrix[0].size(); j++) cout<<matrix[i][j]<<" ";
+    //     cout<<endl;
+    // }
 
     //vector<int> result=spirallyTraverse(matrix,4,4);
+
+    vector<vector<int>> arr = {{0, 0}, {0, 0}};
+    cout<<rowWithMax1s(arr,2,2);
     
 
 
