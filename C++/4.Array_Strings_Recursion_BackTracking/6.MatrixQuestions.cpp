@@ -102,6 +102,48 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
     }
 
 
+
+vector<int> spirallyTraverse(vector<vector<int> > matrix, int r, int c) 
+    {
+        // code here 
+        int rmin=0; int rmax=r-1;
+        int cmin=0; int cmax=c-1;
+        int count=0;
+        
+        vector<int> result;
+    
+        while(count<r*c){
+            
+            for(int i=cmin; i<=cmax&&count<r*c; i++){
+                //cout<<matrix[rmin][i]; 
+                result.push_back(matrix[rmin][i]); count++;
+            }
+            rmin++;
+            
+            for(int i=rmin; i<=rmax&&count<r*c; i++){
+                //cout<<matrix[i][cmax];
+                result.push_back(matrix[i][cmax]); count++;
+            }
+            cmax--;
+            
+            for(int i=cmax; i>=cmin&&count<r*c; i--){
+                //cout<<matrix[rmax][i]; 
+                result.push_back(matrix[rmax][i]); count++;
+            }
+            rmax--;
+            
+            for(int i=rmax; i>=rmin&&count<r*c; i--){
+                //cout<<matrix[i][cmin]; 
+                result.push_back(matrix[i][cmin]); count++;
+            }
+            cmin++;
+            
+        }
+        
+        return result;
+    }
+
+
 int main(){
 
     // vector<vector<int>> v1(2,vector<int>(3));
@@ -117,13 +159,19 @@ int main(){
     // };
     // MatrixMultiplication(v1,v2);
 
-    vector<vector<int>> v1(2,vector<int>(3));
-    v1 = {
-        {1,2,3},
-        {4,5,6}
-    };
-    cout<<matSearch(v1,3,3,5);
+    // vector<vector<int>> v1(2,vector<int>(3));
+    // v1 = {
+    //     {1,2,3},
+    //     {4,5,6}
+    // };
+    // cout<<matSearch(v1,3,3,5);
 
+    vector<vector<int>> matrix = {{1, 2, 3, 4},
+                                  {5, 6, 7, 8},
+                                  {9, 10, 11, 12},
+                                  {13, 14, 15,16}};
+    vector<int> result=spirallyTraverse(matrix,4,4);
+    
 
 
 }
