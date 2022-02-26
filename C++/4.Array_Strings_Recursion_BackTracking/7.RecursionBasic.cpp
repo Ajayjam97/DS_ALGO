@@ -116,6 +116,8 @@ vector<int> allIndex(vector<int>& arr, int idx, int data, int count)
     return res;
 }
 
+
+
 int main(){
 
     //int x,n; cin>>x>>n;

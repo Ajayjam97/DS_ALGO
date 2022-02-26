@@ -52,8 +52,53 @@ int getPairsCount(int arr[], int n, int k)
         return count;
     }
 
+string transform(string S){
+    //complete the function here
+    stack<char> stk;
+    stk.push(S[0]);
+    string answer="";
+    for(int i=1; i<S.size(); i++){
+
+        char ccomp = S[i];
+
+        if(S[i]<97)
+        ccomp=S[i]+32; 
+
+        if(stk.size()!=0&&stk.top()!=ccomp){
+            int count=0;
+            char c=stk.top();
+            while(stk.size()>0){
+                stk.pop(); count++;
+            }
+            answer+=to_string(count);
+            answer+=c;
+            stk.push(ccomp);
+        }
+        else{
+            if(S[i]<97){
+            char temp=S[i]+32;
+            stk.push(temp);
+            }
+            else{
+            stk.push(S[i]);
+            }
+        }
+    }
+
+            int count=0;
+            char c=stk.top();
+            while(stk.size()>0){
+                stk.pop(); count++;
+            }
+            answer+=to_string(count);
+            answer+=c;
+    
+    return answer;
+    
+}
+
 
 int main(){
 
-    
+    cout<<transform("aaABBb")<<endl;
 }
