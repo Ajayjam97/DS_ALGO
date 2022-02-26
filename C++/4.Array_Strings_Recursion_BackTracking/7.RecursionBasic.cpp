@@ -69,6 +69,18 @@ int Max(int arr[], int idx, int n){
     
 }
 
+int firstIndex(int arr[], int idx, int x, int n){
+    // write your code here
+    if(arr[idx]==x){
+        return idx;
+    }
+    
+    if(idx==n) return -1;
+
+    int firstidx=firstIndex(arr,idx+1,x,n);
+    return firstidx;
+}
+
 int main(){
 
     //int x,n; cin>>x>>n;
