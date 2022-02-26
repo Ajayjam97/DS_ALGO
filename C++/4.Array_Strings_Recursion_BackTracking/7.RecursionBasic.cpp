@@ -95,6 +95,27 @@ int lastIndex(int arr[], int idx, int x, int n){
     return lastidx;
 }
 
+vector<int> allIndex(vector<int>& arr, int idx, int data, int count)
+{
+    if(idx==arr.size()){
+        vector<int> bres(count);
+        return bres;
+    }
+    
+    
+    if(arr[idx]==data){ 
+        count++;
+    }
+    
+    vector<int> res = allIndex(arr,idx+1,data,count);
+    
+    if(arr[idx]==data){ 
+        res[count-1]=idx;
+    }
+    
+    return res;
+}
+
 int main(){
 
     //int x,n; cin>>x>>n;
