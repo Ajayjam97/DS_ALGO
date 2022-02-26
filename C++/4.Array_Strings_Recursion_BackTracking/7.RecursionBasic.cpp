@@ -58,6 +58,17 @@ class Solution{
 
 long long Solution::count=0;
 
+int Max(int arr[], int idx, int n){
+    // write your code here
+    if(idx==n-1){
+        return arr[idx];
+    }
+
+    int maxval=Max(arr,idx+1,n);
+    return max(arr[idx],maxval);
+    
+}
+
 int main(){
 
     //int x,n; cin>>x>>n;
@@ -65,8 +76,11 @@ int main(){
     //factorial(n);
     //power(x,n);
 
-    Solution ob;
-    int n; cin>>n;
-    cout<<ob.toh(n,1,3,2)<<endl;
+    // Solution ob;
+    // int n; cin>>n;
+    // cout<<ob.toh(n,1,3,2)<<endl;
+
+    int arr[] = {15, 30, 40, 4, 11, 9};
+    cout<<Max(arr,0,6)<<endl;
 
 }
