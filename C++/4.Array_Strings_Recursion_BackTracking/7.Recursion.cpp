@@ -35,11 +35,38 @@ int power(int x,int n){
 
 }
 
+//GFG
+class Solution{
+    public:
+
+    static long long count;
+
+    long long toh(int N, int from, int to, int aux) {
+        if(N==0){ 
+            return count;
+        }
+        
+        toh(N-1, from, aux, to);
+        cout<<"move disk "<<N<<" from rod "<<from<<" to rod "<<to<<endl;
+        toh(N-1, aux, to, from);
+        
+        count++;
+        return count;
+    }
+
+};
+
+long long Solution::count=0;
+
 int main(){
 
-    int x,n; cin>>x>>n;
+    //int x,n; cin>>x>>n;
     //printIncDec(n);
     //factorial(n);
-    power(x,n);
+    //power(x,n);
+
+    Solution ob;
+    int n; cin>>n;
+    cout<<ob.toh(n,1,3,2)<<endl;
 
 }
