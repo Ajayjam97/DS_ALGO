@@ -111,6 +111,29 @@ string removeDups(string S)
 	    }
 	    return ans;
 	}
+
+string reverseWords(string S) 
+    { 
+        // code here 
+        
+        stringstream sentence(S);
+        string word;
+        vector<string> words;
+        while(getline(sentence,word,'.')){
+            words.push_back(word);
+        }
+        
+        reverse(words.begin(), words.end());
+        
+        string answer="";
+        for(int i=0; i<words.size(); i++){
+            answer+=words[i];
+            if(i!=words.size()-1)
+            answer+=".";
+        }
+        
+        return answer;
+    }
     
 int main(){
 
