@@ -97,7 +97,21 @@ string transform(string S){
     
 }
 
-
+string removeDups(string S) 
+	{
+	    // Your code goes here
+	    
+	    string ans="";
+	    unordered_set<char>us;
+	    for(int i=0;i<S.size();i++){
+	        if(us.find(S[i])==us.end()){
+	            ans+=S[i];
+	            us.insert(S[i]);
+	        }
+	    }
+	    return ans;
+	}
+    
 int main(){
 
     cout<<transform("aaABBb")<<endl;
