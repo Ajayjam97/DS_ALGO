@@ -81,6 +81,20 @@ int firstIndex(int arr[], int idx, int x, int n){
     return firstidx;
 }
 
+int lastIndex(int arr[], int idx, int x, int n){
+    // write your code here
+    
+    if(idx==n) return -1;
+    
+    int lastidx=lastIndex(arr,idx+1,x,n);
+    
+    if(arr[idx]==x&&lastidx==-1){
+        return idx;
+    }
+    
+    return lastidx;
+}
+
 int main(){
 
     //int x,n; cin>>x>>n;
