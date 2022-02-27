@@ -116,7 +116,38 @@ vector<int> allIndex(vector<int>& arr, int idx, int data, int count)
     return res;
 }
 
+vector<string> gss(string s){
+    // write your code here
+    if(s.size()==0){
+        vector<string> bres; bres.push_back("");
+        return bres;
+    }
+    
+    vector<string> res;
+    vector<string> rres=gss(s.substr(1));
+    
+    for(string ss:rres){
+        res.push_back(ss);
+    }
+    for(string ss:rres){
+        res.push_back(s[0]+ss);
+    }
+    
+    return res;
+    
+}
 
+void printSS(string ques, string ans){
+    // write your code here
+    if(ques.size()==0){ 
+        cout<<ans<<endl;
+        return;
+    }
+    
+    printSS(ques.substr(1),ans);
+    printSS(ques.substr(1),ans+ques[0]);
+    
+}
 
 int main(){
 
@@ -129,7 +160,8 @@ int main(){
     // int n; cin>>n;
     // cout<<ob.toh(n,1,3,2)<<endl;
 
-    int arr[] = {15, 30, 40, 4, 11, 9};
-    cout<<Max(arr,0,6)<<endl;
+    // int arr[] = {15, 30, 40, 4, 11, 9};
+    // cout<<Max(arr,0,6)<<endl;
 
+    printSS("abc","");
 }
