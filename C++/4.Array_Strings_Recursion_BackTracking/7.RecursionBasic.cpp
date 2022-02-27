@@ -186,6 +186,42 @@ void printKPC(string ques, string asf){
     
 }
 
+vector<string> get_stair_paths(int n) {
+  //Write your code here
+  if(n==0){
+      vector<string> bres; bres.push_back("");
+      return bres;
+  }
+  
+  vector<string> res;
+  
+  for(int jump=1; jump<=3&&n-jump>=0; jump++){
+      
+      vector<string> rres=get_stair_paths(n-jump);
+      
+      for(string s:rres){
+          
+          res.push_back(to_string(jump)+s);
+      }
+  }
+  
+  return res;
+  
+}
+
+void printStairPaths(int n, string psf){
+    // write your code here
+    if(n==0){
+        cout<<psf<<endl;
+        return;
+    }
+    
+    for(int jump=1; jump<=3&&n-jump>=0; jump++){
+        printStairPaths(n-jump,psf+to_string(jump));
+    }
+    
+}
+
 int main(){
 
     //int x,n; cin>>x>>n;
@@ -200,5 +236,7 @@ int main(){
     // int arr[] = {15, 30, 40, 4, 11, 9};
     // cout<<Max(arr,0,6)<<endl;
 
-    printSS("abc","");
+    //printSS("abc","");
+    get_stair_paths(3);
+
 }
