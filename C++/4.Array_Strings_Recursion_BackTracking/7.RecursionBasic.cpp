@@ -149,6 +149,43 @@ void printSS(string ques, string ans){
     
 }
 
+vector<string> kpc = { ".;", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tu", "vwx", "yz" };
+
+vector<string> getKPC(string s) {
+  //Write your code here
+  if(s.size()==0){
+      vector<string> bres; bres.push_back("");
+      return bres;
+  }
+  
+  vector<string> rres=getKPC(s.substr(1));
+  vector<string> res;
+  
+  for(char c:kpc[s[0]-'0']){
+      for(string ss:rres){
+          res.push_back(c+ss);
+      }
+  }
+  
+  return res;
+  
+}
+
+void printKPC(string ques, string asf){
+    // write your code here
+    if(ques.size()==0){
+        cout<<asf<<endl;
+        return;
+    }
+    
+    string code=kpc[ques[0]-'0'];
+    
+    for(int i=0; i<code.size(); i++){
+        printKPC(ques.substr(1),asf+code[i]);
+    }
+    
+}
+
 int main(){
 
     //int x,n; cin>>x>>n;
