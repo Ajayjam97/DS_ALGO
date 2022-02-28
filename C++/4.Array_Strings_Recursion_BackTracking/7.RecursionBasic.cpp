@@ -222,6 +222,48 @@ void printStairPaths(int n, string psf){
     
 }
 
+vector <string> getMazePaths(int sr, int sc, int dr, int dc) {
+    
+    if(sr==dr&&sc==dc){
+        vector<string> bres; bres.push_back("");
+        return bres;
+    }
+    
+    vector<string> res;
+    
+    if(sc+1<=dc){
+        vector<string> hres = getMazePaths(sr, sc+1, dr, dc);
+        for(string s:hres){
+            res.push_back('h'+s);
+        }
+    }
+    
+    if(sr+1<=dr){
+        vector<string> vres = getMazePaths(sr+1, sc, dr, dc);
+        for(string s:vres){
+            res.push_back('v'+s);
+        }
+    }
+    
+    return res;
+    
+    
+}
+
+void printMazePaths(int sr, int sc, int dr, int dc, string psf){
+    
+    if(sr==dr&&sc==dc){
+        cout<<psf<<endl;
+        return;
+    }
+    
+    if(sr<=dr&&sc<=dc){
+    printMazePaths(sr,sc+1,dr,dc,psf+'h');
+    printMazePaths(sr+1,sc,dr,dc,psf+'v');
+    }
+    
+}
+
 int main(){
 
     //int x,n; cin>>x>>n;
