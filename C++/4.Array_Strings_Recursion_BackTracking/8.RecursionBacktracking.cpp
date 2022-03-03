@@ -85,7 +85,7 @@ void TargetSumSubsets(vector<int> arr, int idx, string set, int subsetsum, int t
     
 }
 
-bool isValidToPlace(vector<vector<int>> board, int sr, int sc){
+bool CanPlace(vector<vector<int>> board, int sr, int sc){
     //return true;
     
     vector<vector<int>> directions = {{-1,0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1}};
@@ -116,7 +116,7 @@ void NQueens(vector<vector<int>> board, int sr, int sc, int qpsf, string ansf){
 
     if(sc+1<board[0].size()){  //Next column
 
-        if(isValidToPlace(board, sr,sc)){   //Next column is valid
+        if(CanPlace(board, sr,sc)){   //Next column is valid
             board[sr][sc]=1;
             NQueens(board, sr+1, 0, qpsf+1, ansf+'('+to_string(sr)+','+to_string(sc)+") ");
             board[sr][sc]=0;
@@ -126,7 +126,7 @@ void NQueens(vector<vector<int>> board, int sr, int sc, int qpsf, string ansf){
     }
     else{   //Next column is not valid
 
-        if(isValidToPlace(board, sr,sc)){   //Place the queen
+        if(CanPlace(board, sr,sc)){   //Place the queen
             board[sr][sc]=1;
             NQueens(board, sr+1, 0, qpsf+1, ansf+'('+to_string(sr)+','+to_string(sc)+") ");
             board[sr][sc]=0;
@@ -135,6 +135,64 @@ void NQueens(vector<vector<int>> board, int sr, int sc, int qpsf, string ansf){
         NQueens(board, sr+1, 0, qpsf, ansf);
     }
 }
+
+//GFG
+bool IsValidPlace(vector<vector<int>> board, int sr, int sc){
+    //return true;
+
+    int i=sr; int j=sc;
+    
+    while(i>=0&&j<board.size()){
+        if(board[i][j]==1) return false;
+        i--; j++;
+    }
+    
+    i=sr; j=sc;
+    
+    while(i>=0&&j>=0){
+        if(board[i][j]==1) return false;
+        i--; j--;
+    }
+    
+    i=sr;
+    
+    while(i>=0){
+        if(board[i][sc] == 1) return false;
+        i--;
+    }
+
+    return true;
+}
+
+void QueenHelper(vector<vector<int>> board, int sr, vector<int> &ans, vector<vector<int>> &result){
+        
+        if(sr==board.size()){
+            result.push_back(ans);
+            return;
+        }
+        
+        for(int sc=0; sc<board.size(); sc++){
+            
+            if(IsValidPlace(board, sr, sc)){
+                board[sr][sc]=1;    ans.push_back(sc+1);
+                QueenHelper(board, sr+1, ans, result);
+                board[sr][sc]=0;    ans.pop_back();
+            }
+            
+        }
+            
+            
+       
+        
+    }
+    
+vector<vector<int>> nQueen(int n) {
+        // code here
+        vector<vector<int>> board(n, vector<int>(n,0));
+        vector<vector<int>> result;     vector<int> ans;
+        QueenHelper(board, 0, ans, result);
+        return result;
+    }
 
 int main(){
 
@@ -165,8 +223,10 @@ int main(){
         // TargetSumSubsets(arr, 0, "", 0, target);
 
 
-        vector<vector<int>> board = { {0,0,0,0}, {0,0,0,0}, {0,0,0,0}, {0,0,0,0}};
-        NQueens(board, 0, 0, 0, "");
+        //vector<vector<int>> board = { {0,0,0,0}, {0,0,0,0}, {0,0,0,0}, {0,0,0,0}};
+        //NQueens(board, 0, 0, 0, "");
+        //GFG
+        display(nQueen(10));
 
 
 }
