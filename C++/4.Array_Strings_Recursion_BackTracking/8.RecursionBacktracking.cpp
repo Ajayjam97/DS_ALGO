@@ -85,6 +85,56 @@ void TargetSumSubsets(vector<int> arr, int idx, string set, int subsetsum, int t
     
 }
 
+bool isValidToPlace(vector<vector<int>> board, int sr, int sc){
+    //return true;
+    
+    vector<vector<int>> directions = {{-1,0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1}};
+
+    for(int dir=0; dir<directions.size(); dir++){
+        for(int rad=1; rad<board.size(); rad++){
+
+            int x=sr+rad*directions[dir][0];
+            int y=sc+rad*directions[dir][1];
+
+            if(x>=0&&x<board.size()&&y>=0&&y<board[0].size()){
+                if(board[x][y]==1) return false;
+            }
+
+        }
+    }
+
+    return true;
+}
+
+void NQueens(vector<vector<int>> board, int sr, int sc, int qpsf, string ansf){
+
+    if(sr==board.size()){
+        if(qpsf==board.size())
+            cout<<ansf<<endl;
+            return;
+    }
+
+    if(sc+1<board[0].size()){  //Next column
+
+        if(isValidToPlace(board, sr,sc)){   //Next column is valid
+            board[sr][sc]=1;
+            NQueens(board, sr+1, 0, qpsf+1, ansf+'('+to_string(sr)+','+to_string(sc)+") ");
+            board[sr][sc]=0;
+        }
+        //Do not Place the queen
+        NQueens(board, sr, sc+1, qpsf, ansf);
+    }
+    else{   //Next column is not valid
+
+        if(isValidToPlace(board, sr,sc)){   //Place the queen
+            board[sr][sc]=1;
+            NQueens(board, sr+1, 0, qpsf+1, ansf+'('+to_string(sr)+','+to_string(sc)+") ");
+            board[sr][sc]=0;
+        }
+        //Do not Place the queen
+        NQueens(board, sr+1, 0, qpsf, ansf);
+    }
+}
 
 int main(){
 
@@ -110,9 +160,13 @@ int main(){
         // FloodFill(maze, 0, 0, "");
 
 
-        vector<int> arr = {10,20,30,40,50};
-        int target=60;
-        TargetSumSubsets(arr, 0, "", 0, target);
+        // vector<int> arr = {10,20,30,40,50};
+        // int target=60;
+        // TargetSumSubsets(arr, 0, "", 0, target);
+
+
+        vector<vector<int>> board = { {0,0,0,0}, {0,0,0,0}, {0,0,0,0}, {0,0,0,0}};
+        NQueens(board, 0, 0, 0, "");
 
 
 }
