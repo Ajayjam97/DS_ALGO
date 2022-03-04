@@ -179,12 +179,9 @@ void QueenHelper(vector<vector<int>> board, int sr, vector<int> &ans, vector<vec
                 board[sr][sc]=0;    ans.pop_back();
             }
             
-        }
-            
-            
-       
+        } 
         
-    }
+}
     
 vector<vector<int>> nQueen(int n) {
         // code here
@@ -193,6 +190,37 @@ vector<vector<int>> nQueen(int n) {
         QueenHelper(board, 0, ans, result);
         return result;
     }
+
+vector<vector<int>> directions = {{-2,1},{-1,2},{1,2},{2,1},{2,-1},{1,-2},{-1,-2},{-2,-1}};
+
+void printKnightsTour(vector<vector<int>>& chess, int n, int r, int c, int upcomingMove) {
+  //write your code here
+  if(upcomingMove==(chess.size()*chess.size())){
+      chess[r][c]=upcomingMove;
+      display(chess);
+      chess[r][c]=0;
+      return;
+  }
+
+   //Mark the current position as visited with the Move number
+   chess[r][c]=upcomingMove;
+  
+   for(int i=0; i<directions.size(); i++){
+
+      int x=r+directions[i][0];
+      int y=c+directions[i][1];
+
+      if(x>=0&&x<chess.size()&&y>=0&&y<chess[0].size()&&chess[x][y]==0){
+          printKnightsTour(chess, n, x, y, upcomingMove+1);
+      }
+
+    }
+
+    //Unmark the current position after backtracking
+    chess[r][c]=0;
+
+
+}
 
 int main(){
 
@@ -226,7 +254,10 @@ int main(){
         //vector<vector<int>> board = { {0,0,0,0}, {0,0,0,0}, {0,0,0,0}, {0,0,0,0}};
         //NQueens(board, 0, 0, 0, "");
         //GFG
-        display(nQueen(10));
+        //display(nQueen(10));
+
+        vector<vector<int>> chess(5, vector<int>(5,0));
+        printKnightsTour(chess, 5, 2, 0, 1);
 
 
 }
