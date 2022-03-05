@@ -44,11 +44,86 @@ int fib_Tabulation(int n){
     return dp[n];
 }
 
+int climbstairs(int n){
+    
+    if(n==0){
+        return 1;
+    }
+    
+    int count=0;
+    for(int jump=1; jump<=3; jump++){
+        if(n-jump>=0)
+        count+=climbstairs(n-jump);
+    }
+
+    return count;
+
+}
+
+int climbstairs_memo(int n, vector<int> &dp){
+    // write your code here
+    if(n==0){
+        return dp[n]=1;
+    }
+    
+    if(dp[n]!=0) return dp[n];
+    
+    int count=0;
+    for(int jump=1; jump<=3; jump++){
+        if(n-jump>=0)
+        count+=climbstairs_memo(n-jump, dp);
+    }
+
+    return dp[n]=count;
+
+}
+
+int climbstairs_tabulation(int N){
+    // write your code here
+
+    vector<int> dp(N+1);
+
+    for(int n=0; n<=N; n++){
+        
+        if(n==0){
+            dp[n]=1; 
+            continue;
+        }
+
+        int count=0;
+
+        for(int jump=1; jump<=3; jump++){
+            if(n-jump>=0)
+            count+=dp[n-jump];
+        }
+
+        dp[n]=count;
+
+    }
+
+    return dp[N];
+
+    // if(n==0){
+    //     return dp[n]=1;
+    // }
+    
+    // if(dp[n]!=0) return dp[n];
+    
+    // int count=0;
+    // for(int jump=1; jump<=3; jump++){
+    //     if(n-jump>=0)
+    //     count+=climbstairs_memo(n-jump, dp);
+    // }
+
+    // return dp[n]=count;
+
+}
 
 int main(){
 
     vector<int> dp(7, 0);
     cout<<fib_rec(6)<<endl<<fib_memoization(6,dp)<<endl<<fib_Tabulation(6)<<endl; //0 1 1 2 3 5 8 13 ................
+  
 
 
 }
