@@ -1,12 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std; 
 
-int fib_rec(int n){
+int fib_recursion(int n){
     
     if( n==0 || n==1 ){ return n;}
 
-    int fibn1 = fib_rec(n-1);
-    int fibn2 = fib_rec(n-2);
+    int fibn1 = fib_recursion(n-1);
+    int fibn2 = fib_recursion(n-2);
 
     int fibn = fibn1+fibn2;
 
@@ -44,7 +44,7 @@ int fib_Tabulation(int n){
     return dp[n];
 }
 
-int climbstairs(int n){
+int climbstairs_recursion(int n){
     
     if(n==0){
         return 1;
@@ -53,14 +53,14 @@ int climbstairs(int n){
     int count=0;
     for(int jump=1; jump<=3; jump++){
         if(n-jump>=0)
-        count+=climbstairs(n-jump);
+        count+=climbstairs_recursion(n-jump);
     }
 
     return count;
 
 }
 
-int climbstairs_memo(int n, vector<int> &dp){
+int climbstairs_memoization(int n, vector<int> &dp){
     // write your code here
     if(n==0){
         return dp[n]=1;
@@ -71,7 +71,7 @@ int climbstairs_memo(int n, vector<int> &dp){
     int count=0;
     for(int jump=1; jump<=3; jump++){
         if(n-jump>=0)
-        count+=climbstairs_memo(n-jump, dp);
+        count+=climbstairs_memoization(n-jump, dp);
     }
 
     return dp[n]=count;
@@ -119,10 +119,100 @@ int climbstairs_tabulation(int N){
 
 }
 
+int MinJumps_recursive(int i, int n, vector<int>& jumps, vector<int>& dp)
+{
+  // write your code here
+    if(i==n){
+        return 0;
+    }
+    
+    int minmove=1e9;
+
+    for(int jump=1; jump<=jumps[i]; jump++){
+        
+        if(i+jump<=n)   {
+            
+            minmove=min(minmove, MinJumps_recursive(i+jump, n, jumps, dp));
+            
+        }
+        
+    }
+    
+    return minmove+1;
+}
+
+int MinJumps_memoization(int i, int n, vector<int>& jumps, vector<int>& dp)
+{
+  // write your code here
+    if(i==n){
+        return dp[i]=0;
+    }
+
+    if(dp[i]!=0) return dp[i];
+    
+    int minmove=1e9;
+    for(int jump=1; jump<=jumps[i]; jump++){
+        
+        if(i+jump<=n)   {
+            
+            minmove=min(minmove, MinJumps_memoization(i+jump, n, jumps, dp));
+            
+        }
+        
+    }
+    
+    return dp[i]=minmove+1;
+}
+
+int MinJumps_tabulation(int i, int n, vector<int>& jumps)
+{
+  // write your code here
+  vector<int> dp(n+1);
+
+  for(int i=n; i>=0; i--){
+
+    if(i==n){
+          dp[i]=0;
+          continue;
+    }
+
+    int minmove=1e9;
+    for(int jump=1; jump<=jumps[i]; jump++){
+        if(i-jump<=n)   {            
+            minmove=min(minmove, dp[i+jump]);
+        }   
+    }
+
+    dp[i]=minmove+1;
+
+
+  }
+    
+  return dp[0];
+    // if(i==n){
+    //     return dp[i]=0;
+    // }
+
+    // if(dp[i]!=0) return dp[i];
+    
+    // int minmove=1e9;
+    // for(int jump=1; jump<=jumps[i]; jump++){
+        
+    //     if(i+jump<=n)   {
+            
+    //         minmove=min(minmove, MinJumps_memoization(i+jump, n, jumps, dp));
+            
+    //     }
+        
+    // }
+    
+    // return dp[i]=minmove+1;
+}
+
 int main(){
 
     vector<int> dp(7, 0);
-    cout<<fib_rec(6)<<endl<<fib_memoization(6,dp)<<endl<<fib_Tabulation(6)<<endl; //0 1 1 2 3 5 8 13 ................
+    cout<<fib_recursion(6)<<endl<<fib_memoization(6,dp)<<endl<<fib_Tabulation(6)<<endl; //0 1 1 2 3 5 8 13 ................
   
 
 
