@@ -209,11 +209,70 @@ int MinJumps_tabulation(int i, int n, vector<int>& jumps)
     // return dp[i]=minmove+1;
 }
 
+int minCostClimbingStairs_rec(vector<int> &cost, int idx){
+	        
+        if(idx>=cost.size()) {
+            return 0;
+        }
+	    
+        int mincost=1e9;
+	    for(int jump=1; jump<=2; jump++){
+		
+		    int newmincost=minCostClimbingStairs_rec(cost, idx+jump);
+            
+            if(idx+jump<cost.size())
+            newmincost+=cost[idx+jump];
+            
+            mincost=min(mincost, newmincost);
+
+	    }
+        
+	    return mincost;
+    }
+
+int minCostClimbingStairs(vector<int>& cost){
+	    
+        int result=minCostClimbingStairs_rec(cost, -1);
+	    return result;
+}
+
+int minCostClimbingStairsHelper_DP(vector<int> &cost, int idx, vector<int> &dp){
+	        
+        if(idx>=cost.size()) {
+            return dp[idx]=0;
+        }
+	    
+        
+        if(dp[idx]!=0) return dp[idx];
+        
+        int mincost=1e9;
+	    for(int jump=1; jump<=2; jump++){
+		
+		    int newmincost=minCostClimbingStairsHelper_DP(cost, idx+jump, dp);
+            
+            if(idx+jump-1<cost.size())
+            newmincost+=cost[idx+jump-1];
+            
+            mincost=min(mincost, newmincost);
+
+	    }
+        
+	    return dp[idx]=mincost;
+}
+
+int minCostClimbingStairs_DP(vector<int>& cost){
+	    
+        vector<int> dp(cost.size()+2);
+        int result=minCostClimbingStairsHelper_DP(cost, 0, dp);
+	    return result;
+}
+
 int main(){
 
-    vector<int> dp(7, 0);
-    cout<<fib_recursion(6)<<endl<<fib_memoization(6,dp)<<endl<<fib_Tabulation(6)<<endl; //0 1 1 2 3 5 8 13 ................
+    //vector<int> dp(7, 0);
+    //cout<<fib_recursion(6)<<endl<<fib_memoization(6,dp)<<endl<<fib_Tabulation(6)<<endl; //0 1 1 2 3 5 8 13 ................
   
-
+    vector<int> v = {10, 15, 20};
+    cout<<minCostClimbingStairs(v);
 
 }
