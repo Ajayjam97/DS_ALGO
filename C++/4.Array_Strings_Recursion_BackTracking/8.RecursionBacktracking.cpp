@@ -257,6 +257,39 @@ bool solve(vector<vector<char>>& board){
         
     }
 
+
+void solve(vector<vector<int>> &m, int row, int col, string answer, vector<string> &result){
+        
+        vector<vector<int>> directions= {{-1,0},{1,0},{0,-1},{0,1}};
+        vector<char> dirname = {'U', 'D', 'L', 'R'};
+        
+        if(row==m.size()-1&&col==m[0].size()-1){
+            result.push_back(answer);
+        }
+        
+        m[row][col]=0;
+        for(int i=0; i<4; i++){
+            
+            int x=row+directions[i][0];
+            int y=col+directions[i][1];
+
+            if(x>=0&&x<m.size()&&y>=0&&y<m[0].size()&&m[x][y]!=0){
+                solve(m, x, y, answer+dirname[i], result);
+            }
+            
+        }
+        m[row][col]=1;
+        
+    }
+    
+vector<string> findPath(vector<vector<int>> &m, int n) {
+        // Your code goes here
+        vector<string> result;
+        solve(m, 0, 0, "", result);
+        return result;
+        
+    }
+
 int main(){
 
         //vector<vector<int>> arr(3,vector<int>(3));
@@ -291,8 +324,15 @@ int main(){
         //GFG
         //display(nQueen(10));
 
-        vector<vector<int>> chess(5, vector<int>(5,0));
-        printKnightsTour(chess, 5, 2, 0, 1);
+        // vector<vector<int>> chess(5, vector<int>(5,0));
+        // printKnightsTour(chess, 5, 2, 0, 1);
+
+        vector<vector<int>> maze = {{1, 0, 0, 0},
+                                    {1, 1, 0, 1}, 
+                                    {1, 1, 0, 0},
+                                    {0, 1, 1, 1}};
+        vector<string> result=findPath(maze, maze.size());
+        for(string elem:result) cout<<elem<<" ";
 
 
 }
