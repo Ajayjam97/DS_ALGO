@@ -149,6 +149,44 @@ int minCostClimbingStairs_DP(vector<int>& cost){
 	    return result;
 }
 
+//GFG: Too many tricky test cases
+int minJumpsHelper(int arr[], int n, int i, vector<int> &dp, bool &validans){
+        
+        if(n==1){
+           validans=true;
+           return 0; 
+        } 
+        
+        if(arr[i]==0) return INT_MAX;
+        
+        if(n==0||i>=n-1){
+            validans=true;
+            return dp[i]=0;
+        }
+        
+        
+        if(dp[i]!=-1) return dp[i];
+        
+        int minans=INT_MAX;
+        
+        for(int jump=1; jump<=arr[i]; jump++){
+            minans=min(minans, minJumpsHelper(arr, n, i+jump, dp, validans));
+        }
+        
+        
+        return dp[i]=minans+1;
+        
+    }
+    
+int minJumps(int arr[], int n){
+        // Your code here
+        vector<int> dp(n*n, -1);
+        bool validans=false;
+        int answer=minJumpsHelper(arr, n, 0, dp, validans);
+        if(validans) return answer;
+        return -1;
+    }
+
 
 int main(){
 
@@ -158,5 +196,7 @@ int main(){
     //vector<int> v = {10, 15, 20};
     //cout<<minCostClimbingStairs_DP(v);
 
+    int arr[] = {0, 1, 1, 1, 1};
+    cout<<minJumps(arr, 5)<<endl;
 
 }

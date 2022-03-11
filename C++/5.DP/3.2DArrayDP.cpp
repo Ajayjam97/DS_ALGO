@@ -154,7 +154,33 @@ int maxGold(int n, int m, vector<vector<int>> M)
         return maxgold;
     }
 
+int maxGold_Tabulated(int n, int m, vector<vector<int>>& arr, vector<vector<int>>& dp) {
 
+  //write your code here
+  int maxgold=INT_MIN;
+  
+  for(int col=arr[0].size()-1; col>=0; col--){  
+      for(int row=0; row<arr.size(); row++){
+          
+          if(col==arr[0].size()-1){
+                dp[row][col]=arr[row][col];
+          }
+          else if(row==0){
+                dp[row][col]=max(dp[row][col+1], dp[row+1][col+1])+arr[row][col];
+          }
+          else if(row==arr.size()-1){
+                dp[row][col]=max(dp[row-1][col+1], dp[row][col+1])+arr[row][col];
+          }
+          else{
+                dp[row][col]=max(dp[row-1][col+1], max(dp[row][col+1], dp[row+1][col+1]))+arr[row][col];
+          }
+          
+          maxgold=max(maxgold, dp[row][col]);     
+      }
+  }
+  
+  return maxgold;
+}
 
 
 
