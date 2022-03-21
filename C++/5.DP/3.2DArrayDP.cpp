@@ -222,7 +222,6 @@ bool TargetSumSubsetMemo(vector<int> arr, int index, int tar, vector<vector<bool
         return dp[index][tar] = res;
     }
 
-
 bool TargetSumSubsetTab(vector<int> arr, int tar){
 
     vector<vector<bool>> dp(arr.size()+1, vector<bool>(tar + 1));
@@ -256,6 +255,60 @@ bool TargetSumSubsetTab(vector<int> arr, int tar){
 }
 
 
+long long int coinchange_combination_helper(int S[], int m, int n, int indx, vector<vector<long long int>> &dp){
+      
+    if(n==0){
+        return dp[indx][n]=1;
+    }
+    
+    if(dp[indx][n]!=-1) return dp[indx][n];
+    
+    long long int ans=0;
+    
+    for(int i=indx; i<m; i++){
+        if(n-S[i]>=0)
+        ans+=coinchange_combination_helper(S, m, n-S[i], i, dp);
+    }
+    
+    return dp[indx][n]=ans;
+}
+
+long long int coinchange_combination(int S[], int m, int n) {
+
+    // code here.
+    vector<vector<long long int>> dp(m+1, vector<long long int>(n+1, -1));
+    return coinchange_combination_helper(S, m, n, 0, dp);
+    
+}
+
+
+long long int coinchange_permutation_helper(int S[], int m, int n, vector<int> &dp){
+      
+      if(n==0){
+            return dp[n]=1;
+        }
+        
+        if(dp[n]!=-1) return dp[n];
+        
+        long long int ans=0;
+        
+        for(int i=0; i<m; i++){
+            if(n-S[i]>=0)
+            ans+=coinchange_permutation_helper(S, m, n-S[i], dp);
+        }
+        
+        return dp[n]=ans;
+}
+
+
+
+long long int coinchange_permutation(int S[], int m, int n) {
+
+    // code here.
+    vector<int> dp(n+1, -1);
+    return coinchange_permutation_helper(S, m, n, dp);
+    
+}
 
 int main(){
 
