@@ -300,8 +300,6 @@ long long int coinchange_permutation_helper(int S[], int m, int n, vector<int> &
         return dp[n]=ans;
 }
 
-
-
 long long int coinchange_permutation(int S[], int m, int n) {
 
     // code here.
@@ -309,6 +307,11 @@ long long int coinchange_permutation(int S[], int m, int n) {
     return coinchange_permutation_helper(S, m, n, dp);
     
 }
+
+
+
+
+
 
 int main(){
 
@@ -334,6 +337,17 @@ int main(){
     // };
 
     //cout<<maximumPath(17,v)<<endl;
+
+
+    int n,m;    cin>>m;
+    int S[m];
+    
+    for(int i=0; i<m; i++){
+        cin>>S[i];
+    }
+        
+    cin>>n;
+    cout<<coinchange_combination(S, m, n);
 
 
 }
