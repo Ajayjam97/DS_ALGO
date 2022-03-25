@@ -309,37 +309,6 @@ long long int coinchange_permutation(int S[], int m, int n) {
 }
 
 
-int zero_oneknapSack_memoized(int W, int wt[], int val[], int n, vector<vector<int>> &dp) 
-{
-       if(n==0){
-           return dp[W][n]=0;
-       }
-       
-       
-       if(dp[W][n]!=-1) return dp[W][n];
-       
-       int MaxValue1=INT_MIN;
-       int MaxValue2=INT_MIN;
-       
-       //Consedring deducting nth element
-      if(W-wt[n-1] >=0)
-       MaxValue1=zero_oneknapSack_memoized(W-wt[n-1], wt, val, n-1, dp)+val[n-1];
-       
-       //Consedring not deducting nth element
-       MaxValue2=zero_oneknapSack_memoized(W, wt, val, n-1, dp);
-       
-       return dp[W][n]=max(MaxValue1, MaxValue2);
-}
-       
-int zero_oneknapSack(int W, int wt[], int val[], int n) 
-{ 
-       // Your code here
-       vector<vector<int>> dp(W+1, vector<int>(n+1, -1));
-       return zero_oneknapSack_memoized(W, wt, val, n, dp);
-       
-}
-
-
 int unboundedknapSack_memoized(int W, vector<int> wt, vector<int> val, int n, vector<vector<int>> &dp) 
 {
     
@@ -368,7 +337,6 @@ void unboundedKnapsack(int n, vector<int> val, vector<int> weight, int cap) {
 
        vector<vector<int>> dp(cap+1, vector<int>(n+1, -1));
        cout<<unboundedknapSack_memoized(cap, weight, val, n, dp);
-
 
 }
 
