@@ -55,6 +55,13 @@ int LongestCommonSubsequence(int x, int y, string s1, string s2)
     
 }
 
+
+int LongestCommonSubstring (string S1, string S2, int n, int m)
+{
+    // your code here
+}
+
+
 int main() {
 
     cout<<LongestCommonSubsequence(6,6,"ABCDGH","AEDFHR")<<endl;
