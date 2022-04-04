@@ -156,15 +156,84 @@ int print_longest_common_subsequence(string s1, string s2, int x, int y, vector<
                 }
             }
 
-            cout<<ans;
+            cout<<ans<<endl;
+	        
+}
+
+
+int ShortestCommonSupersequence(string X, string Y, int m, int n)
+    {
+        //code here
+        vector<vector<int>> dp(m+1, vector<int>(n+1));
+        int lcs=LongestCommonSubsequence_tabulated(m,n,X,Y,dp);
+        
+        return ((m+n)-lcs);
+    }
+
+int print_shortest_Common_Supersequence(string s1, string s2, int x, int y, vector<vector<int>> dp)
+{
+	        for(int i=0; i<x; i++){
+                for(int j=0; j<y; j++){
+                    if(i==0||j==0) dp[i][j]=0;
+                }
+            }
+        
+            for(int i=1; i<=x; i++){
+                for(int j=1; j<=y; j++){
+                    
+                    if(s1[i-1]==s2[j-1]){
+                        dp[i][j]=dp[i-1][j-1]+1;
+                    } 
+                    else{
+                        dp[i][j]=max(dp[i][j-1],dp[i-1][j]);
+                    }
+                    
+                }
+            }
+        
+            string ans="";
+            int i=x; int j=y;
+
+            while(i>0 && j>0){
+                if(s1[i-1]==s2[j-1]){
+                    ans += s1[i-1];
+                    i--; j--;
+                }
+                else if(dp[i-1][j]>dp[i][j-1]){
+                    ans += s1[i-1];
+                    i--;
+                }
+                else{
+                    ans += s2[j-1];
+                    j--;
+                }
+            }
+
+            while(i>0){
+                ans+=s1[i-1];
+                i--;
+            }
+
+            while(j>0){
+                ans+=s2[j-1];
+                j--;
+            }
+
+            reverse(ans.begin(), ans.end());
+
+            cout<<ans<<endl;
 	        
 }
 
 int main() {
 
-    //cout<<LongestCommonSubsequence(6,6,"ABCDGH","AEDFHR")<<endl;
-    //cout<<LongestCommonSubstring("ABCDGH","ACDGHR",6,6)<<endl;
     vector<vector<int>> dp(7, vector<int>(7));
-    print_longest_common_subsequence("ABCDGH","AEDFHR",6,6,dp);
+    //cout<<LongestCommonSubsequence(6,6,"ABCDGH","AEDFHR")<<endl;
+    //print_longest_common_subsequence("ABCDGH","AEDFHR",6,6,dp);
+
+    //cout<<LongestCommonSubstring("ABCDGH","ACDGHR",6,6)<<endl;
+    
+    //cout<<ShortestCommonSupersequence("ABCDGH","AEDFHR",6,6)<<endl;
+    print_shortest_Common_Supersequence("ABCDGH","AEDFHR",6,6,dp);
 
 }
