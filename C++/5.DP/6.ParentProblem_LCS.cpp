@@ -55,6 +55,52 @@ int LongestCommonSubsequence(int x, int y, string s1, string s2)
     
 }
 
+int print_longest_common_subsequence(string s1, string s2, int x, int y, vector<vector<int>> dp)
+{
+	        for(int i=0; i<x; i++){
+                for(int j=0; j<y; j++){
+                    if(i==0||j==0) dp[i][j]=0;
+                }
+            }
+        
+            for(int i=1; i<=x; i++){
+                for(int j=1; j<=y; j++){
+                    
+                    if(s1[i-1]==s2[j-1]){
+                        dp[i][j]=dp[i-1][j-1]+1;
+                    } 
+                    else{
+                        dp[i][j]=max(dp[i][j-1],dp[i-1][j]);
+                    }
+                    
+                }
+            }
+        
+            int len=dp[x][y];
+            string ans="";
+            for(int i=0; i<len; i++) ans+='$';
+
+            int index=len-1;
+            int i=x; int j=y;
+
+            while(i>0 && j>0){
+                if(s1[i-1]==s2[j-1]){
+                    ans[index] = s1[i-1];
+                    index--;
+                    i--; j--;
+                }
+                else if(dp[i-1][j]>dp[i][j-1]){
+                    i--;
+                }
+                else{
+                    j--;
+                }
+            }
+
+            cout<<ans<<endl;
+	        
+}
+
 
 int LongestCommonSubstring_recursive(string X, string Y,int x, int y, vector<vector<int>> &dp, int count)
 {
@@ -111,53 +157,6 @@ int LongestCommonSubstring(string S1, string S2, int n, int m)
     vector<vector<int>> dp(n+1, vector<int>(m+1, -1));
     return LongestCommonSubstring_recursive(S1, S2, n, m, dp, 0);
     return LongestCommonSubstring_tabulated(S1, S2, n, m, dp, 0);
-}
-
-
-int print_longest_common_subsequence(string s1, string s2, int x, int y, vector<vector<int>> dp)
-{
-	        for(int i=0; i<x; i++){
-                for(int j=0; j<y; j++){
-                    if(i==0||j==0) dp[i][j]=0;
-                }
-            }
-        
-            for(int i=1; i<=x; i++){
-                for(int j=1; j<=y; j++){
-                    
-                    if(s1[i-1]==s2[j-1]){
-                        dp[i][j]=dp[i-1][j-1]+1;
-                    } 
-                    else{
-                        dp[i][j]=max(dp[i][j-1],dp[i-1][j]);
-                    }
-                    
-                }
-            }
-        
-            int len=dp[x][y];
-            string ans="";
-            for(int i=0; i<len; i++) ans+='$';
-
-            int index=len-1;
-            int i=x; int j=y;
-
-            while(i>0 && j>0){
-                if(s1[i-1]==s2[j-1]){
-                    ans[index] = s1[i-1];
-                    index--;
-                    i--; j--;
-                }
-                else if(dp[i-1][j]>dp[i][j-1]){
-                    i--;
-                }
-                else{
-                    j--;
-                }
-            }
-
-            cout<<ans<<endl;
-	        
 }
 
 
@@ -224,6 +223,21 @@ int print_shortest_Common_Supersequence(string s1, string s2, int x, int y, vect
             cout<<ans<<endl;
 	        
 }
+
+//Min numer of insertions & deletions
+int minOperations(string str1, string str2) 
+	{ 
+	    // Your code goes here
+	    int x=str1.size(); int y=str2.size();
+	    vector<vector<int>> dp(x+1, vector<int>(y+1));
+	    int lcs=LongestCommonSubsequence_tabulated(x, y, str1, str2, dp);
+	    
+	    int deletions=x-lcs;
+	    int insertions=y-lcs;
+	    
+	    return (deletions+insertions);
+	    
+	}
 
 int main() {
 
