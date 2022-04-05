@@ -224,6 +224,7 @@ int print_shortest_Common_Supersequence(string s1, string s2, int x, int y, vect
 	        
 }
 
+
 //Min numer of insertions & deletions
 int minOperations(string str1, string str2) 
 	{ 
@@ -273,6 +274,44 @@ string longestPalindrome(string S){
 }
 
 
+int longestPalindromeDP(string S){
+        // code here 
+        vector<vector<bool>> dp(S.size(), vector<bool>(S.size()));
+        int len=0;
+
+        for(int gap=0; gap<S.size(); gap++){
+            for(int i=0, j=gap; j<S.size(); i++, j++){
+                
+                if(gap==0){
+                    dp[i][j]==true;
+                }
+                else if(gap==1){
+                    if(S[i]==S[j]){
+                        dp[i][j] = true;
+                    }
+                    else{
+                        dp[i][j] = false;
+                    }
+                }
+                else{
+                    if((S[i]==S[j])&&(dp[i+1][j-1]==true)){
+                        dp[i][j]=true;
+                    }
+                    else{
+                        dp[i][j]=false;
+                    }
+                }
+
+                if(dp[i][j]){
+                    len=gap+1;
+                }
+            }
+        }
+
+        return len;
+}
+
+
 int main() {
 
     vector<vector<int>> dp(7, vector<int>(7));
@@ -290,6 +329,8 @@ int main() {
 
     //cout<<longestPalinSubseq("abccbc")<<endl;
 
-    cout<<longestPalindrome("abccbc")<<endl; 
+    //cout<<longestPalindrome("abccbc")<<endl;
+
+    cout<<longestPalindromeDP("abccbc")<<endl;
 
 }
