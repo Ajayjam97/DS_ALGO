@@ -232,12 +232,46 @@ int minOperations(string str1, string str2)
 	    vector<vector<int>> dp(x+1, vector<int>(y+1));
 	    int lcs=LongestCommonSubsequence_tabulated(x, y, str1, str2, dp);
 	    
-	    int deletions=x-lcs;
-	    int insertions=y-lcs;
+	    int deletions=x-lcs;    
+	    int insertions=y-lcs;   
 	    
 	    return (deletions+insertions);
 	    
 	}
+
+//Longest palindromic subsequence
+int longestPalinSubseq(string A) {
+        //code here
+        string a=A;
+        reverse(A.begin(), A.end());
+        string b=A;
+        
+        vector<vector<int>> dp(a.size()+1, vector<int>(a.size()+1, -1));
+        return LongestCommonSubsequence_tabulated(a.size(), a.size(), a, b, dp);
+    }
+
+//Longest palindromic substring
+string longestPalindrome(string S){
+        // code here 
+        string answer="";
+        int size=0;
+        for(int i=0; i<S.size(); i++){
+            for(int j=1; j<=S.size()-i; j++){
+                string temp=S.substr(i,j);
+                string actual=temp;
+                reverse(temp.begin(), temp.end());
+                string rev=temp;
+                if(actual==rev){
+                    if(temp.size()>size){
+                        size=temp.size(); answer=temp;
+                    }
+                }
+            }
+        }
+
+        return answer;
+}
+
 
 int main() {
 
@@ -248,6 +282,14 @@ int main() {
     //cout<<LongestCommonSubstring("ABCDGH","ACDGHR",6,6)<<endl;
     
     //cout<<ShortestCommonSupersequence("ABCDGH","AEDFHR",6,6)<<endl;
-    print_shortest_Common_Supersequence("ABCDGH","AEDFHR",6,6,dp);
+    //print_shortest_Common_Supersequence("ABCDGH","AEDFHR",6,6,dp);
+
+    //cout<<minOperations("ABCDGH","AEDFHR")<<endl;  //ABCEDFGHR
+
+    //cout<<longestPalinSubseq("agbcba")<<endl;
+
+    //cout<<longestPalinSubseq("abccbc")<<endl;
+
+    cout<<longestPalindrome("abccbc")<<endl; 
 
 }
