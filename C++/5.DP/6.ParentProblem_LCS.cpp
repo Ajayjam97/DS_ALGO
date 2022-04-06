@@ -283,7 +283,7 @@ int longestPalindromeDP(string S){
             for(int i=0, j=gap; j<S.size(); i++, j++){
                 
                 if(gap==0){
-                    dp[i][j]==true;
+                    dp[i][j]=true;
                 }
                 else if(gap==1){
                     if(S[i]==S[j]){
@@ -310,6 +310,36 @@ int longestPalindromeDP(string S){
 
         return len;
 }
+
+
+//Longest increasing subsequence
+int longestSubsequencehelper(int indx, int n, int a[], int prev_indx, vector<vector<int>> &dp){
+        
+       if(indx==n){
+           return dp[indx][prev_indx+1]=0;
+       }
+       
+       if(dp[indx][prev_indx+1]!=-1) return dp[indx][prev_indx+1];
+       
+       int ans=longestSubsequencehelper(indx+1,n,a, prev_indx, dp);
+       
+       if(prev_indx == -1 || a[indx]>a[prev_indx])
+       ans=max(ans,longestSubsequencehelper(indx+1,n,a, indx, dp)+1);
+       
+       if(prev_indx == -1) return dp[indx][prev_indx+1]=ans;
+       
+       return dp[indx][prev_indx+1]=ans;
+       
+    }
+    
+//Function to find length of longest increasing subsequence.
+int longestSubsequence(int n, int a[])
+    {
+       // your code here
+       vector<vector<int>> dp(n+1, vector<int>(n+1, -1));
+       return longestSubsequencehelper(0,n,a, -1, dp);
+    }
+
 
 
 int main() {
