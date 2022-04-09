@@ -42,10 +42,43 @@ int matrixMultiplication(int N, int arr[])
     }
 
 
+bool isPalindrome(string &str, int i, int j){
+        
+        while(i<=j){
+            if(str[i]!=str[j]) return false;
+            i++; j--;
+        }
+        
+        return true;
+    }
+    
+int palindromePartitionHelper(string &str, int i, int j, vector<vector<int>> &dp){
+        
+        if(i>=j) return 0;
+        
+        if(isPalindrome(str, i, j)) return 0;
+        
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        int mincuts=1e9;
+        
+        for(int k=i; k<=j-1; k++){
+            int steps = 1 + palindromePartitionHelper(str, i, k, dp) + palindromePartitionHelper(str, k+1, j, dp);
+            if(steps<mincuts) mincuts=steps;
+        }
+        
+        return dp[i][j]=mincuts;
+        
+    }
+    
 int palindromicPartition(string str)
-{
-    // code here
-}
+    {
+        // code here
+        vector<vector<int>> dp(str.size()+1, vector<int>(str.size()+1, -1));
+        return palindromePartitionHelper(str, 0, str.size()-1, dp);
+    }
+
+
 
 int main() {
 
