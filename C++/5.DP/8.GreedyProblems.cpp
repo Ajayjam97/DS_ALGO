@@ -14,7 +14,6 @@ double v2 = (double) p2.first/p2.second;
 return v1>v2;
 }
 
-
 //Function to get the maximum total value in the knapsack.
 double fractionalKnapsack(int W, Item a[], int n)
 {
