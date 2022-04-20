@@ -59,6 +59,20 @@ int countBinaryString(int len, int lastadded, string asf, int strngsize){
     return ans;
 }
 
+
+int ArrangeBuildings(int len, int lastadded, string asf, int strngsize){
+
+    if(len==strngsize) return 1;
+
+    int ans=0;
+    if(lastadded==1){
+        ans+=ArrangeBuildings(len+1, 0, asf+'0', strngsize);
+    }
+    ans+=ArrangeBuildings(len+1, 1, asf+'1', strngsize);
+
+    return ans;
+}
+
 int main() {
 
 cout<<countBinaryString(0,1,"",4)<<endl;
