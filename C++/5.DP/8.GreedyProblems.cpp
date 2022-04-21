@@ -45,7 +45,6 @@ double fractionalKnapsack(int W, Item a[], int n)
     return ans;
 }
 
-
 int countBinaryString(int len, int lastadded, string asf, int strngsize){
 
     if(len==strngsize) return 1;
@@ -59,18 +58,37 @@ int countBinaryString(int len, int lastadded, string asf, int strngsize){
     return ans;
 }
 
+int countBinaryString_Optimized(int len, int lastadded, string asf, int strngsize){
 
-int ArrangeBuildings(int len, int lastadded, string asf, int strngsize){
+    int zero=1;
+    int one=1;
+    
+    for(int i=2; i<=strngsize; i++){
+        int n_zero=one;
+        int n_one=one+zero;
 
-    if(len==strngsize) return 1;
-
-    int ans=0;
-    if(lastadded==1){
-        ans+=ArrangeBuildings(len+1, 0, asf+'0', strngsize);
+        zero=n_zero;
+        one=n_one;
     }
-    ans+=ArrangeBuildings(len+1, 1, asf+'1', strngsize);
+    
+    return one+zero;
+}
 
-    return ans;
+int ArrangeBuildings(int n){
+
+    int building=1;
+    int space=1;
+    
+    for(int i=2; i<=n; i++){
+        int n_building=space;
+        int n_space=building+space;
+
+        space=n_space;
+        building=n_building;
+    }
+    
+    long result=building+space;
+    return result*result;
 }
 
 int main() {
