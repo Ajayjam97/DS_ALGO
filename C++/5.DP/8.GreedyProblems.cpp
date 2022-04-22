@@ -91,6 +91,11 @@ int ArrangeBuildings(int n){
     return result*result;
 }
 
+
+int countabcsubsequences(){
+    
+}
+
 int main() {
 
 cout<<countBinaryString(0,1,"",4)<<endl;
