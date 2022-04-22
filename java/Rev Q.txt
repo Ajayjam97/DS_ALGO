@@ -1,0 +1,5 @@
+Generic trees
+
+https://nados.io/question/diameter-of-generic-tree -- revise it -- recursion and updation at same time.
+https://www.pepcoding.com/resources/online-java-foundation/generic-tree/pred-succ-generic-tree-official/ojquestion
+https://www.pepcoding.com/resources/online-java-foundation/generic-tree/kth-largest-element-generic-tree-official/ojquestion
