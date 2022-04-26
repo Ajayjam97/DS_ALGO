@@ -11,5 +11,6 @@ https://nados.io/question/print-nodes-k-distance-away
 
 
 https://nados.io/question/diameter-of-a-binary-tree
+https://nados.io/question/is-a-binary-search-tree
 
 
