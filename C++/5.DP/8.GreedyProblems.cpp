@@ -116,14 +116,46 @@ int countabcsubsequences(string str){
     return abc;
 }
 
+int MaxSumNonAdjacent(vector<int> arr, int indx, int status){
+
+    if(indx==-1) return 0;
+
+    int maxsum=-1e9;
+
+    if(status==0){
+        maxsum=MaxSumNonAdjacent(arr, indx-1, 1)+arr[indx];
+    }
+    maxsum=max(maxsum,MaxSumNonAdjacent(arr, indx-1, 0));
+    return maxsum;
+}
+
+int MaxSumNonAdjacent_memoized(vector<int> arr, int indx, int status, vector<vector<int>> &dp){
+
+    if(indx==-1) return dp[status][indx+1]=0;
+
+    if(dp[status][indx+1]!=0) return dp[status][indx+1];
+
+    int maxsum=-1e9;
+
+    if(status==0){
+        maxsum=MaxSumNonAdjacent(arr, indx-1, 1)+arr[indx];
+    }
+    maxsum=max(maxsum,MaxSumNonAdjacent(arr, indx-1, 0));
+
+    return dp[status][indx+1]=maxsum;
+}
 
 
 int main() {
 
-cout<<countBinaryString(0,1,"",4)<<endl;
+//cout<<countBinaryString(0,1,"",4)<<endl;
 
-cout<<countabcsubsequences("abcabc")<<endl;
+//cout<<countabcsubsequences("abcabc")<<endl;
 
+//cout<<MaxSumNonAdjacent({5,10,10,100,5,6},6,0)<<endl;
+
+vector<vector<int>> dp(2, vector<int>(7, 0));
+cout<<MaxSumNonAdjacent_memoized({5,10,10,100,5,6},6,0,dp)<<endl;
 
 
 }
