@@ -138,12 +138,29 @@ int MaxSumNonAdjacent_memoized(vector<int> arr, int indx, int status, vector<vec
     int maxsum=-1e9;
 
     if(status==0){
-        maxsum=MaxSumNonAdjacent(arr, indx-1, 1)+arr[indx];
+        maxsum=MaxSumNonAdjacent_memoized(arr, indx-1, 1, dp)+arr[indx];
     }
-    maxsum=max(maxsum,MaxSumNonAdjacent(arr, indx-1, 0));
+    maxsum=max(maxsum,MaxSumNonAdjacent_memoized(arr, indx-1, 0, dp));
 
     return dp[status][indx+1]=maxsum;
 }
+
+int MaxSumNonAdjacent_greedy(vector<int> arr){
+
+    int include=0;
+    int exclude=0;
+    
+    for(int i=0; i<arr.size(); i++){
+        int n_include=exclude+arr[i];
+        int n_exclude=max(include,exclude);
+
+        include=n_include;
+        exclude=n_exclude;
+    }
+    
+    return max(include,exclude);
+}
+
 
 
 int main() {
@@ -155,7 +172,9 @@ int main() {
 //cout<<MaxSumNonAdjacent({5,10,10,100,5,6},6,0)<<endl;
 
 vector<vector<int>> dp(2, vector<int>(7, 0));
-cout<<MaxSumNonAdjacent_memoized({5,10,10,100,5,6},6,0,dp)<<endl;
+cout<<MaxSumNonAdjacent_memoized({5,10,10,100,5,6},5,0,dp)<<endl;
+
+cout<<MaxSumNonAdjacent_greedy({5,10,10,100,5,6})<<endl;
 
 
 }
