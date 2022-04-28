@@ -14,3 +14,9 @@ https://nados.io/question/diameter-of-a-binary-tree
 https://nados.io/question/is-a-binary-search-tree
 
 
+BST:
+
+https://www.pepcoding.com/resources/online-java-foundation/binary-search-tree/remove-node-in-bst-official/ojquestion
+https://www.pepcoding.com/resources/online-java-foundation/binary-search-tree/tsp-bst-official/ojquestion -- TRY TO DO IN o(n) time and o(h) space.
+
+
