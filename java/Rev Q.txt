@@ -20,3 +20,6 @@ https://www.pepcoding.com/resources/online-java-foundation/binary-search-tree/re
 https://www.pepcoding.com/resources/online-java-foundation/binary-search-tree/tsp-bst-official/ojquestion -- TRY TO DO IN o(n) time and o(h) space.
 
 
+Hashmap
+
+https://www.pepcoding.com/resources/online-java-foundation/hashmap-and-heap/longest_consecutive_sequence/topic == O(N)
