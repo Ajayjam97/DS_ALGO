@@ -161,7 +161,28 @@ int MaxSumNonAdjacent_greedy(vector<int> arr){
     return max(include,exclude);
 }
 
+int paintHouse(vector<vector<int>> arr){
 
+    int red=0;
+    int green=0;
+    int blue=0;
+
+    for(int i=0; i<arr.size(); i++){
+
+        //red
+        int n_red = min(green,blue)+arr[i][0];
+        //green
+        int n_green = min(red,blue)+arr[i][1];
+        //blue
+        int n_blue = min(red,green)+arr[i][2];
+
+        red=n_red;
+        green=n_green;
+        blue=n_blue;
+    }
+
+    return min(red, min(blue, green));
+}
 
 int main() {
 
@@ -175,6 +196,8 @@ vector<vector<int>> dp(2, vector<int>(7, 0));
 cout<<MaxSumNonAdjacent_memoized({5,10,10,100,5,6},5,0,dp)<<endl;
 
 cout<<MaxSumNonAdjacent_greedy({5,10,10,100,5,6})<<endl;
+
+cout<<paintHouse({{1,5,7},{5,8,4},{3,2,9},{1,2,4}});
 
 
 }
