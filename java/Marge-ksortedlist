@@ -1,0 +1,76 @@
+import java.io.*;
+import java.util.*;
+
+
+
+
+public class Main {
+   
+   public static class Lpair{
+        int val;
+        int listIdx;
+        Lpair(int val, int listIdx){
+           this.val = val;
+           this.listIdx =listIdx;
+        }
+    }
+   
+   public static ArrayList<Integer> mergeKSortedLists(ArrayList<ArrayList<Integer>> lists){
+      ArrayList<Integer> rv = new ArrayList<>();
+      int[] idx = new int[lists.size()];
+      ArrayList<Integer> ans = new ArrayList<>();
+      PriorityQueue<Lpair> pq = new PriorityQueue<>(Comparator.comparing(lpair -> lpair.val));
+      
+      for(int i=0;i<lists.size();i++){
+         pq.add(new Lpair(lists.get(i).get(0), i));
+      }
+
+      while(!pq.isEmpty()){
+
+         Lpair pair = pq.remove();
+         ans.add(pair.val);
+
+         int idx1 = idx[pair.listIdx];
+         ArrayList<Integer> l = lists.get(pair.listIdx);
+         idx1++;
+         idx[pair.listIdx] = idx1;
+         
+         if(idx1<l.size()){
+            pq.add(new Lpair(l.get(idx1), pair.listIdx));
+         }
+
+      }
+
+
+
+
+
+      // write your code here
+
+      return ans;
+   }
+
+   public static void main(String[] args) throws Exception {
+      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+      int k = Integer.parseInt(br.readLine());
+      ArrayList<ArrayList<Integer>> lists = new ArrayList<>();
+      for(int i = 0; i < k; i++){
+         ArrayList<Integer> list = new ArrayList<>();
+
+         int n = Integer.parseInt(br.readLine());
+         String[] elements = br.readLine().split(" ");
+         for(int j = 0; j < n; j++){
+            list.add(Integer.parseInt(elements[j]));
+         }
+
+         lists.add(list);
+      }
+
+      ArrayList<Integer> mlist = mergeKSortedLists(lists);
+      for(int val: mlist){
+         System.out.print(val + " ");
+      }
+      System.out.println();
+   }
+
+}
