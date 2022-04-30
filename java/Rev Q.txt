@@ -23,3 +23,9 @@ https://www.pepcoding.com/resources/online-java-foundation/binary-search-tree/ts
 Hashmap
 
 https://www.pepcoding.com/resources/online-java-foundation/hashmap-and-heap/longest_consecutive_sequence/topic == O(N)
+
+PriorityQueue:
+
+https://www.pepcoding.com/resources/online-java-foundation/hashmap-and-heap/sort-ksorted-official/ojquestion
+
+
