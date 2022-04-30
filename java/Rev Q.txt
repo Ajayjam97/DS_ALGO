@@ -29,5 +29,7 @@ PriorityQueue:
 https://www.pepcoding.com/resources/online-java-foundation/hashmap-and-heap/sort-ksorted-official/ojquestion
 https://nados.io/question/median-priority-queue
 https://nados.io/question/merge-k-sorted-lists
+https://www.pepcoding.com/resources/online-java-foundation/hashmap-and-heap/priority_queue_using_heap/topic
+
 
 
