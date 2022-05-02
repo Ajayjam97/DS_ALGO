@@ -184,6 +184,22 @@ int paintHouse(vector<vector<int>> arr){
     return min(red, min(blue, green));
 }
 
+int paintfence(int n, int k){
+    
+    long same=k*1; //ii
+    long diff=k*(k-1); //ij
+    long total=same+diff;
+    
+    for(int i=3; i<=n; i++){
+        same=diff*1;
+        diff=total*(k-1);
+        total=same+diff;
+    }
+    
+    return total;
+}
+
+
 int main() {
 
 //cout<<countBinaryString(0,1,"",4)<<endl;
@@ -198,6 +214,8 @@ cout<<MaxSumNonAdjacent_memoized({5,10,10,100,5,6},5,0,dp)<<endl;
 cout<<MaxSumNonAdjacent_greedy({5,10,10,100,5,6})<<endl;
 
 cout<<paintHouse({{1,5,7},{5,8,4},{3,2,9},{1,2,4}});
+
+cout<<paintfence(8,3)<<endl;
 
 
 }
