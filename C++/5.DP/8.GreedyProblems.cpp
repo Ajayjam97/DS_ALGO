@@ -199,6 +199,19 @@ int paintfence(int n, int k){
     return total;
 }
 
+int tiling2cross1(int n){
+    
+    int a=1;
+    int b=2;
+    
+    for(int i=1; i<n; i++){
+        int c=a+b;
+        a=b;
+        b=c;
+    }
+    
+    return a;
+}
 
 int main() {
 
@@ -208,14 +221,15 @@ int main() {
 
 //cout<<MaxSumNonAdjacent({5,10,10,100,5,6},6,0)<<endl;
 
-vector<vector<int>> dp(2, vector<int>(7, 0));
-cout<<MaxSumNonAdjacent_memoized({5,10,10,100,5,6},5,0,dp)<<endl;
+//vector<vector<int>> dp(2, vector<int>(7, 0));
+//cout<<MaxSumNonAdjacent_memoized({5,10,10,100,5,6},5,0,dp)<<endl;
 
-cout<<MaxSumNonAdjacent_greedy({5,10,10,100,5,6})<<endl;
+//cout<<MaxSumNonAdjacent_greedy({5,10,10,100,5,6})<<endl;
 
-cout<<paintHouse({{1,5,7},{5,8,4},{3,2,9},{1,2,4}});
+//cout<<paintHouse({{1,5,7},{5,8,4},{3,2,9},{1,2,4}});
 
-cout<<paintfence(8,3)<<endl;
+//cout<<paintfence(8,3)<<endl;
 
+cout<<tiling2cross1(8)<<endl;
 
 }
