@@ -213,6 +213,20 @@ int tiling2cross1(int n){
     return a;
 }
 
+int friendspairing(int n){
+
+    vector<int> dp(n+1);
+
+    dp[0]=1; dp[1]=1;
+
+    for(int i=2; i<=n; i++){
+        dp[i]=dp[i-1]+(i-1)*dp[i-2];
+    }
+
+    return dp[n];
+}
+
+
 int main() {
 
 //cout<<countBinaryString(0,1,"",4)<<endl;
@@ -230,6 +244,8 @@ int main() {
 
 //cout<<paintfence(8,3)<<endl;
 
-cout<<tiling2cross1(8)<<endl;
+//cout<<tiling2cross1(8)<<endl;
+
+cout<<friendspairing(4)<<endl;
 
 }
