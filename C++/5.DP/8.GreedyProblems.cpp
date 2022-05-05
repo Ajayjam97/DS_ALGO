@@ -227,6 +227,30 @@ int friendspairing(int n){
 }
 
 
+void BuyAndSellOneTransac(vector<int> arr) {
+  //write your code here
+}
+
+void BuyAndSellInfiniteTransac(vector<int> arr) {
+  //write your code here
+}
+
+void BuyAndSellInfiniteTransacWithFee(vector<int> arr) {
+  //write your code here
+}
+
+void BuyAndSellOneTransacWithCooldown(vector<int> arr) {
+  //write your code here
+}
+
+void BuyAndSellTwoTransac(vector<int> arr) {
+  //write your code here
+}
+
+void BuyAndSellKTransac(vector<int> arr) {
+  //write your code here
+}
+
 int main() {
 
 //cout<<countBinaryString(0,1,"",4)<<endl;
