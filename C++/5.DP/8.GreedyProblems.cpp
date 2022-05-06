@@ -227,8 +227,16 @@ int friendspairing(int n){
 }
 
 
-void BuyAndSellOneTransac(vector<int> arr) {
-  //write your code here
+void BuyAndSellOneTransac(vector<int> price) {
+  
+    int profit=0;
+    int minprice=price[0];
+  
+    for(int day=1; day<=price.size(); day++){
+      profit=max(profit, price[day]-minprice);
+      minprice=min(minprice, price[day]);
+    }
+    cout<<profit;
 }
 
 void BuyAndSellInfiniteTransac(vector<int> arr) {
