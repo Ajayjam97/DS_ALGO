@@ -276,18 +276,6 @@ void BuyAndSellInfiniteTransac(vector<int> price) {
     cout<<profit;
 }
 
-void BuyAndSellInfiniteTransacWithFee(vector<int> arr) {
-  //write your code here
-}
-
-void BuyAndSellOneTransacWithCooldown(vector<int> arr) {
-  //write your code here
-}
-
-void BuyAndSellTwoTransac(vector<int> arr) {
-  //write your code here
-}
-
 int BuyAndSellKTransac(vector<int> price, int indx, bool buy, int k) {
   //write your code here
 
@@ -303,6 +291,26 @@ int BuyAndSellKTransac(vector<int> price, int indx, bool buy, int k) {
   }
   return profit;
 }
+
+int BuyAndSellInfiniteTransacWithFee(vector<int> price, int indx, bool buy, int fee) {
+  //write your code here
+
+    if(indx==price.size()) return 0;
+
+  int profit=0;
+  if(buy){
+      profit=max(-price[indx]+BuyAndSellInfiniteTransacWithFee(price,indx+1,0, fee), 0+BuyAndSellInfiniteTransacWithFee(price,indx+1,1, fee));
+  }
+  else{
+      profit=max(price[indx]-fee+BuyAndSellInfiniteTransacWithFee(price,indx+1,1, fee), 0+BuyAndSellInfiniteTransacWithFee(price,indx+1,0, fee));
+  }
+  return profit;
+}
+
+void BuyAndSellOneTransacWithCooldown(vector<int> arr) {
+  //write your code here
+}
+
 
 int main() {
 
