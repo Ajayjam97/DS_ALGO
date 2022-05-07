@@ -239,8 +239,26 @@ void BuyAndSellOneTransac(vector<int> price) {
     cout<<profit;
 }
 
-void BuyAndSellInfiniteTransac(vector<int> arr) {
+void BuyAndSellInfiniteTransac(vector<int> price) {
   //write your code here
+
+    int bd=0;   //buying date
+    int sd=0;   //selling date
+    int profit=0;
+  
+    for(int day=1; day<=price.size(); day++){
+      
+      if(price[day]>=price[day-1]){
+          sd++;
+      }
+      else{
+          profit+=price[sd]-price[bd];
+          bd=sd=day;
+      }
+    }
+    
+    profit+=price[sd]-price[bd];
+    cout<<profit;
 }
 
 void BuyAndSellInfiniteTransacWithFee(vector<int> arr) {
