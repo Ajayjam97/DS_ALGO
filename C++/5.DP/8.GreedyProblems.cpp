@@ -307,8 +307,19 @@ int BuyAndSellInfiniteTransacWithFee(vector<int> price, int indx, bool buy, int 
   return profit;
 }
 
-void BuyAndSellOneTransacWithCooldown(vector<int> arr) {
+int BuyAndSellOneTransacWithCooldown(vector<int> price, int indx, bool buy) {
   //write your code here
+
+    if(indx>=price.size()) return 0;
+
+    int profit=0;
+    if(buy){
+        profit=max(-price[indx]+BuyAndSellOneTransacWithCooldown(price,indx+1,0), 0+BuyAndSellOneTransacWithCooldown(price,indx+1,1));
+    }
+    else{
+        profit=max(price[indx]+BuyAndSellOneTransacWithCooldown(price,indx+2,1), 0+BuyAndSellOneTransacWithCooldown(price,indx+1,0));
+    }
+    return profit;
 }
 
 
