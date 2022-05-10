@@ -14,12 +14,10 @@ public:
 };
 
 
-bool hasPath(vector<vector<Edge>> graph, int src, int dest, vector<bool> &visited){
-    
+bool hasPath(vector<vector<Edge>> graph, int src, int dest, vector<bool> &visited){  
     if(src==dest) return true;
     
-    visited[src]=true;
-    
+    visited[src]=true; 
     for(Edge e : graph[src]){
         if(!visited[e.nbr]){
             if(hasPath(graph, e.nbr, dest, visited)){
@@ -27,9 +25,31 @@ bool hasPath(vector<vector<Edge>> graph, int src, int dest, vector<bool> &visite
             }
         }
     }
-    
     return false;
 }
+
+
+
+void printAllPaths(vector<vector<Edge>> g, int src, int dst, vector<bool> vis, string psf, int wsf) {
+        if(src == dst) {
+            psf += to_string(dst);
+            cout<<psf<<endl;
+            return;
+        }
+
+        vis[src] = 1;
+        for(Edge e : g[src]) {
+            int nbr = e.nbr;
+            int wt = e.wt;
+            // if neighbour is unvisited, move toward it
+            if(vis[nbr] == 0) {
+                printAllPaths(g, nbr, dst, vis, psf + to_string(src), wsf + wt);
+            }
+        }
+        vis[src] = 0;
+}
+
+
 
 int main() {
   int vtces;
@@ -54,9 +74,12 @@ int main() {
   // write your code here
   
   vector<bool> visited(vtces,false);
-  if(hasPath(graph, src, dest, visited))
-    cout<<"true";
-    else
-    cout<<"false";
+    // if(hasPath(graph, src, dest, visited))
+    // cout<<"true";
+    // else
+    // cout<<"false";
+
+
+    printAllPaths(graph, src, dest, visited, "", 0);
 
 }
