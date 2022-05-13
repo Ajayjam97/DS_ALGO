@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 class Edge {
 public:
   int src;
@@ -12,7 +13,6 @@ public:
     this->wt = wt;
   }
 };
-
 
 bool hasPath(vector<vector<Edge>> graph, int src, int dest, vector<bool> &visited){  
     if(src==dest) return true;
@@ -27,8 +27,6 @@ bool hasPath(vector<vector<Edge>> graph, int src, int dest, vector<bool> &visite
     }
     return false;
 }
-
-
 
 void printAllPaths(vector<vector<Edge>> g, int src, int dst, vector<bool> vis, string psf, int wsf) {
         if(src == dst) {
@@ -67,13 +65,10 @@ int main() {
     graph[v2].push_back( Edge(v2, v1, wt));
   }
 
-  int src;
-  cin >> src;
-  int dest;
-  cin >> dest;
-  // write your code here
-  
+  int src,dest;
+  cin >> src >> dest;
   vector<bool> visited(vtces,false);
+  
     // if(hasPath(graph, src, dest, visited))
     // cout<<"true";
     // else
