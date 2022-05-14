@@ -47,6 +47,74 @@ void printAllPaths(vector<vector<Edge>> g, int src, int dst, vector<bool> vis, s
         vis[src] = 0;
 }
 
+string spath;
+int spathwt = INT_MAX;
+string lpath;
+int lpathwt = INT_MIN;
+string cpath;
+int cpathwt = INT_MAX;
+string fpath;
+int fpathwt = INT_MIN;
+
+//priority_queue<pair<int, string>, vector<pair<int, string>> > pq;
+priority_queue<pair<int, string>, vector<pair<int, string>>, greater<pair<int, string>> > pq;
+
+
+void multisolver(vector<vector<Edge>> graph, int src, int dst, vector<bool> visited, int criteria, int k, string psf, int wsf){
+
+        if(src == dst) {
+            
+            psf += to_string(dst);
+
+            //Smallest
+            if(wsf<spathwt){
+              spath=psf;  spathwt=wsf;
+            }
+
+            //Longest
+            if(wsf>lpathwt){
+              lpath=psf;  lpathwt=wsf;
+            }
+
+            //Ceil
+            if(wsf>criteria && wsf<cpathwt){
+              cpath=psf;  cpathwt=wsf;
+            }
+
+            //Floor
+            if(wsf<criteria && wsf>fpathwt){
+              fpath=psf;  fpathwt=wsf;
+            }
+
+            //Kth largest
+            if(pq.size()<k){
+              pq.push({wsf,psf});
+              cout<<"pushed: "<<psf<<endl;
+            }
+            else{
+              if(pq.top().first < wsf){
+                pq.pop();
+                pq.push({wsf,psf});
+                cout<<"pushed: "<<psf<<endl;
+              }
+            }
+
+            return;
+        }
+
+        visited[src] = 1;
+        for(Edge e : graph[src]) {
+            int nbr = e.nbr;
+            int wt = e.wt;
+            // if neighbour is unvisited, move toward it
+            if(visited[nbr] == 0) {
+                multisolver(graph, nbr, dst, visited, criteria, k, psf + to_string(src), wsf + wt);
+            }
+        }
+        visited[src] = 0;
+
+}
+
 
 
 int main() {
@@ -68,13 +136,24 @@ int main() {
   int src,dest;
   cin >> src >> dest;
   vector<bool> visited(vtces,false);
-  
-    // if(hasPath(graph, src, dest, visited))
-    // cout<<"true";
-    // else
-    // cout<<"false";
+
+  // if(hasPath(graph, src, dest, visited))
+  // cout<<"true";
+  // else
+  // cout<<"false";
 
 
-    printAllPaths(graph, src, dest, visited, "", 0);
+  // printAllPaths(graph, src, dest, visited, "", 0);
+
+  int criteria,k;
+  cin >> criteria >> k;
+
+  multisolver(graph, src, dest, visited, criteria, k, src + "", 0);
+
+  cout << "Smallest Path = " << spath << "@" << spathwt << endl;
+  cout << "Largest Path = " << lpath << "@" << lpathwt << endl;
+  cout << "Just Larger Path than " << criteria << " = " << cpath << "@" << cpathwt << endl;
+  cout << "Just Smaller Path than " << criteria << " = " << fpath << "@" << fpathwt << endl;
+  cout << k << "th largest path = " << pq.top().second << "@" << pq.top().first << endl;
 
 }
