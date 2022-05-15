@@ -59,7 +59,6 @@ int fpathwt = INT_MIN;
 //priority_queue<pair<int, string>, vector<pair<int, string>> > pq;
 priority_queue<pair<int, string>, vector<pair<int, string>>, greater<pair<int, string>> > pq;
 
-
 void multisolver(vector<vector<Edge>> graph, int src, int dst, vector<bool> visited, int criteria, int k, string psf, int wsf){
 
         if(src == dst) {
@@ -89,13 +88,11 @@ void multisolver(vector<vector<Edge>> graph, int src, int dst, vector<bool> visi
             //Kth largest
             if(pq.size()<k){
               pq.push({wsf,psf});
-              cout<<"pushed: "<<psf<<endl;
             }
             else{
               if(pq.top().first < wsf){
                 pq.pop();
                 pq.push({wsf,psf});
-                cout<<"pushed: "<<psf<<endl;
               }
             }
 
@@ -114,6 +111,30 @@ void multisolver(vector<vector<Edge>> graph, int src, int dst, vector<bool> visi
         visited[src] = 0;
 
 }
+
+vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+
+       vector<int> bfs;
+       vector<int> vis(V,0);
+       queue<int> q;
+       q.push(0);
+       vis[0]=1;
+       
+       while(!q.empty()){
+           int node=q.front();
+           q.pop();
+           bfs.push_back(node);
+           
+           for(auto it:adj[node]){
+               if(!vis[it]){
+                   q.push(it);
+                   vis[it]=1;
+               }
+           }
+       }
+       return bfs;
+       
+  }
 
 
 
