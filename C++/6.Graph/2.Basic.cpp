@@ -132,9 +132,31 @@ vector<int> bfsOfGraph(int V, vector<int> adj[]) {
                }
            }
        }
+
        return bfs;
        
   }
+
+
+  void dfs(vector<bool> &visited, int src, vector<int> adj[], vector<int> &ans){
+        ans.push_back(src);
+        visited[src]=1;
+        for(int nbr : adj[src]){
+            if(!visited[nbr]){
+                dfs(visited, nbr, adj, ans);
+            }
+        }
+        
+    }
+    
+    vector<int> dfsOfGraph(int V, vector<int> adj[]) {
+        // Code here
+        vector<bool> visited(V,0);
+        vector<int> ans;
+        dfs(visited, 0, adj, ans);
+        return ans;
+        
+    }
 
 
 
