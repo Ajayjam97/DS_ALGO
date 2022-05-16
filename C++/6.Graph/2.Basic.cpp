@@ -137,7 +137,6 @@ vector<int> bfsOfGraph(int V, vector<int> adj[]) {
        
   }
 
-
   void dfs(vector<bool> &visited, int src, vector<int> adj[], vector<int> &ans){
         ans.push_back(src);
         visited[src]=1;
@@ -157,6 +156,39 @@ vector<int> bfsOfGraph(int V, vector<int> adj[]) {
         return ans;
         
     }
+
+
+//Dfs for edge
+void dfsForEdge(vector<bool> &visited, int src, vector<Edge> adj[], vector<int> &ans){
+        ans.push_back(src);
+        visited[src]=1;
+        for(Edge e : adj[src]){
+            int nbr=e.nbr;
+            if(!visited[nbr]){
+                dfsForEdge(visited, nbr, adj, ans);
+            }
+        }
+        
+}
+    
+//Get connected components
+vector<vector<int>> gcc(vector<Edge> graph[], int vtces){
+    
+    vector<vector<int>> comps;
+    vector<bool> visited(vtces,0);
+    
+    for(int i=0; i<vtces; i++){
+        
+        if(!visited[i]){
+        vector<int> comp;
+        dfsForEdge(visited, i, graph, comp);
+        comps.push_back(comp);
+        }
+        
+    }
+    
+    return comps;
+}
 
 
 
