@@ -47,14 +47,10 @@ void printAllPaths(vector<vector<Edge>> g, int src, int dst, vector<bool> vis, s
         vis[src] = 0;
 }
 
-string spath;
-int spathwt = INT_MAX;
-string lpath;
-int lpathwt = INT_MIN;
-string cpath;
-int cpathwt = INT_MAX;
-string fpath;
-int fpathwt = INT_MIN;
+string spath;     int spathwt = INT_MAX;
+string lpath;     int lpathwt = INT_MIN;
+string cpath;     int cpathwt = INT_MAX;
+string fpath;     int fpathwt = INT_MIN;
 
 //priority_queue<pair<int, string>, vector<pair<int, string>> > pq;
 priority_queue<pair<int, string>, vector<pair<int, string>>, greater<pair<int, string>> > pq;
