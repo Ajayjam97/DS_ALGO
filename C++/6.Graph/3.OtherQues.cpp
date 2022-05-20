@@ -84,9 +84,54 @@ int nofIslands(vector<vector<int>> graph){
 }
 
 
+//Perfect Friend
 
+void gccforPerfectFriend(vector<vector<int>> graph, int src, vector<bool> &visited, vector<int> &comp){
+    
+    visited[src]=true;
+    comp.push_back(src);
+    
+    for(int nbr: graph[src]){
+        if(!visited[nbr]){
+            gccforPerfectFriend(graph, nbr, visited, comp);
+        }
+    }
+    
+    
+}
+
+int PerfectFriend(vector<vector<int>> graph){
+    
+    vector<bool> visited(graph.size());
+    vector<vector<int>> comps;
+    
+    for(int i=0; i<graph.size(); i++){
+        if(!visited[i]){
+            vector<int> comp;
+            gccforPerfectFriend(graph, i, visited, comp);
+            comps.push_back(comp);
+        }
+    }
+    
+    return comps.size();
+}
 
 int main() {
   
+  int n,k;
+  cin >> n >> k;
+
+  vector<vector<int>> graph(n);
+  
+  for(int i=0; i<k; i++){
+      int src, nbr;
+      cin>>src>>nbr;    
+      graph[src].push_back(nbr);
+      graph[nbr].push_back(src);
+  }
+  
+  cout<<PerfectFriend(graph);
+  
+  return 0;
 
 }
