@@ -16,7 +16,6 @@ class Edge {
 };
 
 //Is Graph connected
-
 int dfsForisgc(vector<Edge> graph[],int src, int vtces, vector<int> &visited){
     
     int vtcescount=1;
@@ -47,7 +46,6 @@ bool isgc(vector<Edge> graph[], int vtces){
 
 
 //No. of Island
-
 vector<int> xdir={-1,0,1,0};
 vector<int> ydir={0,-1,0,1};
 
@@ -85,7 +83,6 @@ int nofIslands(vector<vector<int>> graph){
 
 
 //Perfect Friend
-
 void gccforPerfectFriend(vector<vector<int>> graph, int src, vector<bool> &visited, vector<int> &comp){
     
     visited[src]=true;
@@ -113,24 +110,87 @@ int PerfectFriend(vector<vector<int>> graph){
         }
     }
     
-    return comps.size();
+    int count=0;
+
+    //method 1 O(N^2)
+    // for(int i=0; i<comps.size(); i++){
+    //     int size=comps[i].size();
+    //     for(int j=i+1; j<comps.size(); j++){
+    //         count+=size*comps[j].size();
+    //     }
+    // }
+
+    //method 2 O(N)
+    int sum=comps[comps.size()-1].size();
+    for(int i=comps.size()-2; i>=0; i--){
+        int s=comps[i].size();
+        count+=sum*s;
+        sum+=s;
+    }
+
+    return count;
 }
+
+
+//Hamiltonian path & cycle
+void Hamiltonian(vector<vector<Edge>> graph, int src, int osrc, unordered_set<int> &visited, string psf){
+    if(visited.size()==graph.size()-1){
+        psf+=to_string(src);
+        cout<<psf;
+        
+        bool iscyclic=false;
+        for(Edge e: graph[osrc]){
+            if(e.nbr==src){
+                iscyclic=true;
+                break;
+            }
+        }
+        
+        if(iscyclic) cout<<"*"<<endl;
+        else cout<<"."<<endl;
+        return;
+    }
+    
+    visited.insert(src);
+    for(Edge e: graph[src]){
+        if(visited.find(e.nbr)==visited.end())
+        Hamiltonian(graph, e.nbr, osrc, visited, psf+to_string(src));
+    }
+    visited.erase(src);
+}
+
+
+
 
 int main() {
   
-  int n,k;
-  cin >> n >> k;
+//   int n,k;
+//   cin >> n >> k;
+//   vector<vector<int>> graph(n);
+  
+//   for(int i=0; i<k; i++){
+//       int src, nbr;
+//       cin>>src>>nbr;    
+//       graph[src].push_back(nbr);
+//       graph[nbr].push_back(src);
+//   }
+//   cout<<PerfectFriend(graph);
 
-  vector<vector<int>> graph(n);
-  
-  for(int i=0; i<k; i++){
-      int src, nbr;
-      cin>>src>>nbr;    
-      graph[src].push_back(nbr);
-      graph[nbr].push_back(src);
+
+  int vtces, edges;
+  cin >> vtces >> edges;
+  vector<vector<Edge>> graph(vtces, vector<Edge>());
+
+  for (int i = 0; i < edges; i++ ) {
+    int u, v, w;
+    cin >> u >> v >> w;
+    graph[u].push_back(Edge(u, v, w));
+    graph[v].push_back(Edge(v, u, w));
   }
-  
-  cout<<PerfectFriend(graph);
+
+  int src; cin >> src;
+  unordered_set<int> visited;
+  Hamiltonian(graph, src, src, visited, "");
   
   return 0;
 
