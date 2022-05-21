@@ -160,6 +160,43 @@ void Hamiltonian(vector<vector<Edge>> graph, int src, int osrc, unordered_set<in
 }
 
 
+//Knights Tour
+void display(vector<vector<int>>& chess) {
+  for (int i = 0; i < chess.size(); i++) {
+    for (int j = 0; j < chess.size(); j++) {
+      cout << chess[i][j] << " ";
+    }
+    cout << endl;
+  }
+  cout << endl;
+}
+
+vector<int> rdir={-2,-1,1,2,2,1,-1,-2};
+vector<int> cdir={1,2,2,1,-1,-2,-2,-1};
+
+void printKnightsTour(vector<vector<int>>& chess, int n, int r, int c, int upcomingMove) {
+  //write your code here
+  
+  if(upcomingMove==n*n){
+      chess[r][c]=upcomingMove;
+      display(chess);
+      chess[r][c]=0;
+      return;
+  }
+  
+  chess[r][c]=upcomingMove;
+  
+  for(int dir=0; dir<rdir.size(); dir++){
+      int x=r+rdir[dir];
+      int y=c+cdir[dir];
+      
+      if(x>=0 && x<n && y>=0 && y<n && chess[x][y]==0)
+      printKnightsTour(chess, n, x, y, upcomingMove+1);
+  }
+  
+  chess[r][c]=0;
+
+}
 
 
 int main() {
@@ -177,21 +214,26 @@ int main() {
 //   cout<<PerfectFriend(graph);
 
 
-  int vtces, edges;
-  cin >> vtces >> edges;
-  vector<vector<Edge>> graph(vtces, vector<Edge>());
 
-  for (int i = 0; i < edges; i++ ) {
-    int u, v, w;
-    cin >> u >> v >> w;
-    graph[u].push_back(Edge(u, v, w));
-    graph[v].push_back(Edge(v, u, w));
-  }
+//   int vtces, edges;
+//   cin >> vtces >> edges;
+//   vector<vector<Edge>> graph(vtces, vector<Edge>());
 
-  int src; cin >> src;
-  unordered_set<int> visited;
-  Hamiltonian(graph, src, src, visited, "");
+//   for (int i = 0; i < edges; i++ ) {
+//     int u, v, w;
+//     cin >> u >> v >> w;
+//     graph[u].push_back(Edge(u, v, w));
+//     graph[v].push_back(Edge(v, u, w));
+//   }
+
+//   int src; cin >> src;
+//   unordered_set<int> visited;
+//   Hamiltonian(graph, src, src, visited, "");
   
-  return 0;
+
+vector<vector<int>> chess(5, vector<int>(5,0));
+printKnightsTour(chess,5,2,0,1);
+
+return 0;
 
 }
