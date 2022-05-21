@@ -199,40 +199,6 @@ void printKnightsTour(vector<vector<int>>& chess, int n, int r, int c, int upcom
 }
 
 
-//BFS
-void BFS(vector<vector<Edge>> graph, int src){
-    
-    queue<pair<int,string>> qu;
-    qu.push({src,""});
-    vector<bool> visited(graph.size());
-
-    while(qu.size() > 0){
-        //1. Get + Remove
-        pair<int,string> rem=qu.front(); qu.pop();
-
-        //2. Mark *
-        if(visited[rem.first]==true){
-            continue;
-        } else{
-            visited[rem.first]=true;
-        }
-
-        //3. Work -> Print
-        cout<<rem.first<<"@"<<rem.second<<to_string(rem.first)<<endl;
-
-        //4. Add unvisited neighbours
-        for(Edge e: graph[rem.first]){
-            if(visited[e.nbr]==false){
-                qu.push({e.nbr, rem.second+to_string(rem.first)});
-            }
-        }
-        
-    }
-}
-
-
-
-
 int main() {
   
 //   int n,k;
@@ -249,40 +215,25 @@ int main() {
 
 
 
-//   int vtces, edges;
-//   cin >> vtces >> edges;
-//   vector<vector<Edge>> graph(vtces, vector<Edge>());
+  int vtces, edges;
+  cin >> vtces >> edges;
+  vector<vector<Edge>> graph(vtces, vector<Edge>());
 
-//   for (int i = 0; i < edges; i++ ) {
-//     int u, v, w;
-//     cin >> u >> v >> w;
-//     graph[u].push_back(Edge(u, v, w));
-//     graph[v].push_back(Edge(v, u, w));
-//   }
+  for (int i = 0; i < edges; i++ ) {
+    int u, v, w;
+    cin >> u >> v >> w;
+    graph[u].push_back(Edge(u, v, w));
+    graph[v].push_back(Edge(v, u, w));
+  }
 
-//   int src; cin >> src;
-//   unordered_set<int> visited;
-//   Hamiltonian(graph, src, src, visited, "");
+  int src; cin >> src;
+  unordered_set<int> visited;
+  Hamiltonian(graph, src, src, visited, "");
   
 
 //vector<vector<int>> chess(5, vector<int>(5,0));
 //printKnightsTour(chess,5,2,0,1);
 
 
-
-int vtces;  cin >> vtces;
-vector<vector<Edge>> graph(vtces, vector<Edge>());
-int edges;  cin >> edges;
-
-for (int i = 0; i < edges; i++ ) {
-    int u, v, w;    cin >> u >> v >> w;
-    graph[u].push_back(Edge(u, v, w));
-    graph[v].push_back(Edge(v, u, w));
-}
-
-int src;  cin >> src;  
-BFS(graph, src);
-
-return 0;
 
 }
