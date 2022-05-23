@@ -60,6 +60,27 @@ void DFS(vector<bool> &visited, int src, vector<Edge> adj[], vector<int> &ans){
 }
 
 
+//Is Cyclic
+bool CyclicBfs(int src, vector<vector<Edge>> graph, vector<bool> & visited){
+    
+    
+}
+
+
+bool IsCyclic(vector<vector<Edge>> graph, int vtces){
+    
+    vector<bool> visited(vtces,0); 
+    for(int i=0; i<vtces; i++){
+        if(!visited[i]){
+            if(CyclicBfs(i,graph,visited)){
+                return true;
+            }
+        }
+    }
+    
+    return false;
+}
+
 
 int main() {
 
@@ -73,8 +94,16 @@ for (int i = 0; i < edges; i++ ) {
     graph[v].push_back(Edge(v, u, w));
 }
 
-int src;  cin >> src;  
-BFS(graph, src);
+//int src;  cin >> src;  
+//BFS(graph, src);
+
+ if(IsCyclic(graph, vtces)){
+     cout<<"true"<<endl;
+ }
+ else{
+     cout<<"false"<<endl;
+ }
+
 
 return 0;
 
