@@ -94,12 +94,29 @@ bool BfsForCycle(int src, vector<vector<Edge>> graph, vector<bool> & visited){
     
 }
 
+bool DfsForCycle(int src, int par, vector<vector<Edge>> graph, vector<bool> & visited){
+
+    visited[src]=true;
+
+    for(Edge e: graph[src]){
+        if(!visited[e.nbr]){
+            DfsForCycle(e.nbr, src, graph, visited);
+        }
+        else if(e.nbr!=par && visited[e.nbr]){
+            return true;
+        }
+    }
+
+    return false;
+}
+
 bool IsCyclic(vector<vector<Edge>> graph, int vtces){
     
     vector<bool> visited(vtces,0); 
     for(int i=0; i<vtces; i++){
         if(!visited[i]){
-            if(BfsForCycle(i,graph,visited)){
+            //if(BfsForCycle(i,graph,visited)){
+            if(DfsForCycle(i,-1,graph,visited)){
                 return true;
             }
         }
