@@ -28,8 +28,10 @@ void BFS(vector<vector<Edge>> graph, int src){
 
         //2. Mark *
         if(visited[rem.first]==true){
+            //Already visited -> continue
             continue;
         } else{
+            //Unvisited -> Mark as visited
             visited[rem.first]=true;
         }
 
@@ -60,19 +62,44 @@ void DFS(vector<bool> &visited, int src, vector<Edge> adj[], vector<int> &ans){
 }
 
 
-//Is Cyclic
-bool CyclicBfs(int src, vector<vector<Edge>> graph, vector<bool> & visited){
+//Is Cyclic Undirected graph
+bool BfsForCycle(int src, vector<vector<Edge>> graph, vector<bool> & visited){
     
+    queue<int> qu;
+    qu.push(src);
+
+    while(qu.size() > 0){
+        //1. Get + Remove
+        int rem=qu.front(); qu.pop();
+
+        //2. Mark *
+        if(visited[rem]==true){
+            //Already visited, Therefore Cycle found -> return true
+            return true;;
+        } else{
+            //Unvisited -> Mark as visited
+            visited[rem]=true;
+        }
+
+        //4. Add unvisited neighbours
+        for(Edge e: graph[rem]){
+            if(visited[e.nbr]==false){
+                qu.push(e.nbr);
+            }
+        }
+        
+    }
+
+    return false;
     
 }
-
 
 bool IsCyclic(vector<vector<Edge>> graph, int vtces){
     
     vector<bool> visited(vtces,0); 
     for(int i=0; i<vtces; i++){
         if(!visited[i]){
-            if(CyclicBfs(i,graph,visited)){
+            if(BfsForCycle(i,graph,visited)){
                 return true;
             }
         }
@@ -80,6 +107,9 @@ bool IsCyclic(vector<vector<Edge>> graph, int vtces){
     
     return false;
 }
+
+
+
 
 
 int main() {
