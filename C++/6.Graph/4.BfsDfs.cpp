@@ -174,8 +174,40 @@ bool IsBipartite(vector<vector<Edge>> graph){
 }
 
 
-
-
+//Spread of infection --> Similar to Rotten tomatoes, Fire in the city
+int SpreadOfInfection(vector<vector<Edge>> graph, int src, int t){
+    
+    queue<pair<int,int>> qu;
+    vector<int> visited(graph.size(),-1);
+    qu.push({src,1});
+    int count=0;
+    
+    while(qu.size()>0){
+        
+        //Get + Remove
+        pair<int,int> rem=qu.front(); qu.pop();
+        
+        //Mark
+        if(visited[rem.first]!=-1){
+            continue;
+        }
+        visited[rem.first]=rem.second;
+        
+        if(rem.second>t) break;
+        
+        count++;
+        
+        //Add unvisited neighbours
+        for(Edge e : graph[rem.first]){
+            if(visited[e.nbr]==-1){
+                qu.push({e.nbr, rem.second+1});
+            }
+        }
+        
+    }
+    
+    return count;
+}
 
 
 int main() {
