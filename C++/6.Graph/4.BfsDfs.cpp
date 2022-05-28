@@ -126,6 +126,53 @@ bool IsCyclic(vector<vector<Edge>> graph, int vtces){
 }
 
 
+//Is Bipartite
+bool IsBipartiteComp(vector<vector<Edge>> graph, int src, vector<int> &visited){
+    
+    queue<pair<int,int>> qu; //queue of pair containing vertex, discovery distance
+    qu.push({src,0});
+    
+    while(qu.size()>0){
+        
+        //Get + Remove
+        pair<int,int> rem=qu.front(); qu.pop();
+        
+        //Mark
+        if(visited[rem.first]!=-1){
+            //Already Discovered
+            if(visited[rem.first]==rem.second)
+            continue;
+            else
+            return false;
+        }
+        visited[rem.first]=rem.second;
+        
+        //Add unvisited neighbours
+        for(Edge e : graph[rem.first]){
+            if(visited[e.nbr]==-1){
+                qu.push({e.nbr, rem.second+1});
+            }
+        }
+        
+    }
+    
+    return true;
+}
+
+bool IsBipartite(vector<vector<Edge>> graph){
+    
+    vector<int> visited(graph.size(),-1);
+    
+    for(int v=0; v<graph.size(); v++){
+        if(visited[v]==-1){
+            if(!IsBipartiteComp(graph, v, visited))
+            return false;
+        }
+    }
+    
+    return true;
+}
+
 
 
 
@@ -146,12 +193,23 @@ for (int i = 0; i < edges; i++ ) {
 //int src;  cin >> src;  
 //BFS(graph, src);
 
- if(IsCyclic(graph, vtces)){
-     cout<<"true"<<endl;
- }
- else{
-     cout<<"false"<<endl;
- }
+
+
+//  if(IsCyclic(graph, vtces)){
+//      cout<<"true"<<endl;
+//  }
+//  else{
+//      cout<<"false"<<endl;
+//  }
+
+
+
+   if(IsBipartite(graph)){
+      cout<<"true";
+  }
+  else{
+      cout<<"false";
+  }
 
 
 return 0;
