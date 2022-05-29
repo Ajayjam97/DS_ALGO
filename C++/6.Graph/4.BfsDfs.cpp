@@ -48,6 +48,7 @@ void BFS(vector<vector<Edge>> graph, int src){
     }
 }
 
+
 //DFS
 void DFS(vector<bool> &visited, int src, vector<Edge> adj[], vector<int> &ans){
         ans.push_back(src);
@@ -208,6 +209,8 @@ int SpreadOfInfection(vector<vector<Edge>> graph, int src, int t){
     
     return count;
 }
+
+
 
 
 int main() {
