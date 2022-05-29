@@ -54,6 +54,44 @@ void Dijkastra(vector<vector<Edge>> graph, int src){
 
 
 //Minimum Spanning tree
+//MST implementation using Prims algorithm
+void Prims(vector<vector<Edge>> graph, int src){
+    
+    //Min Priority Queue
+    priority_queue< pair<int, pair<int , int>>, vector<pair<int, pair<int , int>>>, greater<pair<int, pair<int , int>>> > qu;
+    //first = wt, second.first = src, second.second = parent
+
+    qu.push({0, {0, -1}}); 
+    vector<bool> visited(graph.size());
+
+    while(qu.size() > 0){
+        //1. Get + Remove
+        pair<int, pair<int, int>> rem=qu.top(); qu.pop();
+
+        //2. Mark *
+        if(visited[rem.second.first]==true){
+            //Already visited -> continue
+            continue;
+        }
+        //Unvisited -> Mark as visited
+        visited[rem.second.first]=true;
+
+        //3. Work -> Print
+        if(rem.second.second!=-1)
+        cout<<"["<<rem.second.first<<"-"<< rem.second.second <<"@"<<rem.first<<"]"<<endl;
+
+        //4. Add unvisited neighbours
+        for(Edge e: graph[rem.second.first]){
+            if(visited[e.nbr]==false){
+                qu.push({e.wt, {e.nbr, rem.second.first}});        
+            }
+        }
+        
+    }
+}
+
+
+
 
 //Topological Sort
 
