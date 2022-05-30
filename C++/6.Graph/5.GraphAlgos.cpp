@@ -50,9 +50,7 @@ void Dijkastra(vector<vector<Edge>> graph, int src){
     }
 }
 
-
-//Minimum Spanning tree
-//MST implementation using Prims algorithm
+//Minimum Spanning tree (Using Prims & Kruskal)
 void Prims(vector<vector<Edge>> graph, int src){
     
     //Min Priority Queue
@@ -88,7 +86,6 @@ void Prims(vector<vector<Edge>> graph, int src){
     }
 }
 
-
 //Topological Sort
 void topologicalSort(vector<vector<Edge>> graph,int src,vector<bool> &visited,stack<int> &st){
     
@@ -105,54 +102,53 @@ void topologicalSort(vector<vector<Edge>> graph,int src,vector<bool> &visited,st
 
 int main() {
 
-// vector<vector<Edge>> graph(7, vector<Edge>());
+vector<vector<Edge>> graph(7, vector<Edge>());
 
-// graph[0].push_back(Edge(0,1,10));
-// graph[1].push_back(Edge(1,0,10));
-// graph[1].push_back(Edge(1,2,10));
-// graph[2].push_back(Edge(2,1,10));
-// graph[2].push_back(Edge(2,3,10));
-// graph[3].push_back(Edge(3,2,10));
-// graph[0].push_back(Edge(0,3,40));
-// graph[3].push_back(Edge(3,0,40));
-// graph[3].push_back(Edge(3,4,2));
-// graph[4].push_back(Edge(4,3,2));
-// graph[4].push_back(Edge(4,5,3));
-// graph[5].push_back(Edge(5,4,3));
-// graph[5].push_back(Edge(5,6,3));
-// graph[6].push_back(Edge(6,5,3));
-// graph[4].push_back(Edge(4,6,8));
-// graph[6].push_back(Edge(6,4,8));
-// graph[2].push_back(Edge(2,5,5));
-// graph[5].push_back(Edge(5,2,5));
-
-
-// Dijkastra(graph, 0);
+graph[0].push_back(Edge(0,1,10));
+graph[1].push_back(Edge(1,0,10));
+graph[1].push_back(Edge(1,2,10));
+graph[2].push_back(Edge(2,1,10));
+graph[2].push_back(Edge(2,3,10));
+graph[3].push_back(Edge(3,2,10));
+graph[0].push_back(Edge(0,3,40));
+graph[3].push_back(Edge(3,0,40));
+graph[3].push_back(Edge(3,4,2));
+graph[4].push_back(Edge(4,3,2));
+graph[4].push_back(Edge(4,5,3));
+graph[5].push_back(Edge(5,4,3));
+graph[5].push_back(Edge(5,6,3));
+graph[6].push_back(Edge(6,5,3));
+graph[4].push_back(Edge(4,6,8));
+graph[6].push_back(Edge(6,4,8));
+graph[2].push_back(Edge(2,5,5));
+graph[5].push_back(Edge(5,2,5));
 
 
-  int vtces;    cin >> vtces;
-  vector<vector<Edge>> graph(vtces, vector<Edge>());
+Dijkastra(graph, 0);
 
-  int edges;    cin >> edges;
 
-  for (int i = 0; i < edges; i++ ) {
-    int u, v;
-    cin >> u >> v;
-    graph[u].push_back(Edge(u, v, 0));
-  }
+//   int vtces;    cin >> vtces;
+//   vector<vector<Edge>> graph(vtces, vector<Edge>());
 
-  //write your code here
-  vector<bool> visited(vtces);
-  stack<int> st;
-  for(int i=0; i<vtces; i++){
-      if(!visited[i]){
-          topologicalSort(graph, i, visited, st);
-      }
-  }
+//   int edges;    cin >> edges;
+
+//   for (int i = 0; i < edges; i++ ) {
+//     int u, v;
+//     cin >> u >> v;
+//     graph[u].push_back(Edge(u, v, 0));
+//   }
+
+//   vector<bool> visited(vtces);
+//   stack<int> st;
+//   for(int i=0; i<vtces; i++){
+//       if(!visited[i]){
+//           topologicalSort(graph, i, visited, st);
+//       }
+//   }
   
-  while(st.size()>0){
-      cout<<st.top()<<endl; st.pop();
-  }
+//   while(st.size()>0){
+//       cout<<st.top()<<endl; st.pop();
+//   }
 
 
 
