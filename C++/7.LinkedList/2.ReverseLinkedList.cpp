@@ -250,6 +250,27 @@ public:
 
 
 
+    void reversePRHelper(Node* node){
+        // write your code here
+        if(node->next == NULL) {
+            this->head = node;
+            return;
+        }
+        reversePRHelper(node->next);
+        node->next->next = node;
+    }
+
+    
+    void reversePR(){
+        // write your code here
+        Node* temp = this->head;
+        reversePRHelper(temp);
+        temp->next = NULL;
+        this->tail = temp;
+    }
+
+
+
 };
 
 
