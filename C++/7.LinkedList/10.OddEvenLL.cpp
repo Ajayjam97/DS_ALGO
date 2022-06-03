@@ -209,44 +209,36 @@ public:
 
   
 
-      void kReverse(int k) {
-      
-      linkedlist* prev = NULL;
-      
-      while(this->SIZE > 0){
-          linkedlist* curr = new linkedlist();
-          
-          if(this->SIZE >= k){
-              
-              for(int i=0; i<k; i++){
-                  int data = this->getFirst();
-                  this->removeFirst();
-                  curr->addFirst(data);
-              }
-          }
-          else {
-              while(this->size() > 0){
-                  int data = this->getFirst();
-                  this->removeFirst();
-                  curr->addLast(data);
-              }
-          }
-          
-          if(prev == NULL){
-              
-              prev = curr;
-          }
-          else{
-              
-              prev->tail->next = curr->head;
-              prev->tail = curr->tail;
-              prev->SIZE += curr->SIZE;
-          }
-      }
-      
-      this->head = prev->head;
-      this->tail = prev->tail;
-      this->SIZE = prev->SIZE;
+  void oddEven(){
+     // make dummy nodes
+        Node* ehead = new Node();
+        Node* temp1 = ehead;
+        Node* ohead = new Node();
+        Node* temp2 = ohead;
+
+        // iterator -> help in movement
+        Node* itr = this->head;
+
+        while(itr != NULL) {
+            if(itr->data % 2 == 0) {
+                // even
+                temp1->next = itr;
+                temp1 = temp1->next;
+            } else {
+                // odd
+                temp2->next = itr;
+                temp2 = temp2->next;
+            }
+            itr = itr->next;
+        }
+
+        // odd -> even
+        temp2->next = ehead->next;
+        temp1->next = NULL;
+
+        // management for linkedlist as a class, head, tail and size
+        this->head = ohead->next;
+        this->tail = temp2->next == NULL ? temp2 : temp1;
     }
 
 
