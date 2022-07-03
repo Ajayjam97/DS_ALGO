@@ -1,7 +1,4 @@
-#include<iostream>
-#include<stack>
-#include<queue>
-#include<vector>
+#include<bits/stdc++.h>
 using namespace std;
 
   class Node {
@@ -49,7 +46,7 @@ public:
         
         return root;
     }
-    
+
 
     static void display(Node* root) {
         
@@ -183,7 +180,7 @@ public:
     }
     
     
-    static void levelOrderLinewiseZZ2(Node* node){
+    static void levelOrderLinewiseZZ(Node* node){
         stack<Node*> mainS;
         stack<Node*> childS;
         mainS.push(node);
@@ -216,6 +213,43 @@ public:
         }
     }
 
+
+
+    static void IterativePreandPostOrder(Node* node) {
+    // write your code here
+    stack<pair<Node*, int>> st;
+
+        st.push({node,0});
+
+        vector<int> pre;
+        vector<int> post;
+
+        while(st.size()>0) {
+            pair<Node*, int> p = st.top();
+            if(p.second == 0) {
+                pre.push_back(p.first->data);
+                p.second++;
+            } else if(p.second <= p.first->children.size()) {
+                Node* child = p.first->children[p.second - 1];
+                p.second++;
+                st.push(make_pair(child,0));
+            } else {
+                post.push_back(p.first->data);
+                st.pop();
+            }
+        }
+
+        for(int val : pre) {
+            cout<<val<<" ";
+        }
+        cout<<endl;
+
+        for(int val : post) {
+            cout<<val<<" ";
+        }
+        cout<<endl;
+  }
+
  
 
 };
@@ -232,7 +266,7 @@ for(int i=0; i<v.size(); i++){
 }
 
 Node* root = gtree::construct(v);
-gtree::levelOrderLinewiseZZ2(root);
+gtree::levelOrderLinewiseZZ(root);
 
 
 }
