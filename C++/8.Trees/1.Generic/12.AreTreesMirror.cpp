@@ -64,19 +64,6 @@ public:
         }
     }
 
-    static bool areSimilar(Node* n1, Node* n2) {
-        if(n1->children.size() != n2->children.size()) return false;
-
-        bool res = true;
-        for(int i = 0; i < n1->children.size(); i++) {
-            Node* child1 = n1->children.at(i);
-            Node* child2 = n2->children.at(i);
-
-            res = areSimilar(child1, child2);
-            if(res == false) return false;
-        }
-        return res;
-    }
 
     static bool areMirror(Node* n1, Node* n2) {
         if(n1->children.size() != n2->children.size()) return false;
@@ -94,42 +81,8 @@ public:
     }
 
 
-    static Node* predecessor;
-    static Node* successor;
-    static int state;
-
-
-    static void predecessorAndSuccessor(Node* node, int data) {
-        if(state == 0) {
-            if(node->data == data) {
-                state++;
-            } else {
-                predecessor = node;
-            }
-        } else if(state == 1) {
-            successor = node;
-            state++;
-            return;
-        }
-
-        for(Node* child : node->children) {
-            if(state < 2) {
-                predecessorAndSuccessor(child, data);
-            } else {
-                return;
-            }
-        }
-    }
-
 };
 
-
-
-Node* gtree::predecessor = NULL;
-Node* gtree::successor = NULL;
-int gtree::state = 0;
-
-  
 
 int main(){
 
@@ -143,18 +96,5 @@ for(int i=0; i<v.size(); i++){
 int data; cin>>data;
 
 Node* root = gtree::construct(v);
-gtree::predecessorAndSuccessor(root, data);
-
-    if(gtree::predecessor == NULL){
-      cout<<"Predecessor = Not found"<<endl;
-    } else {
-      cout<<"Predecessor = "<<gtree::predecessor->data<<endl;
-    }
-
-    if(gtree::successor == NULL){
-      cout<<"Successor = Not found"<<endl;
-    } else {
-      cout<<"Successor = "<<gtree::successor->data<<endl;
-    }
 
 }
