@@ -311,6 +311,24 @@ public:
     }
  
 
+    static int lca(Node* node, int d1, int d2) {
+
+        vector<int> n2rp1 = nodeToRoot(node, d1);
+        vector<int> n2rp2 = nodeToRoot(node, d2);
+
+        int i = n2rp1.size() - 1;
+        int j = n2rp2.size() - 1;
+        int res = -1;
+        while(i >= 0 && j >= 0 && n2rp1.at(i) == n2rp2.at(j)) {
+            res = n2rp1.at(i);
+            i--;
+            j--;
+        }
+
+        return res;
+    
+    }
+
 };
 
   
@@ -323,21 +341,12 @@ vector<int> v(n);
 for(int i=0; i<v.size(); i++){
     cin>>v[i];
 }
-int data; cin>>data;
 
 Node* root = gtree::construct(v);
-vector<int> path = gtree::nodeToRoot(root,data);
+int d1; cin>>d1;
+int d2; cin>>d2;
 
-cout<<"[";
-if(path.size()!=0){
-for(int i=0; (i<path.size()-1); i++){
-    cout<<path[i]<<", ";
-}
-cout<<path[path.size()-1]<<"]";
-}
-else{
-    cout<<"]";
-}
+cout<<gtree::lca(root,d1,d2)<<endl;
 
 
 }
