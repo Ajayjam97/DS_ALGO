@@ -89,6 +89,18 @@ public:
     }
 
 
+    static int kthLargest(Node* node, int k){
+    // write your code here
+     int data = INT_MAX;
+        for(int i = 0; i < k; i++) {
+            floor = INT_MIN;
+            ceilAndFloor(node, data);
+            data = floor;
+        }
+        return data;
+    }
+
+
 };
 
 int gtree::ceil = INT_MAX; // qualified min
