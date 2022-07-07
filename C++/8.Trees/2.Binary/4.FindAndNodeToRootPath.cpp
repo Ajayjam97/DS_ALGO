@@ -88,97 +88,46 @@ public:
     }
 
 
-    static void levelOrder(Node* node) {
-        queue<Node*> que;
+    static bool find(Node* node, int data) {
+        if(node == NULL) return 0;
 
-        que.push(node);
+        if(node->data == data) return 1;
 
-        while(que.size() > 0) {
-            int sz = que.size();
+        bool lres = find(node->left, data);
+        if(lres == 1) return 1;
 
-            while(sz-- > 0) {
-                // 1. get + remove
-                Node* rem = que.front();    que.pop();
-                // 2. print
-                cout<<rem->data<<" ";
-                // 3. add children
-                if(rem->left != NULL)
-                    que.push(rem->left);
+        bool rres = find(node->right, data);
+        if(rres == 1) return 1;
 
-                if(rem->right != NULL) 
-                    que.push(rem->right);
-            }
-            cout<<endl;
-        }
+        return 0;
     }
 
-
-    static void preOrder(Node* root) {
-        if(root == NULL) return;
-        cout<<root->data<<" ";
-        preOrder(root->left);
-        preOrder(root->right);
-    }
-
-    static void inOrder(Node* root) {
-        if(root == NULL) return;
-        inOrder(root->left);
-        cout<<root->data<<" ";
-        inOrder(root->right);
-    }
-
-    static void postOrder(Node* root) {
-        if(root == NULL) return;
-        postOrder(root->left);
-        postOrder(root->right);
-        cout<<root->data<<" ";
-    }
-
-
-
-        static void iterativePrePostInTraversal(Node* node) {
-        stack<Pair*> st;
-
-        vector<int> pre;
-        vector<int> in;
-        vector<int> post;
-
-        st.push(new Pair(node, 0));
-
-        while(st.size() > 0) {
-            Pair* p = st.top();
-            if(p->state == 0) {
-                pre.push_back(p->node->data);
-                p->state++;
-                if(p->node->left != NULL) {
-                    st.push(new Pair(p->node->left, 0));
-                }
-            } else if(p->state == 1) {
-                in.push_back(p->node->data);
-                p->state++;
-                if(p->node->right != NULL) {
-                    st.push(new Pair(p->node->right, 0));
-                }
-            } else {
-                post.push_back(p->node->data);
-                st.pop();
-            }
+    static vector<int>  nodeToRootPath(Node* node, int data) {
+        if(node == NULL){
+            vector<int> bres;
+            return bres;
         }
 
-        for(int val : pre) {
-            cout<<val<<" ";
+        if(node->data == data) {
+            vector<int>  bres;
+            bres.push_back(node->data);
+            return bres;
         }
-        cout<<endl;
 
-        for(int val : in) {
-            cout<<val<<" ";
+        vector<int>  lres = nodeToRootPath(node->left, data);
+        if(lres.size() > 0) {
+            lres.push_back(node->data);
+            return lres;
         }
-        cout<<endl;
 
-        for(int val : post) {
-            cout<<val<<" ";
+        vector<int>  rres = nodeToRootPath(node->right, data);
+        if(rres.size() > 0) {
+            rres.push_back(node->data);
+            return rres;
         }
-        cout<<endl;
+
+        vector<int> res;
+        return res;
     }
  
 
@@ -194,10 +143,31 @@ for(int i=0; i<v.size(); i++){
     cin>>v[i];
 }
 
+int data; cin>>data;
 Node* root = btree::construct(v);
-btree::preOrder(root);  cout<<endl;
-btree::inOrder(root);   cout<<endl;
-btree::postOrder(root); cout<<endl;
-//btree::iterativePrePostInTraversal(root);
+//btree::preOrder(root);  cout<<endl;
+//btree::inOrder(root);   cout<<endl;
+//btree::postOrder(root); cout<<endl;
+if(btree::find(root,data)){
+    cout<<"true"<<endl;
+}
+else{
+    cout<<"false"<<endl;
+}
+
+vector<int> res = btree::nodeToRootPath(root,data);
+
+if(btree::find(root,data)){
+cout<<"[";
+
+for(int i=0; i<res.size()-1; i++){
+    cout<<res[i]<<", ";
+}
+
+cout<<res[res.size()-1]<<"]"<<endl;
+}
+else{
+    cout<<"[]"<<endl;
+}
 
 }
