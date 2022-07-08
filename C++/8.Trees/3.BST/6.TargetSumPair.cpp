@@ -1,0 +1,245 @@
+#include<iostream>
+#include<stack>
+#include<vector>
+#include<algorithm>
+using namespace std;   
+    
+
+    class Node {
+    public:
+
+        int data;
+        Node* left;
+        Node* right;
+
+        Node(int data) {
+            this->data = data;
+            this->left = this->right = NULL;
+        }
+
+        Node(int data, Node* left, Node* right) {
+            this->data = data;
+            this->left = left;
+            this->right = right;
+        }
+    };
+
+
+    class bst {
+    public:
+
+    static Node* construct(vector<int> arr, int lo, int hi) {
+        if (lo > hi)
+            return NULL;
+
+        int mid = lo + (hi - lo) / 2;
+
+        Node* nn = new Node(arr[mid]);
+
+        nn->left = construct(arr, lo, mid - 1);
+        nn->right = construct(arr, mid + 1, hi);
+
+        return nn;
+    }
+
+    static void display(Node* root) {
+        if (root == NULL)
+            return;
+
+        string str = (root->left == NULL) ? "." : "" + to_string(root->left->data);
+        str += " <- " + to_string(root->data) + " -> ";
+        str += (root->right == NULL) ? "." : to_string(root->right->data);
+        cout<<str<<endl;
+
+        display(root->left);
+        display(root->right);
+    }
+
+    static int size(Node* node) {
+        if(node == NULL) return 0;
+
+        int lsize = size(node->left);
+        int rsize = size(node->right);
+        return lsize + rsize + 1;
+    }
+
+    static int sum(Node* node) {
+        if(node == NULL) return 0;
+
+        int lsum = sum(node->left);
+        int rsum = sum(node->right);
+        return lsum + rsum + node->data;
+    }
+
+    static int max(Node* node) {
+        if(node == NULL) {
+            return INT16_MIN;
+        } else if(node->right == NULL) {
+            return node->data;
+        } else {
+            return max(node->right);
+        }
+    }
+
+    static int min(Node* node) {
+        if(node == NULL) {
+            return INT16_MAX;
+        } else if(node->left == NULL) {
+            return node->data;
+        } else {
+            return min(node->left);
+        }
+    }
+
+    static bool find(Node* node, int data) {
+        if(node == NULL) return false;
+
+        if(data > node->data) {
+            return find(node->right, data);
+        } else if(data < node->data) {
+            return find(node->left, data);
+        } else {
+            // data found
+            return true;
+        }
+    }
+
+
+
+    static Node* add(Node* node, int data) {
+        if(node == NULL){
+            Node* nn = new Node(data, NULL, NULL);
+            return nn;
+        }
+
+        if(data > node->data) {
+            node->right = add(node->right, data);
+        } else if(data < node->data) {
+            node->left = add(node->left, data);
+        } else {
+        }
+        return node;
+    }
+
+
+    static int Sum;
+
+    static void rwsol(Node* node){
+        if(node == NULL) return;
+        // right
+        rwsol(node->right);
+        // inorder is area of work
+        int data = node->data;
+        node->data = Sum;
+        Sum += data;
+        // left
+        rwsol(node->left);
+    }
+
+    static int lca(Node* node, int d1, int d2) {
+        if(d1 > node->data && d2 > node->data) { // right side
+            return lca(node->right, d1, d2);
+        } else if(d1 < node->data && d2 < node->data) { // left side
+            return lca(node->left, d1, d2);
+        } else { // answer
+            return node->data;
+        }
+    }
+
+
+    static void pir(Node* node, int d1, int d2) {
+        if(node == NULL) return;
+
+        if(d1 > node->data && d2 > node->data) { // right side
+            pir(node->right, d1, d2);
+        } else if(d1 < node->data && d2 < node->data) { // left side
+            pir(node->left, d1, d2);
+        } else { // answer
+            pir(node->left, d1, d2);
+            cout<<node->data<<endl;
+            pir(node->right, d1, d2);
+        }
+    }
+
+
+
+    
+    // method 1, time : O(nh), space : O(h), h-> height
+    static void printTargetSumPair1(Node* node, Node* root, int target) {
+        if(node == NULL) return;
+
+        int n1 = node->data;
+        int n2 = target - n1;
+
+        printTargetSumPair1(node->left, root, target);
+        // inorder
+        if(n1 < n2 && find(root, n2) == true) {
+            cout<<n1<<" "<<n2<<endl;
+        }
+        printTargetSumPair1(node->right, root, target);
+    }
+    
+    // method 2, time : O(n), space : O(n), h-> height
+    
+    static vector<int> list;
+    
+    static void inorderFiller(Node* node, vector<int> list) {
+        if(node == NULL) return;
+
+        inorderFiller(node->left, list);
+        list.push_back(node->data);
+        inorderFiller(node->right, list);
+    }
+
+    static void printTargetSumPair2(Node* node, int target) {
+        inorderFiller(node, list);
+
+        int left = 0;
+        int right = list.size() - 1;
+
+        while(left < right) {
+            int sum = list.at(left) + list.at(right);
+            if(sum > target) {
+                right--;
+            } else if(sum < target) {
+                left++;
+            } else {
+                cout<<list.at(left)<<" "<<list.at(right)<<endl;
+                left++;
+                right--;
+            }
+        }
+    }
+    
+   
+
+};
+
+int bst::Sum = 0;
+vector<int> bst::list;
+
+
+int main(){
+
+    int n;  cin>>n;
+    vector<string> s(n);
+    vector<int> v;
+
+    for(int i=0; i<s.size(); i++){
+        cin>>s[i];
+        if(s[i]!="n"){
+            v.push_back(stoi(s[i]));
+        }
+    }
+
+    sort(v.begin(), v.begin() + v.size());
+    Node* root = bst::construct(v, 0, v.size()-1);
+    
+    int d1; cin>>d1;
+    
+    bst::printTargetSumPair2(root,d1);
+
+    
+    
+    
+}
