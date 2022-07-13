@@ -1,0 +1,16 @@
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\bin\Debug\net5.0\2.LexicalConventions.exe
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\bin\Debug\net5.0\2.LexicalConventions.deps.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\bin\Debug\net5.0\2.LexicalConventions.runtimeconfig.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\bin\Debug\net5.0\2.LexicalConventions.runtimeconfig.dev.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\bin\Debug\net5.0\2.LexicalConventions.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\bin\Debug\net5.0\ref\2.LexicalConventions.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\bin\Debug\net5.0\2.LexicalConventions.pdb
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\obj\Debug\net5.0\2.LexicalConventions.csproj.AssemblyReference.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\obj\Debug\net5.0\2.LexicalConventions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\obj\Debug\net5.0\2.LexicalConventions.AssemblyInfoInputs.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\obj\Debug\net5.0\2.LexicalConventions.AssemblyInfo.cs
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\obj\Debug\net5.0\2.LexicalConventions.csproj.CoreCompileInputs.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\obj\Debug\net5.0\2.LexicalConventions.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\obj\Debug\net5.0\ref\2.LexicalConventions.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\obj\Debug\net5.0\2.LexicalConventions.pdb
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\2.LexicalConventions\2.LexicalConventions\obj\Debug\net5.0\2.LexicalConventions.genruntimeconfig.cache

@@ -1,0 +1,16 @@
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\obj\Debug\net5.0\1.Introduction.csproj.AssemblyReference.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\obj\Debug\net5.0\1.Introduction.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\obj\Debug\net5.0\1.Introduction.AssemblyInfoInputs.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\obj\Debug\net5.0\1.Introduction.AssemblyInfo.cs
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\obj\Debug\net5.0\1.Introduction.csproj.CoreCompileInputs.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\bin\Debug\net5.0\1.Introduction.exe
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\bin\Debug\net5.0\1.Introduction.deps.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\bin\Debug\net5.0\1.Introduction.runtimeconfig.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\bin\Debug\net5.0\1.Introduction.runtimeconfig.dev.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\bin\Debug\net5.0\1.Introduction.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\bin\Debug\net5.0\ref\1.Introduction.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\bin\Debug\net5.0\1.Introduction.pdb
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\obj\Debug\net5.0\1.Introduction.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\obj\Debug\net5.0\ref\1.Introduction.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\obj\Debug\net5.0\1.Introduction.pdb
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\1.Introduction\1.Introduction\obj\Debug\net5.0\1.Introduction.genruntimeconfig.cache
