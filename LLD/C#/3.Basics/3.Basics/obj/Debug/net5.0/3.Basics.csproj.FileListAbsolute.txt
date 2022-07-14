@@ -1,0 +1,16 @@
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\bin\Debug\net5.0\3.Basics.exe
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\bin\Debug\net5.0\3.Basics.deps.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\bin\Debug\net5.0\3.Basics.runtimeconfig.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\bin\Debug\net5.0\3.Basics.runtimeconfig.dev.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\bin\Debug\net5.0\3.Basics.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\bin\Debug\net5.0\ref\3.Basics.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\bin\Debug\net5.0\3.Basics.pdb
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\obj\Debug\net5.0\3.Basics.csproj.AssemblyReference.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\obj\Debug\net5.0\3.Basics.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\obj\Debug\net5.0\3.Basics.AssemblyInfoInputs.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\obj\Debug\net5.0\3.Basics.AssemblyInfo.cs
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\obj\Debug\net5.0\3.Basics.csproj.CoreCompileInputs.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\obj\Debug\net5.0\3.Basics.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\obj\Debug\net5.0\ref\3.Basics.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\obj\Debug\net5.0\3.Basics.pdb
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\3.Basics\3.Basics\obj\Debug\net5.0\3.Basics.genruntimeconfig.cache
