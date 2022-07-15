@@ -1,0 +1,16 @@
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\bin\Debug\net5.0\4.OOPS.exe
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\bin\Debug\net5.0\4.OOPS.deps.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\bin\Debug\net5.0\4.OOPS.runtimeconfig.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\bin\Debug\net5.0\4.OOPS.runtimeconfig.dev.json
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\bin\Debug\net5.0\4.OOPS.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\bin\Debug\net5.0\ref\4.OOPS.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\bin\Debug\net5.0\4.OOPS.pdb
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\obj\Debug\net5.0\4.OOPS.csproj.AssemblyReference.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\obj\Debug\net5.0\4.OOPS.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\obj\Debug\net5.0\4.OOPS.AssemblyInfoInputs.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\obj\Debug\net5.0\4.OOPS.AssemblyInfo.cs
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\obj\Debug\net5.0\4.OOPS.csproj.CoreCompileInputs.cache
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\obj\Debug\net5.0\4.OOPS.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\obj\Debug\net5.0\ref\4.OOPS.dll
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\obj\Debug\net5.0\4.OOPS.pdb
+C:\Users\jamwal\OneDrive\Desktop\DS_ALGO\LLD\C#\4.OOPS\4.OOPS\obj\Debug\net5.0\4.OOPS.genruntimeconfig.cache
