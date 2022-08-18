@@ -138,7 +138,6 @@ public:
 
         static void iterativePrePostInTraversal(Node* node) {
         stack<Pair*> st;
-
         vector<int> pre;
         vector<int> in;
         vector<int> post;
