@@ -1,191 +1,167 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-    int minJumpsHelper(int arr[], int indx, int n, vector<int> &dp){
-        
-        if(n<=1) return 0;
-        
-        if(indx >= n - 1) return dp[indx]=0;
-        
-        if(dp[indx]!=-1) return dp[indx];
+class ListNode{
 
-        int minjumps = INT_MAX-5;
-    
-        if(arr[indx]!=0){
-            
-            for(int i = 1; i <= arr[indx]; i++){
-                minjumps = min(minjumps, 1 + minJumpsHelper(arr, indx+i, n, dp));
+    public: 
+
+    int data;
+    ListNode* next;
+
+    ListNode(): data(0), next(NULL){
+
+    }
+
+    ListNode(int x): data(x), next(NULL){
+
+    }
+
+    ListNode(int x, ListNode* nxt): data(x), next(nxt){
+
+    } 
+
+
+};
+
+class List{
+
+    private:
+
+    ListNode* head;
+    ListNode* tail;
+    int size;
+
+    public:
+
+    List(): head(NULL), tail(NULL), size(0){
+
+    } 
+
+    List(int x){
+        head = new ListNode(x);
+        tail = head;
+        size=1;
+    }
+
+    void InsertAtHead(int x){
+        ListNode* temp = new ListNode(x);
+        temp->next = head;
+        head = temp;
+        size++;
+    }
+
+    void InsertAtTail(int x){
+        ListNode* temp = new ListNode(x);
+        tail->next = temp;
+        tail = temp;
+        size++;
+    }
+
+    void InsertAt(int x, int indx){
+
+    try{
+
+        if(indx>size || indx<0){
+            throw exception();
+        }
+        else if(indx==0){
+            InsertAtHead(x);
+        }
+        else if(indx==size){
+            InsertAtTail(x);
+        }
+        else{
+            ListNode* temp = new ListNode(x);
+            ListNode* itr = head;
+            while(itr!=NULL){
+                indx--;
+                if(indx==0){
+                    temp->next = itr->next;
+                    itr->next = temp;
+                    size++;
+                    break;
+                }
+                itr=itr->next;
             }
-            
         }
-            
-        return dp[indx]=minjumps;
-        
     }
-  
-    int minJumps(int arr[], int n){
-    
-        vector<int> dp(10e7, -1);
-        int result = minJumpsHelper(arr, 0, n, dp);
-        if(result==INT_MAX-5) return -1;
-        return result;
+    catch(exception e){
+        cout<<"Index out of bound"<<endl;
     }
 
-//   int dfs(int node,vector<int>&vis,vector<int>adj[]){
-// 		if(vis[node]) return 0;
-// 		vis[node] = 1;
-// 		int res = 0;
-// 		for(auto edge:adj[node]) if(!vis[edge]) res+=dfs(edge,vis,adj);
-// 			return res+1;
-// 	}
-
-// 	int reachableNodes(int n, vector<vector<int>>& edges, vector<int>& restricted) {
-// 		vector<int>vis(n,0);
-// 		for(auto x:restricted) vis[x] = 1;
-// 		vector<int>adj[n];
-// 		for(auto node:edges) adj[node[0]].push_back(node[1]),adj[node[1]].push_back(node[0]);
-// 		return dfs(0,vis,adj);
-// 	}
+    }
 
 
+    void DeleteAt(int indx){
 
-    int dfs(vector<int>& visited, int src, vector<vector<int>> adj){
-        
-        if(visited[src]) return 0;
-        visited[src]=1;
-        
-        int result=0;
-        
-        for(int nbr: adj[src]){
-            if(!visited[nbr]){
-                result+=dfs(visited, nbr, adj);
+        if(indx==0){
+            ListNode* temp=head;
+            head=head->next;
+            delete temp;
+            size--;
+        }
+        else{
+            ListNode* prev=NULL;
+            ListNode* curr=NULL;
+            int count=0;
+            ListNode* itr=head;
+            while(count!=indx){
+                prev=itr;
+                itr=itr->next;
+                curr=itr;
+                count++;                
             }
-        }
-        
-        return result+1;
-        
-    }
-    
-    
-    int reachableNodes(int n, vector<vector<int>>& edges, vector<int>& restricted) {
-        
-        vector<vector<int>> adj(n);
-        vector<int> visited(n,0);
-        
-        unordered_set<int> rs(begin(restricted), end(restricted)); 
-        
-        for(int i=0; i<n-1; i++){  
-            if(rs.count(edges[i][0])+rs.count(edges[i][1])==0){
-            adj[edges[i][0]].push_back(edges[i][1]);
-            adj[edges[i][1]].push_back(edges[i][0]);
-            }
-        }
-        
-        for(int i=0; i<restricted.size(); i++){
-            visited[restricted[i]]=1;
-        }
-        
 
-        return dfs(visited, 0, adj);
-        
+            prev->next=curr->next;
+            delete curr;
+            size--;
+        }
     }
 
-    int getPairsCount(int arr[], int n, int k)
-    {
-        sort(arr, arr + n);
-        int x = 0, c = 0, y, z;
-        for (int i = 0; i < n - 1; i++) {
-            x = k - arr[i];
-        
-            // Lower bound from i+1
-            int y = lower_bound(arr + i + 1,arr + n, x) - arr;
-            
-            // Upper bound from i+1
-            int z = upper_bound(arr + i + 1,arr + n, x) - arr;
-            cout<<y<<" "<<z<<endl;
-            c = c + z - y;
+    void DisplayList(){
+        ListNode* temp=this->head;
+        while(temp!=NULL){
+            cout<<temp->data<<" ";
+            temp=temp->next;
         }
-        return c;
+        cout<<endl;
     }
 
-
-    vector<int> singleNumber(vector<int> nums) 
-    {
-        // Code here.
-        vector<int> result;
-        int res=nums[0];
-        for(int i=1; i<nums.size(); i++){
-            res=res^nums[i];
-            result.push_back(res);
-        }
-
-        return result;
+    void Size(){
+        cout<<size<<endl;
     }
 
+};
 
-    int countbits(int n){
-        int count=0;
-        while(n){
-            n=n&(n-1);
-            count++;
-        }
-        
-        return count;
-    }
-    
-    
-    int countSetBits(int n)
-    {
-        // Your logic here
-        int result=0;
-        for(int i=1; i<=n; i++){
-            result+=countbits(i);
-        }
-        
-        return result;
-    }
-
-        int setSetBit(int x, int y, int l, int r){
-        // code here
-        int mask=0;
-        
-        while(r>=l){
-            mask|=1<<(r-1);
-            mask|=1<<(l-1);
-            l++; r--;
-        }
-
-        cout<<mask<<endl;
-        
-        y=y&mask;
-        x=x|y;
-        
-        return x;
-    }
 
     
 int main(){
 
-    // int arr[] = {0, 1, 1, 1, 1};
-    // cout<<minJumps(arr, 5)<<endl;
+    //ListNode* head=NULL;
+    //head=new ListNode();
+    //head->next = new ListNode(2);
 
-    // int n = 7;
-    // vector<vector<int>> edges = {{0,1},{0,2},{0,5},{0,4},{3,2},{6,5}};
-    // vector<int> restricted = {4,2,1};
-    // cout<<reachableNodes(n, edges, restricted);
+    List* l = new List(10);
+    l->InsertAtTail(20);
+    l->InsertAtTail(30);
+    l->InsertAtTail(40);
+    l->InsertAtTail(50);
+    l->InsertAt(0, 4);
+    l->DisplayList();
+    l->Size();
+    l->InsertAtTail(60);
+    l->DisplayList();
+    l->Size();
+    l->DeleteAt(6);
+    l->DisplayList();
+    l->Size();
+    l->DeleteAt(0);
+    l->DisplayList();
+    l->Size();
+    l->DeleteAt(3);
+    l->DisplayList();
+    l->Size();
 
-    // int arr[] = { 1, 5, 7, -1, 5 };
-    // int n = sizeof(arr) / sizeof(arr[0]); 
-    // cout << "Count of pairs is "<< getPairsCount(arr, n, 6);
 
-    // vector<int> result;
-    // result = singleNumber({1, 2, 3, 2, 1, 4});
-    // for(int i=0; i<result.size(); i++){
-    //     cout<<result[i]<<" ";
-    // }
-
-    // cout<<countSetBits(4);
-
-    cout<<setSetBit(16,2,1,3);
 
 }

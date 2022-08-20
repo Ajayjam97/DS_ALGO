@@ -4,8 +4,6 @@ using namespace std;
 class Solution {
 public:
     int smallestRangeII(vector<int>& arr, int k) {
-        
-        pair<int, int> p;
 
         sort(arr.begin(), arr.end());
         int n=arr.size();
