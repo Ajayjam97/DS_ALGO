@@ -55,8 +55,6 @@ namespace Basic
             Shapes s = Shapes.Circle;
             Console.WriteLine("{0}, {1}",s, Shapes.Square);
 
-
-
             //Built in reference types
             //object, string, array
 
