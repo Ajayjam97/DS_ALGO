@@ -5,6 +5,7 @@ Linkedin: https://www.linkedin.com/in/ajay-jamwal97/
 #include<bits/stdc++.h>
 using namespace std;
 
+//Powershell cmd: Get-Content input.txt | .\numbertheory.exe >  output.txt
 #define fastio ios_base::sync_with_stdio(false), cin.tie(NULL), cout.tie(NULL)
 #define endl "\n"
 #define mod (int)1000000007
@@ -12,20 +13,31 @@ using namespace std;
 #define init(a,i) memset(a,i,sizeof(a));
 #define gcd(a,b) __gcd(a,b)
 #define lcm(a,b) a/__gcd(a,b)*b
-//Powershell cmd: Get-Content input.txt | .\numbertheory.exe >  output.txt
+bool prime[1000000000];
+
+void sieve(int n){
+    prime[n+1];
+    init(prime, true);
+    for(int i=2; i<=sqrt(n); i++){
+        if(prime[i-1]){ 
+        for(int j=i*i; j<=n; j+=i){prime[j]=false; }
+        }
+    }
+}
+
 
 int binExponentiation(int a, int b){
     int ans=1;
     while(b){
-        if(b&1){ ans = (ans*a);}
-        a=(a*a);
-        b>>=1;
+        if(b&1){ ans = (ans*a);} a=(a*a);    b>>=1;
     }
     return ans;
 }
+
+
+
 void solution(){
 
-  cout<<binExponentiation(2,10);
 
 }
 
@@ -92,6 +104,47 @@ solution();
 //     }
 //     return ans;
 // }
+
+
+//Use binary exponentiation to find the a^b % m
+//Also using Euloer totient function if b is a large value & needs to be reduced.
+//As per Euler theorem a^b%m = a^(b%Φ(m))%m
+//Φ(m)=m-1  {if m is prime}
+//Φ(m)=m multiplied by-product of (1 – 1/p) for all prime factors p of m. {if m is not a prime}
+//For example value of Φ(1337) = 1337 * (1-1/7) * (1 – 1/191) = 1140.
+
+
+
+
+//Prime Numbers
+
+//Finding prime factors
+
+// for(int i=2; i*i<=n; i++){
+//     while(n%i==0){
+//         prime_factors.push_back(i);
+//         n/=i;
+//     }
+// }
+// if(n>i) prime_factors.push_back(n);
+
+
+
+
+
+//Combinatorics
+
+//How many ways you can do something
+//Choose r objects out of n objects (nCr): n!/r!(n-r)!
+// int ncr(int n, int r){
+//    if(r>n || n<0 || r<0) return 0;
+//    return fact[n]/fact[r]/fact[n-r];
+//}
+
+
+
+
+
 
 
 

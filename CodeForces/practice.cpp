@@ -15,6 +15,7 @@ using namespace std;
 //Powershell cmd: Get-Content input.txt | .\practice.exe >  output.txt
 
 
+
 void solution(){
 
 
@@ -23,7 +24,7 @@ void solution(){
 int main(){
 
 fastio;
-tc(t)
+//tc(t)
 solution();
 
 }
