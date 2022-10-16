@@ -10,8 +10,17 @@ using namespace std;
 #define mod (int)1000000007
 #define tc(t) int t; cin>>t; while(t--)
 #define init(a,i) memset(a,i,sizeof(a));
+#define gcd(a,b) __gcd(a,b)
+#define lcm(a,b) a/__gcd(a,b)*b
+
+void solution(){
+    
+}
 
 int main(){
 
+fastio;
+tc(t)
+solution();
 
 }
