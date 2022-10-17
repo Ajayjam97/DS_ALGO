@@ -17,14 +17,30 @@ using namespace std;
 
 
 void solution(){
+    
+    int N,S;
+    cin>>N>>S;
 
+    int i=0; int j=N;
+
+    while(i<j){
+        if(i+j==S){
+            cout<<j-i<<endl; break;
+        }
+        else if(i+j>S){
+            j--;
+        }
+        else if(i+j<S){
+            i++;
+        }
+    }
 
 }
 
 int main(){
 
 fastio;
-//tc(t)
+tc(t)
 solution();
 
 }
