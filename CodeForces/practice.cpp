@@ -23,7 +23,7 @@ void solution(){
 
     int i=0; int j=N;
 
-    while(i<j){
+    while(i<=N&&j>=0){
         if(i+j==S){
             cout<<j-i<<endl; break;
         }
