@@ -42,6 +42,25 @@ class LGBTQ: public Male, public Female{
 
 };
 
+class A{
+    public:
+    void abc(){
+        cout<<"A";
+    }
+};
+
+class B{
+    public:
+    void abc(){
+        cout<<"B";
+    }
+};
+
+class C: public A, public B{
+    
+};
+
+
 int main(){
 
     //Inheritance
@@ -78,6 +97,8 @@ int main(){
     //Hierarchical
     //Hybrid
 
-
-
+    //Inheritance ambiguity
+    //Ambiguity resolved using scope resolution operator
+    C c;
+    c.B::abc();
 }
